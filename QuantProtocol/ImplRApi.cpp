@@ -43,6 +43,19 @@ int ImplCallbacks::AccountList(AccountListInfo* pInfo,
     void* pContext,
     int* aiCode)
 {
+    int iIgnored;
+
+    cout << endl << endl;
+    if(!pInfo->dump(&iIgnored)){
+        cout << "error in pInfo -> dump : " << iIgnored << endl;
+    }
+
+    if (pInfo->iArrayLen <= 0){
+        cout << "No accounts associated with this login or failed to retrieve accounts..." << endl;
+        return (NOT_OK);
+    } 
+    for(int i = 0; i < pInfo->iArrayLen; i++)
+
     *aiCode = API_OK;
     return (OK);
 }

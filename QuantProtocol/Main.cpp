@@ -51,6 +51,7 @@ int main(int argc, char * *argv, char * *envp) {
 	int					iFlags;
 
 
+	/*	============================ Init AdmCallbacks Object ========================	*/
 	iCode = initAdmCallbacks();
 	if (iCode != 0) {
 		cout << "Failed to init AdmCallbacks..." << endl << endl;
@@ -85,12 +86,16 @@ int main(int argc, char * *argv, char * *envp) {
 		oParams.sLogFilePath.iDataLen = (int)strlen(oParams.sLogFilePath.pData);
 	}
 
+
+	/*	============================== Init REngine Object ==========================	*/
 	iCode = initREngine(oParams);
 	if (iCode != 0) {
 		cout << "Failed to init REngine..." << endl << endl;
 		return (BAD);
 	}
 
+
+	/*	============================== Init Callbacks Object ========================	*/
 	iCode = initCallbacks();
 	if (iCode != 0) {
 		cout << "Failed to init REngine..." << endl << endl;
