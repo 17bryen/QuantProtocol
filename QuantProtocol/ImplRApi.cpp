@@ -4,32 +4,40 @@
 using namespace std;
 using namespace RApi;
 
-/*   =====================================================================   
+/*   =====================================================================   */
+/*                           custom variables                                */
+/*   =====================================================================   */
 
-static int LoginStatus_NotLoggedIn     = 0;
-static int LoginStatus_AwaitingResults = 1;
-static int LoginStatus_Failed          = 2;
-static int LoginStatus_Complete        = 3;
+static bool dumpsEnabled = true;
 
-*/
+/*   =====================================================================   */
+/*                           custom functions                                */
+/*   =====================================================================   */
+
+bool cpytsNCharcb(tsNCharcb &dest, tsNCharcb &src) {
+        dest.pData = (char*)malloc(src.iDataLen);
+        dest.iDataLen = src.iDataLen;
+        memcpy(dest.pData, src.pData, (size_t)dest.iDataLen);
+        return true;
+}
+
 
 /*   =====================================================================   */
 /*                          class definitions                                */
 /*   =====================================================================   */
 
-int ImplAdmCallbacks::Alert(AlertInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplAdmCallbacks::Alert(AlertInfo* pInfo, void* pContext, int* aiCode)
 {
     int iIgnored;
 
     /*   ----------------------------------------------------------------   */
-
-    cout << endl << endl;
-    if (!pInfo->dump(&iIgnored))
-    {
-        cout << "error in pInfo -> dump : " << iIgnored << endl;
-    }
+    //if (dumpsEnabled) {
+        cout << endl << endl;
+        if (!pInfo->dump(&iIgnored))
+        {
+            cout << "error in pInfo -> dump : " << iIgnored << endl;
+        }
+    //}
 
     /*   ----------------------------------------------------------------   */
 
@@ -39,22 +47,54 @@ int ImplAdmCallbacks::Alert(AlertInfo* pInfo,
 
 /*   =====================================================================   */
 
-int ImplCallbacks::AccountList(AccountListInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::AccountList(AccountListInfo* pInfo, void* pContext, int* aiCode)
 {
     int iIgnored;
 
-    cout << endl << endl;
-    if(!pInfo->dump(&iIgnored)){
-        cout << "error in pInfo -> dump : " << iIgnored << endl;
+    if (dumpsEnabled) {
+        cout << endl << endl;
+        if (!pInfo->dump(&iIgnored)) {
+            cout << "error in pInfo -> dump : " << iIgnored << endl;
+        }
     }
+
+
 
     if (pInfo->iArrayLen <= 0){
         cout << "No accounts associated with this login or failed to retrieve accounts..." << endl;
-        return (NOT_OK);
+        //return (NOT_OK);
     } 
-    for(int i = 0; i < pInfo->iArrayLen; i++)
+
+
+    g->pAccounts = new AccountListInfo();
+    {
+        g->pAccounts->iArrayLen = pInfo->iArrayLen;
+        g->pAccounts->asAccountInfoArray = new AccountInfo[g->pAccounts->iArrayLen];
+        g->pAccounts->iRpCode = pInfo->iRpCode;
+        g->pAccounts->sRpCode.pData = pInfo->sRpCode.pData;
+        g->pAccounts->sRpCode.iDataLen = pInfo->sRpCode.iDataLen;
+
+        //You would loop through the array to copy account data here
+        {
+            AccountInfo* tempOld = pInfo->asAccountInfoArray;
+            AccountInfo* tempNew = g->pAccounts->asAccountInfoArray;
+
+            cpytsNCharcb(tempNew[0].sAccountId, tempOld[0].sAccountId);
+            cpytsNCharcb(tempNew[0].sAccountName, tempOld[0].sAccountName);
+            cpytsNCharcb(tempNew[0].sFcmId, tempOld[0].sFcmId);
+            cpytsNCharcb(tempNew[0].sIbId, tempOld[0].sIbId);
+
+            g->iSelectedAccount = 0;
+
+            //pRmsInfo copy here
+            {
+
+            }
+        }
+    }
+
+    //for(int i = 0; i < pInfo->iArrayLen; i++)
+    g->bRcvdAccountsList = true;
 
     *aiCode = API_OK;
     return (OK);
@@ -72,18 +112,17 @@ int ImplCallbacks::PasswordChange(PasswordChangeInfo* pInfo,
 
 /*   =====================================================================   */
 
-int ImplCallbacks::Alert(AlertInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::Alert(AlertInfo* pInfo, void* pContext, int* aiCode)
 {
     int iIgnored;
 
     /*   ----------------------------------------------------------------   */
-
-    cout << endl << endl;
-    if (!pInfo->dump(&iIgnored))
-    {
-        cout << "error in pInfo -> dump : " << iIgnored << endl;
+    if (dumpsEnabled) {
+        cout << endl << endl;
+        if (!pInfo->dump(&iIgnored))
+        {
+            cout << "error in pInfo -> dump : " << iIgnored << endl;
+        }
     }
 
     /*   ----------------------------------------------------------------   */
@@ -98,7 +137,11 @@ int ImplCallbacks::Alert(AlertInfo* pInfo,
         }
         else if (pInfo->iAlertType == ALERT_LOGIN_FAILED)
         {
+            g->pEngine->logout(&iIgnored);
             g->iRepLoginStatus = LoginStatus_Failed;
+        }
+        else if (pInfo->iAlertType == ALERT_CONNECTION_BROKEN) {
+            g->iRepLoginStatus = LoginStatus_AwaitingResults;
         }
     }
 
@@ -114,7 +157,11 @@ int ImplCallbacks::Alert(AlertInfo* pInfo,
         }
         else if (pInfo->iAlertType == ALERT_LOGIN_FAILED)
         {
+            g->pEngine->logout(&iIgnored);
             g->iMdLoginStatus = LoginStatus_Failed;
+        }
+        else if (pInfo->iAlertType == ALERT_CONNECTION_BROKEN) {
+            g->iMdLoginStatus = LoginStatus_AwaitingResults;
         }
     }
 
@@ -130,7 +177,51 @@ int ImplCallbacks::Alert(AlertInfo* pInfo,
         }
         else if (pInfo->iAlertType == ALERT_LOGIN_FAILED)
         {
+            g->pEngine->logout(&iIgnored);
             g->iTsLoginStatus = LoginStatus_Failed;
+        }
+        else if (pInfo->iAlertType == ALERT_CONNECTION_BROKEN) {
+            g->iTsLoginStatus = LoginStatus_AwaitingResults;
+        }
+    }
+
+    /*   ----------------------------------------------------------------   */
+    /*   Signal when the login to the PnL system                        */
+    /*   is complete, and what the results are.                             */
+
+    if (pInfo->iConnectionId == PNL_CONNECTION_ID)
+    {
+        if (pInfo->iAlertType == ALERT_LOGIN_COMPLETE)
+        {
+            g->iPnlLoginStatus = LoginStatus_Complete;
+        }
+        else if (pInfo->iAlertType == ALERT_LOGIN_FAILED)
+        {
+            g->pEngine->logout(&iIgnored);
+            g->iPnlLoginStatus = LoginStatus_Failed;
+        }
+        else if (pInfo->iAlertType == ALERT_CONNECTION_BROKEN) {
+            g->iPnlLoginStatus = LoginStatus_AwaitingResults;
+        }
+    }
+
+    /*   ----------------------------------------------------------------   */
+    /*   Signal when the login to the history system                        */
+    /*   is complete, and what the results are.                             */
+
+    if (pInfo->iConnectionId == INTRADAY_HISTORY_CONNECTION_ID)
+    {
+        if (pInfo->iAlertType == ALERT_LOGIN_COMPLETE)
+        {
+            g->iIhLoginStatus = LoginStatus_Complete;
+        }
+        else if (pInfo->iAlertType == ALERT_LOGIN_FAILED)
+        {
+            g->pEngine->logout(&iIgnored);
+            g->iIhLoginStatus = LoginStatus_Failed;
+        }
+        else if (pInfo->iAlertType == ALERT_CONNECTION_BROKEN) {
+            g->iIhLoginStatus = LoginStatus_AwaitingResults;
         }
     }
     /*   ----------------------------------------------------------------   */
@@ -183,10 +274,19 @@ int ImplCallbacks::AgreementList(AgreementListInfo* pInfo,
 
 /*   =====================================================================   */
 
-int ImplCallbacks::ExchangeList(ExchangeListInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::ExchangeList(ExchangeListInfo* pInfo, void* pContext, int* aiCode)
 {
+    int iIgnored;
+    if (dumpsEnabled) {
+        cout << endl << endl;
+        if (!pInfo->dump(&iIgnored))
+        {
+            cout << "error in pInfo -> dump : " << iIgnored << endl;
+        }
+    }
+    
+    g->bRcvdExchanges = true;
+
     *aiCode = API_OK;
     return (OK);
 }
@@ -246,10 +346,19 @@ int ImplCallbacks::PnlReplay(PnlReplayInfo* pInfo,
 
 /*   =====================================================================   */
 
-int ImplCallbacks::PnlUpdate(PnlInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::PnlUpdate(PnlInfo* pInfo, void* pContext, int* aiCode)
 {
+    int iIgnored;
+    if (dumpsEnabled) {
+        cout << endl << endl;
+        if (!pInfo->dump(&iIgnored))
+        {
+            cout << "error in pInfo -> dump : " << iIgnored << endl;
+        }
+    }
+
+
+
     *aiCode = API_OK;
     return(OK);
 }
@@ -308,10 +417,9 @@ int ImplCallbacks::BustReport(OrderBustReport* pReport,
 
 /*   =====================================================================   */
 
-int ImplCallbacks::CancelReport(OrderCancelReport* pReport,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::CancelReport(OrderCancelReport* pReport, void* pContext, int* aiCode)
 {
+
     *aiCode = API_OK;
     return(OK);
 }
@@ -908,9 +1016,7 @@ int ImplCallbacks::TradeCondition(TradeInfo* pInfo,
 
 /*   =====================================================================   */
 
-int ImplCallbacks::TradePrint(TradeInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::TradePrint(TradeInfo* pInfo, void* pContext, int* aiCode)
 {
     int iIgnored;
 
@@ -930,10 +1036,22 @@ int ImplCallbacks::TradePrint(TradeInfo* pInfo,
 
 /*   =====================================================================   */
 
-int ImplCallbacks::TradeReplay(TradeReplayInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::TradeReplay(TradeReplayInfo* pInfo, void* pContext, int* aiCode)
 {
+    int iIgnored;
+
+    /*   ----------------------------------------------------------------   */
+    cout << "Trade info received..." << endl;
+    if (dumpsEnabled) {
+        cout << endl << endl;
+        if (!pInfo->dump(&iIgnored))
+        {
+            cout << "error in pInfo -> dump : " << iIgnored << endl;
+        }
+    }
+
+    g->bRcvdReplayTrades = true;
+
     *aiCode = API_OK;
     return (OK);
 }

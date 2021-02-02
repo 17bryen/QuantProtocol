@@ -147,12 +147,14 @@
     <ClCompile Include="Init.cpp" />
     <ClCompile Include="Logins.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Order.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImplRApi.h" />
     <ClInclude Include="Init.h" />
     <ClInclude Include="Logins.h" />
     <ClInclude Include="Main.h" />
+    <ClInclude Include="Order.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
