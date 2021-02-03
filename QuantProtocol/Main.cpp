@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Main.h"
 #include "ImplRApi.h"
-#include "Init.h"
 #include "Logins.h"
 
 #define GOOD 0
@@ -15,23 +14,8 @@ GOAL IS TO HAVE THIS BOT AUTOMATICALLY TRADE /ES CONTRACTS FROM OPEN TO CLOSE
 */
 
 using namespace std;
-globals::globals() {
-	pAdmCallbacks = NULL;
-	pCallbacks = NULL;
-	pEngine = NULL;
-}
-globals::~globals() {
-	if (this->pAdmCallbacks) {
-		delete this->pAdmCallbacks;
-		if (this->pCallbacks) {
-			delete this->pCallbacks;
-			if (this->pEngine)
-				delete this->pEngine;
-		}
-	}
-}
 
-globals *g;
+
 
 int main(int argc, char * *argv, char * *envp) {
 	cout << "============================== Quant Protocol v0.1a ==============================" << endl << endl;

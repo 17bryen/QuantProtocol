@@ -1,5 +1,5 @@
 #include "ImplRApi.h"
-#include "Main.h"
+#include "Globals.h"
 
 using namespace std;
 using namespace RApi;
@@ -20,6 +20,14 @@ bool cpytsNCharcb(tsNCharcb &dest, tsNCharcb &src) {
         memcpy(dest.pData, src.pData, (size_t)dest.iDataLen);
         return true;
 }
+
+ImplAdmCallbacks::ImplAdmCallbacks(globals* callbacks) {
+    callbackResponses = callbacks;
+};
+
+ImplCallbacks::ImplCallbacks(globals* callbacks) {
+    callbackResponses = callbacks;
+};
 
 
 /*   =====================================================================   */

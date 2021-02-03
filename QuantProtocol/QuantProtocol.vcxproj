@@ -143,18 +143,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Globals.cpp" />
     <ClCompile Include="ImplRApi.cpp" />
-    <ClCompile Include="Init.cpp" />
     <ClCompile Include="Logins.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Order.cpp" />
+    <ClCompile Include="Quant.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Globals.h" />
     <ClInclude Include="ImplRApi.h" />
-    <ClInclude Include="Init.h" />
     <ClInclude Include="Logins.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Order.h" />
+    <ClInclude Include="Quant.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

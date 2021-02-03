@@ -19,6 +19,8 @@ using namespace RApi;
 
 bool cpytsNCharcb(tsNCharcb &dest, tsNCharcb &src);
 
+
+
 /*	===========================================================	*/
 /*						Clase Declarations						*/
 /*	===========================================================	*/
@@ -26,7 +28,10 @@ bool cpytsNCharcb(tsNCharcb &dest, tsNCharcb &src);
 class ImplAdmCallbacks : public AdmCallbacks {
 public :
 	ImplAdmCallbacks() {};
+    ImplAdmCallbacks(globals* callbacks) {};
 	~ImplAdmCallbacks() {};
+
+    globals* callbackResponses;
 
 	virtual int Alert(AlertInfo *pInfo, void *pContext, int *aiCode);
 };
@@ -36,15 +41,11 @@ public :
 class ImplCallbacks : public RCallbacks {
 public :
 	ImplCallbacks() {};
+    ImplCallbacks(globals* callbacks) {};
 	~ImplCallbacks() {};
 
     /*   ----------------------------------------------------   */
-    int g_iRepLoginStatus   = 0;
-    int g_iMdLoginStatus    = 0;
-
-
-    bool g_bRcvdUnacceptedAgreements     = false;
-    int g_iUnacceptedMandatoryAgreements = 0;
+    globals* callbackResponses;
 
 	/*	------------------------------------------------------	*/
 

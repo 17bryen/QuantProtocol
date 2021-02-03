@@ -2,11 +2,7 @@
 #include "Main.h"
 
 
-char* user2 = (char*)"17bryen@gmail.com";
-char* pass2 = (char*)"gDKI8QoY";
 
-char* user = (char*)"17bryen@amp.com";
-char* pass = (char*)"&h$QlbrU2ha";
 
 int checkAgreements(tsNCharcb connectPoint) {
 	int iCode;
