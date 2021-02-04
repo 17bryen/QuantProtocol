@@ -1,0 +1,15 @@
+tick recived on R thread					Waiting for complete minute
+	|								|
+	|								|
+	V								V
+Run tick through aggregator Page 1-3, release at 2 min	<--------- Take complete minute &
+	|						---------> add to analysis array
+	L-------> short tick price eval					|
+	T--------	func						|
+	|		^						V
+	|		|					Determine price directions &
+	V		L------------------------------- Create Buy/Sell guide lines for tick trades
+Store Data? then repeat							|
+									|
+									V
+								Store Data? then repeat

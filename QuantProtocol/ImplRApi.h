@@ -8,6 +8,7 @@
 #include <stdio.h>
 
 #include <Windows.h>
+#include "Globals.h"
 
 
 using namespace std;
@@ -27,8 +28,7 @@ bool cpytsNCharcb(tsNCharcb &dest, tsNCharcb &src);
 
 class ImplAdmCallbacks : public AdmCallbacks {
 public :
-	ImplAdmCallbacks() {};
-    ImplAdmCallbacks(globals* callbacks) {};
+    ImplAdmCallbacks(globals* callbacks);
 	~ImplAdmCallbacks() {};
 
     globals* callbackResponses;
@@ -40,8 +40,7 @@ public :
 
 class ImplCallbacks : public RCallbacks {
 public :
-	ImplCallbacks() {};
-    ImplCallbacks(globals* callbacks) {};
+    ImplCallbacks(globals* callbacks);
 	~ImplCallbacks() {};
 
     /*   ----------------------------------------------------   */

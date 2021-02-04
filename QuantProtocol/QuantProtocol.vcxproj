@@ -145,7 +145,6 @@
   <ItemGroup>
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="ImplRApi.cpp" />
-    <ClCompile Include="Logins.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Quant.cpp" />
@@ -153,7 +152,6 @@
   <ItemGroup>
     <ClInclude Include="Globals.h" />
     <ClInclude Include="ImplRApi.h" />
-    <ClInclude Include="Logins.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="Quant.h" />

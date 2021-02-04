@@ -1,17 +1,17 @@
 #include "Globals.h"
 
+using namespace std;
+using namespace RApi;
+
 globals::globals() {
-	pAdmCallbacks = NULL;
-	pCallbacks = NULL;
-	pEngine = NULL;
+	pAccounts = NULL;
+	pSelectedAccountPnl = NULL;
 }
 globals::~globals() {
-	if (this->pAdmCallbacks) {
-		delete this->pAdmCallbacks;
-		if (this->pCallbacks) {
-			delete this->pCallbacks;
-			if (this->pEngine)
-				delete this->pEngine;
-		}
+	if (this->pAccounts != NULL) {
+		delete this->pAccounts;
+	}
+	if (this->pSelectedAccountPnl != NULL) {
+		delete this->pSelectedAccountPnl;
 	}
 }

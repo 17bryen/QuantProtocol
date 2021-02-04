@@ -9,7 +9,7 @@ const int LoginStatus_Complete = 3;
 
 class Quant {
 	/*	======================== Declare Member Variables ========================	*/
-
+public:
 	REngine* pEngine;
 	ImplAdmCallbacks* pAdmCallbacks;
 	ImplCallbacks* pCallbacks;
@@ -17,15 +17,16 @@ class Quant {
 	globals* callbackResponses;
 
 	/*	--------------------------------------------------------------------------	*/
-
+private:
 	tsNCharcb user, pass;
 	tsNCharcb rpCnnctPoint;
 	tsNCharcb mdCnnctPoint, tsCnnctPoint, pnlCnnctPoint, ihCnnctPoint;
 
 
 	/*	======================== Declare Member Functions ========================	*/
-
-	Quant(char* md, char* ts, char* pnl, char* ih);
+public:
+	Quant(char* md, char* ts, char* pnl, char* ih, char* rp);
+	Quant();
 	~Quant();
 
 	/*	--------------------------------------------------------------------------	*/
@@ -45,6 +46,7 @@ class Quant {
 	bool setTsConnect(char* point);
 	bool setPnlConnect(char* point);
 	bool setIhConnect(char* point);
+	bool setRpConnect(char* point);
 };
 
 

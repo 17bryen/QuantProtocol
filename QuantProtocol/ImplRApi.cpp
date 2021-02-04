@@ -1,5 +1,4 @@
 #include "ImplRApi.h"
-#include "Globals.h"
 
 using namespace std;
 using namespace RApi;
@@ -9,6 +8,11 @@ using namespace RApi;
 /*   =====================================================================   */
 
 static bool dumpsEnabled = true;
+
+const int LoginStatus_NotLoggedIn = 0;
+const int LoginStatus_AwaitingResults = 1;
+const int LoginStatus_Failed = 2;
+const int LoginStatus_Complete = 3;
 
 /*   =====================================================================   */
 /*                           custom functions                                */
@@ -74,25 +78,25 @@ int ImplCallbacks::AccountList(AccountListInfo* pInfo, void* pContext, int* aiCo
     } 
 
 
-    g->pAccounts = new AccountListInfo();
+    callbackResponses->pAccounts = new AccountListInfo();
     {
-        g->pAccounts->iArrayLen = pInfo->iArrayLen;
-        g->pAccounts->asAccountInfoArray = new AccountInfo[g->pAccounts->iArrayLen];
-        g->pAccounts->iRpCode = pInfo->iRpCode;
-        g->pAccounts->sRpCode.pData = pInfo->sRpCode.pData;
-        g->pAccounts->sRpCode.iDataLen = pInfo->sRpCode.iDataLen;
+        callbackResponses->pAccounts->iArrayLen = pInfo->iArrayLen;
+        callbackResponses->pAccounts->asAccountInfoArray = new AccountInfo[callbackResponses->pAccounts->iArrayLen];
+        callbackResponses->pAccounts->iRpCode = pInfo->iRpCode;
+        callbackResponses->pAccounts->sRpCode.pData = pInfo->sRpCode.pData;
+        callbackResponses->pAccounts->sRpCode.iDataLen = pInfo->sRpCode.iDataLen;
 
         //You would loop through the array to copy account data here
         {
             AccountInfo* tempOld = pInfo->asAccountInfoArray;
-            AccountInfo* tempNew = g->pAccounts->asAccountInfoArray;
+            AccountInfo* tempNew = callbackResponses->pAccounts->asAccountInfoArray;
 
             cpytsNCharcb(tempNew[0].sAccountId, tempOld[0].sAccountId);
             cpytsNCharcb(tempNew[0].sAccountName, tempOld[0].sAccountName);
             cpytsNCharcb(tempNew[0].sFcmId, tempOld[0].sFcmId);
             cpytsNCharcb(tempNew[0].sIbId, tempOld[0].sIbId);
 
-            g->iSelectedAccount = 0;
+            callbackResponses->iSelectedAccount = 0;
 
             //pRmsInfo copy here
             {
@@ -102,7 +106,7 @@ int ImplCallbacks::AccountList(AccountListInfo* pInfo, void* pContext, int* aiCo
     }
 
     //for(int i = 0; i < pInfo->iArrayLen; i++)
-    g->bRcvdAccountsList = true;
+    callbackResponses->bRcvdAccountsList = true;
 
     *aiCode = API_OK;
     return (OK);
@@ -141,15 +145,14 @@ int ImplCallbacks::Alert(AlertInfo* pInfo, void* pContext, int* aiCode)
     {
         if (pInfo->iAlertType == ALERT_LOGIN_COMPLETE)
         {
-            g->iRepLoginStatus = LoginStatus_Complete;
+            callbackResponses->iRepLoginStatus = LoginStatus_Complete;
         }
         else if (pInfo->iAlertType == ALERT_LOGIN_FAILED)
         {
-            g->pEngine->logout(&iIgnored);
-            g->iRepLoginStatus = LoginStatus_Failed;
+            callbackResponses->iRepLoginStatus = LoginStatus_Failed;
         }
         else if (pInfo->iAlertType == ALERT_CONNECTION_BROKEN) {
-            g->iRepLoginStatus = LoginStatus_AwaitingResults;
+            callbackResponses->iRepLoginStatus = LoginStatus_Failed;
         }
     }
 
@@ -161,15 +164,14 @@ int ImplCallbacks::Alert(AlertInfo* pInfo, void* pContext, int* aiCode)
     {
         if (pInfo->iAlertType == ALERT_LOGIN_COMPLETE)
         {
-            g->iMdLoginStatus = LoginStatus_Complete;
+            callbackResponses->iMdLoginStatus = LoginStatus_Complete;
         }
         else if (pInfo->iAlertType == ALERT_LOGIN_FAILED)
         {
-            g->pEngine->logout(&iIgnored);
-            g->iMdLoginStatus = LoginStatus_Failed;
+            callbackResponses->iMdLoginStatus = LoginStatus_Failed;
         }
         else if (pInfo->iAlertType == ALERT_CONNECTION_BROKEN) {
-            g->iMdLoginStatus = LoginStatus_AwaitingResults;
+            callbackResponses->iMdLoginStatus = LoginStatus_Failed;
         }
     }
 
@@ -181,15 +183,14 @@ int ImplCallbacks::Alert(AlertInfo* pInfo, void* pContext, int* aiCode)
     {
         if (pInfo->iAlertType == ALERT_LOGIN_COMPLETE)
         {
-            g->iTsLoginStatus = LoginStatus_Complete;
+            callbackResponses->iTsLoginStatus = LoginStatus_Complete;
         }
         else if (pInfo->iAlertType == ALERT_LOGIN_FAILED)
         {
-            g->pEngine->logout(&iIgnored);
-            g->iTsLoginStatus = LoginStatus_Failed;
+            callbackResponses->iTsLoginStatus = LoginStatus_Failed;
         }
         else if (pInfo->iAlertType == ALERT_CONNECTION_BROKEN) {
-            g->iTsLoginStatus = LoginStatus_AwaitingResults;
+            callbackResponses->iTsLoginStatus = LoginStatus_Failed;
         }
     }
 
@@ -201,15 +202,14 @@ int ImplCallbacks::Alert(AlertInfo* pInfo, void* pContext, int* aiCode)
     {
         if (pInfo->iAlertType == ALERT_LOGIN_COMPLETE)
         {
-            g->iPnlLoginStatus = LoginStatus_Complete;
+            callbackResponses->iPnlLoginStatus = LoginStatus_Complete;
         }
         else if (pInfo->iAlertType == ALERT_LOGIN_FAILED)
         {
-            g->pEngine->logout(&iIgnored);
-            g->iPnlLoginStatus = LoginStatus_Failed;
+            callbackResponses->iPnlLoginStatus = LoginStatus_Failed;
         }
         else if (pInfo->iAlertType == ALERT_CONNECTION_BROKEN) {
-            g->iPnlLoginStatus = LoginStatus_AwaitingResults;
+            callbackResponses->iPnlLoginStatus = LoginStatus_Failed;
         }
     }
 
@@ -221,15 +221,14 @@ int ImplCallbacks::Alert(AlertInfo* pInfo, void* pContext, int* aiCode)
     {
         if (pInfo->iAlertType == ALERT_LOGIN_COMPLETE)
         {
-            g->iIhLoginStatus = LoginStatus_Complete;
+            callbackResponses->iIhLoginStatus = LoginStatus_Complete;
         }
         else if (pInfo->iAlertType == ALERT_LOGIN_FAILED)
         {
-            g->pEngine->logout(&iIgnored);
-            g->iIhLoginStatus = LoginStatus_Failed;
+            callbackResponses->iIhLoginStatus = LoginStatus_Failed;
         }
         else if (pInfo->iAlertType == ALERT_CONNECTION_BROKEN) {
-            g->iIhLoginStatus = LoginStatus_AwaitingResults;
+            callbackResponses->iIhLoginStatus = LoginStatus_Failed;
         }
     }
     /*   ----------------------------------------------------------------   */
@@ -267,11 +266,11 @@ int ImplCallbacks::AgreementList(AgreementListInfo* pInfo,
 
             if (oAg.bMandatory)
             {
-                g->iUnacceptedMandatoryAgreements++;
+                callbackResponses->iUnacceptedMandatoryAgreements++;
             }
         }
 
-        g->bRcvdUnacceptedAgreements = true;
+        callbackResponses->bRcvdUnacceptedAgreements = true;
     }
 
     /*   ----------------------------------------------------------------   */
@@ -293,7 +292,7 @@ int ImplCallbacks::ExchangeList(ExchangeListInfo* pInfo, void* pContext, int* ai
         }
     }
     
-    g->bRcvdExchanges = true;
+    callbackResponses->bRcvdExchanges = true;
 
     *aiCode = API_OK;
     return (OK);
@@ -1058,7 +1057,7 @@ int ImplCallbacks::TradeReplay(TradeReplayInfo* pInfo, void* pContext, int* aiCo
         }
     }
 
-    g->bRcvdReplayTrades = true;
+    callbackResponses->bRcvdReplayTrades = true;
 
     *aiCode = API_OK;
     return (OK);

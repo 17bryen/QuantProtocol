@@ -24,9 +24,6 @@
     <ClCompile Include="ImplRApi.cpp">
       <Filter>R API+</Filter>
     </ClCompile>
-    <ClCompile Include="Logins.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Order.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -43,9 +40,6 @@
     </ClInclude>
     <ClInclude Include="ImplRApi.h">
       <Filter>R API+</Filter>
-    </ClInclude>
-    <ClInclude Include="Logins.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Order.h">
       <Filter>Header Files</Filter>
