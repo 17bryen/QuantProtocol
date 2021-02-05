@@ -56,15 +56,17 @@ int main(int argc, char * *argv, char * *envp) {
 
 	/*	========================= Pass Rithmic Login to Quant =======================	*/
 
+	
 
-	/*	========================== Check Unsigned Agreements ========================	*/
+
+	/*	========================== Check Unsigned Agreements ========================	
 
 	iCode = Q->checkAgreements();
 	if (iCode != 0) {
 		delete Q;
 		return (BAD);
 	}
-
+	*/
 
 	/*	======================== Login to Quant Connect Points ======================	*/
 
@@ -90,8 +92,24 @@ int main(int argc, char * *argv, char * *envp) {
 
 	//g->pEngine->subscribePnl(g->pAccounts->asAccountInfoArray + g->iSelectedAccount, &iIgnored);
 	
+	/*
+	sExchange.pData = (char*)"CME";
+	sExchange.iDataLen = (int)strlen(sExchange.pData);
 
-	/*	============================ Subscribe to Market Data ===============================	
+	sTicker.pData = (char*)"ESH1";
+	sTicker.iDataLen = (int)strlen(sTicker.pData);
+
+
+
+	if (!Q->pEngine->rebuildBook(&sExchange, &sTicker, &iCode)) {
+		cout << "REngine::rebuildBook() error : " << iCode << endl;
+
+		delete Q;
+		return (BAD);
+	}
+	*/
+
+	/*	============================ Subscribe to Market Data ===============================	*/
 
 	sExchange.pData = (char*)"CME";
 	sExchange.iDataLen = (int)strlen(sExchange.pData);
@@ -100,16 +118,16 @@ int main(int argc, char * *argv, char * *envp) {
 	sTicker.iDataLen = (int)strlen(sTicker.pData);
 
 	
-	iFlags = (MD_PRINTS | MD_BEST);
+	iFlags = (MD_QUOTES);
 
-	if (!g->pEngine->subscribe(&sExchange, &sTicker, iFlags, &iCode)) {
+	if (!Q->pEngine->subscribe(&sExchange, &sTicker, iFlags, &iCode)) {
 		cout << "REngine::subscribe() error : " << iCode << endl;
 
-		delete g;
+		delete Q;
 		return (BAD);
 	}
 	
-	*/
+	
 	/*
 	sExchange.pData = (char*)"CME";
 	sExchange.iDataLen = (int)strlen(sExchange.pData);
@@ -118,19 +136,21 @@ int main(int argc, char * *argv, char * *envp) {
 	sTicker.iDataLen = (int)strlen(sTicker.pData);
 
 	try {
-		Q->pEngine->replayTrades(&sExchange, &sTicker, 1611855000, 1611855060, &iCode);
+		Q->pEngine->replayTrades(&sExchange, &sTicker, 0, 0, &iCode);
 		cout << endl << "Successfully called replayTrades with code: " << iCode << endl;
 	}
 	catch (OmneException& oEx) {
 		delete Q;
 
 		cout << "REngin::ReplayTrades() error : " << iCode << endl;
-		return 1;
+		return (BAD);
 	}
+	*/
 
+	/*
 	while (!Q->callbackResponses->bRcvdReplayTrades)
 		Sleep(1000);
-	*/	
+	*/
 		
 
 	cout << "Successfully made it through the program test!" << endl;
@@ -138,15 +158,15 @@ int main(int argc, char * *argv, char * *envp) {
 
 	fgetc(stdin);
 
-	/*
+	/**/
 	
-	if (!g->pEngine->unsubscribe(&sExchange, &sTicker, &iCode)) {
+	if (!Q->pEngine->unsubscribe(&sExchange, &sTicker, &iCode)) {
 		cout << "REngine::unsubscribe() error : " << iCode << endl;
 
-		delete g;
+		delete Q;
 		return (BAD);
 	}
-	*/
+	
 
 	//g->pEngine->unsubscribePnl(g->pAccounts->asAccountInfoArray + g->iSelectedAccount, &iIgnored);
 

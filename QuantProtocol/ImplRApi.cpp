@@ -1030,6 +1030,8 @@ int ImplCallbacks::TradePrint(TradeInfo* pInfo, void* pContext, int* aiCode)
     /*   ----------------------------------------------------------------   */
     cout << "Trade info received..." << endl;
     cout << endl << endl;
+
+    /**/
     if (!pInfo->dump(&iIgnored))
     {
         cout << "error in pInfo -> dump : " << iIgnored << endl;

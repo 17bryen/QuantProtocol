@@ -13,3 +13,16 @@ Store Data? then repeat							|
 									|
 									V
 								Store Data? then repeat
+
+.75
+.50
+.25
+.00
+.75
+.50
+.25
+.00	<--Switch to 2 tick trailing stop here
+.75
+.50	
+.25	<--Iceberg -- Join here
+.00	<--Initial stoploss
