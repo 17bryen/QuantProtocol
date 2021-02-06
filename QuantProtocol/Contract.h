@@ -65,6 +65,9 @@ public:
 class Contract {
 public:
 	/*	======================== Declare Member Variables ========================	*/
+    REngine* pEngine;
+    globals* callbackResponses;
+
 	tsNCharcb exchange;
 	tsNCharcb ticker;
 
@@ -73,10 +76,10 @@ public:
 
 
 	/*	======================== Declare Member Functions ========================	*/
-	Contract(char* toExchange, char* toTicker);
+	Contract(REngine* toEngine, globals* responses, char* toExchange, char* toTicker);
 	~Contract();
 
-	int init();
-	int unsub();
+	int subscribe();
+	int unsubscribe();
 
 };

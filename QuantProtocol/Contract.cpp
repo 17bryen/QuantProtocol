@@ -3,8 +3,14 @@
 using namespace std;
 using namespace RApi;
 
+/*   =====================================================================   */
+/*                          Contract Definitions                             */
+/*   =====================================================================   */
 
-Contract::Contract(char* toExchange, char* toTicker) {
+Contract::Contract(REngine* toEngine, globals* responses, char* toExchange, char* toTicker) {
+    pEngine = toEngine;
+    callbackResponses = responses;
+
 	exchange.pData = toExchange;
 	exchange.iDataLen = (int)strlen(exchange.pData);
 
@@ -14,13 +20,44 @@ Contract::Contract(char* toExchange, char* toTicker) {
 	book = new OrderBook();
 	flow = new OrderFlow();
 }
+
 Contract::~Contract() {
 	delete book;
 	delete flow;
 }
-int Contract::init() {
 
+/*   =====================================================================   */
+
+int Contract::subscribe() {
+    int iCode;
+	int iFlags = (MD_QUOTES | MD_PRINTS);
+
+	if (!pEngine->subscribe(&exchange, &ticker, iFlags, &iCode)) {
+		cout << "REngine::subscribe() error : " << iCode << endl;
+
+		return (1);
+	}
+
+    //Request Book image
+
+    //Wait for Book image received before continuing
+
+    return 0;
 }
+
+int Contract::unsubscribe() {
+    int iCode;
+    if (!pEngine->unsubscribe(&exchange, &ticker, &iCode)) {
+		cout << "REngine::unsubscribe() error : " << iCode << endl;
+		return 1;
+	}
+
+    return 0;
+}
+
+/*   =====================================================================   */
+/*                          OrderBook definitions                            */
+/*   =====================================================================   */
 
 
 OrderBook::OrderBook() {
@@ -37,9 +74,17 @@ OrderBook::OrderBook() {
 OrderBook::~OrderBook() {
 
 }
+
+/*   =====================================================================   */
+
 int OrderBook::init(tsNCharcb* toExchange, tsNCharcb* toTicker) {
 
 }
+
+
+/*   =====================================================================   */
+/*                          OrderFlow definitions                            */
+/*   =====================================================================   */
 
 
 OrderFlow::OrderFlow() {
@@ -54,6 +99,9 @@ OrderFlow::OrderFlow() {
 OrderFlow::~OrderFlow() {
 
 }
+
+/*   =====================================================================   */
+
 int OrderFlow::init(tsNCharcb* toExchange, tsNCharcb* toTicker) {
 
 }

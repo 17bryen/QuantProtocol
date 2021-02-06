@@ -118,14 +118,7 @@ int main(int argc, char * *argv, char * *envp) {
 	sTicker.iDataLen = (int)strlen(sTicker.pData);
 
 	
-	iFlags = (MD_QUOTES | MD_PRINTS);
 
-	if (!Q->pEngine->subscribe(&sExchange, &sTicker, iFlags, &iCode)) {
-		cout << "REngine::subscribe() error : " << iCode << endl;
-
-		delete Q;
-		return (BAD);
-	}
 	
 	
 	/*
@@ -160,12 +153,7 @@ int main(int argc, char * *argv, char * *envp) {
 
 	/**/
 	
-	if (!Q->pEngine->unsubscribe(&sExchange, &sTicker, &iCode)) {
-		cout << "REngine::unsubscribe() error : " << iCode << endl;
-
-		delete Q;
-		return (BAD);
-	}
+	
 	
 
 	//g->pEngine->unsubscribePnl(g->pAccounts->asAccountInfoArray + g->iSelectedAccount, &iIgnored);
