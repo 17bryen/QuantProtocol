@@ -29,8 +29,9 @@ ImplAdmCallbacks::ImplAdmCallbacks(globals* callbacks) {
     callbackResponses = callbacks;
 };
 
-ImplCallbacks::ImplCallbacks(globals* callbacks) {
+ImplCallbacks::ImplCallbacks(globals* callbacks, vector<Contract> toWatch) {
     callbackResponses = callbacks;
+    watchList = toWatch;
 };
 
 
@@ -807,12 +808,11 @@ int ImplCallbacks::InstrumentSearch(InstrumentSearchInfo* pInfo,
 
 /*   =====================================================================   */
 
-int ImplCallbacks::LimitOrderBook(LimitOrderBookInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::LimitOrderBook(LimitOrderBookInfo* pInfo, void* pContext, int* aiCode)
 {
     int iIgnored;
-
+    //Set rcvd to true first (Actually doesn't matter because thread will be held in this function) 
+    
     /*   ----------------------------------------------------------------   */
 
     cout << endl << endl;
@@ -822,6 +822,8 @@ int ImplCallbacks::LimitOrderBook(LimitOrderBookInfo* pInfo,
     }
 
     /*   ----------------------------------------------------------------   */
+
+    callbackResponses->bRcvdLimitOrderBook = true;
 
     *aiCode = API_OK;
     return (OK);

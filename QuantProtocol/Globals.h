@@ -14,6 +14,7 @@ struct globals {
 	PnlInfo* pSelectedAccountPnl;
 
 	bool bRcvdUnacceptedAgreements = false;
+    bool bRcvdLimitOrderBook = false;
 	bool bRcvdReplayTrades = false;
 	bool bRcvdAccountsList = false;
 	bool bRcvdExchanges = false;

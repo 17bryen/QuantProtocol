@@ -3,12 +3,14 @@
 #include "RApiPlus.h"
 
 #include <iostream>
+#include <vector>
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 
 #include <Windows.h>
 #include "Globals.h"
+#include "Contract.h"
 
 
 using namespace std;
@@ -40,11 +42,12 @@ public :
 
 class ImplCallbacks : public RCallbacks {
 public :
-    ImplCallbacks(globals* callbacks);
+    ImplCallbacks(globals* callbacks, vector<Contract> toWatch);
 	~ImplCallbacks() {};
 
     /*   ----------------------------------------------------   */
     globals* callbackResponses;
+    vector<Contract>* watchList;
 
 	/*	------------------------------------------------------	*/
 

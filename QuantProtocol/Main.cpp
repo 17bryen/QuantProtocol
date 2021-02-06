@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include "Contract.h"
 #include "Main.h"
 
 #define GOOD 0
@@ -22,11 +24,13 @@ int main(int argc, char * *argv, char * *envp) {
 
 	Quant*				Q;
 	REngineParams		oParams;
-	int					iCode;
+    vector<Contract*> watchList = {};
+    watchList.reserve(3);
 
 	tsNCharcb			sExchange;
 	tsNCharcb			sTicker;
 	int					iFlags;
+	int					iCode;
 
 
 	/*	======= REngineParams::sAdmCnnctPt assumes connection to Rithmic 01 ==========	*/
@@ -84,6 +88,11 @@ int main(int argc, char * *argv, char * *envp) {
 		Sleep(1000);
 	}
 	
+
+	/*	============================ Init List of Contracts ==========================	*/
+
+    watchList->push_back(new Contract(pEngine, callbackResponses, "CME", "ESH1"));
+
 
 	cout << "Programs actually made it this far..." << endl;
 	///////////////////////////////////////////////////////////////////////////////////////////////
