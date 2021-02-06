@@ -1,0 +1,82 @@
+#pragma once
+#include "RApiPlus.h"
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+
+using namespace std;
+using namespace RApi;
+
+class OrderBook {
+public:
+	/*	======================== Declare Member Variables ========================	*/
+	double* askPriceArray;
+	int* askOrdersArray;
+	int* askSizeArray;
+	int askArrayLength;
+
+	double* bidPriceArray;
+	int* bidOrdersArray;
+	int* bidSizeArray;
+	int bidArrayLength;
+
+
+	/*	======================== Declare Member Functions ========================	*/
+	OrderBook();
+	~OrderBook();
+
+	int init(tsNCharcb* toExchange, tsNCharcb* toTicker);
+	int unsub();
+
+	int updateAsk(AskInfo* tick);
+	int updateBid(BidInfo* tick);
+
+};
+
+class OrderFlow {
+public:
+	/*	======================== Declare Member Variables ========================	*/
+	double* askPriceArray;
+	int* askVolumeArray;
+	int askArrayLength;
+
+	double* bidPriceArray;
+	int* bidVolumeArray;
+	int bidArrayLength;
+
+
+	/*	======================== Declare Member Functions ========================	*/
+	OrderFlow();
+	~OrderFlow();
+
+	int init(tsNCharcb* toExchange, tsNCharcb* toTicker);
+	int unsub();
+
+	int updateTrades(TradeInfo* tick);
+
+};
+
+/*
+* class OrderBars {
+* 
+* };
+*/
+
+class Contract {
+public:
+	/*	======================== Declare Member Variables ========================	*/
+	tsNCharcb exchange;
+	tsNCharcb ticker;
+
+	OrderBook* book;
+	OrderFlow* flow;
+
+
+	/*	======================== Declare Member Functions ========================	*/
+	Contract(char* toExchange, char* toTicker);
+	~Contract();
+
+	int init();
+	int unsub();
+
+};

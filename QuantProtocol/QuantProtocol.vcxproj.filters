@@ -33,7 +33,7 @@
     <ClCompile Include="Globals.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OrderBook.cpp">
+    <ClCompile Include="Contract.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,7 +53,7 @@
     <ClInclude Include="Globals.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OrderBook.h">
+    <ClInclude Include="Contract.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -118,7 +118,7 @@ int main(int argc, char * *argv, char * *envp) {
 	sTicker.iDataLen = (int)strlen(sTicker.pData);
 
 	
-	iFlags = (MD_QUOTES);
+	iFlags = (MD_QUOTES | MD_PRINTS);
 
 	if (!Q->pEngine->subscribe(&sExchange, &sTicker, iFlags, &iCode)) {
 		cout << "REngine::subscribe() error : " << iCode << endl;
