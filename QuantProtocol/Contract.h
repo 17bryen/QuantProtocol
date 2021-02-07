@@ -1,8 +1,11 @@
 #pragma once
 #include "RApiPlus.h"
+#include "Globals.h"
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "Windows.h"
 
 using namespace std;
 using namespace RApi;
@@ -25,9 +28,6 @@ public:
 	OrderBook();
 	~OrderBook();
 
-	int init(tsNCharcb* toExchange, tsNCharcb* toTicker);
-	int unsub();
-
 	int updateAsk(AskInfo* tick);
 	int updateBid(BidInfo* tick);
 
@@ -48,9 +48,6 @@ public:
 	/*	======================== Declare Member Functions ========================	*/
 	OrderFlow();
 	~OrderFlow();
-
-	int init(tsNCharcb* toExchange, tsNCharcb* toTicker);
-	int unsub();
 
 	int updateTrades(TradeInfo* tick);
 

@@ -41,6 +41,8 @@ int Contract::subscribe() {
     //Request Book image
 
     //Wait for Book image received before continuing
+	while (!callbackResponses->bRcvdLimitOrderBook)
+		Sleep(1000);
 
     return 0;
 }
@@ -75,12 +77,6 @@ OrderBook::~OrderBook() {
 
 }
 
-/*   =====================================================================   */
-
-int OrderBook::init(tsNCharcb* toExchange, tsNCharcb* toTicker) {
-
-}
-
 
 /*   =====================================================================   */
 /*                          OrderFlow definitions                            */
@@ -102,6 +98,3 @@ OrderFlow::~OrderFlow() {
 
 /*   =====================================================================   */
 
-int OrderFlow::init(tsNCharcb* toExchange, tsNCharcb* toTicker) {
-
-}

@@ -65,6 +65,9 @@ Quant::Quant(char* md, char* ts, char* pnl, char* ih, char* rp) {
 	user.iDataLen = 0;
 	pass.iDataLen = 0;
 
+	watchList = {};
+	watchList.reserve(3);
+
 	pEngine = nullptr;
 	pAdmCallbacks = nullptr;
 	pCallbacks = nullptr;
@@ -173,7 +176,7 @@ int Quant::init(REngineParams &oParams) {
 
 /*	-------------------------- Initialize Callbacks --------------------------	*/
 	try {
-		pCallbacks = new ImplCallbacks(callbackResponses);
+		pCallbacks = new ImplCallbacks(callbackResponses, &watchList);
 		cout << "Created callbacks object." << endl;
 	}
 	catch (OmneException& oEx) {

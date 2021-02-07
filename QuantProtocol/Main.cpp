@@ -24,8 +24,6 @@ int main(int argc, char * *argv, char * *envp) {
 
 	Quant*				Q;
 	REngineParams		oParams;
-    vector<Contract*> watchList = {};
-    watchList.reserve(3);
 
 	tsNCharcb			sExchange;
 	tsNCharcb			sTicker;
@@ -60,7 +58,7 @@ int main(int argc, char * *argv, char * *envp) {
 
 	/*	========================= Pass Rithmic Login to Quant =======================	*/
 
-	
+
 
 
 	/*	========================== Check Unsigned Agreements ========================	
@@ -91,7 +89,15 @@ int main(int argc, char * *argv, char * *envp) {
 
 	/*	============================ Init List of Contracts ==========================	*/
 
-    watchList->push_back(new Contract(pEngine, callbackResponses, "CME", "ESH1"));
+	//Contract* ES = new Contract(Q->pEngine, Q->callbackResponses, (char*)"CME", (char*)"ESH1");
+    Q->watchList.push_back(*(new Contract(Q->pEngine, Q->callbackResponses, (char*)"CME", (char*)"ESH1")));
+	Q->watchList.at(0).subscribe();
+	Q->watchList.at(0).unsubscribe();
+
+	cout << endl << endl;
+	cout << "ask is " << Q->watchList.at(0).book->askPriceArray[0] << " through " << Q->watchList.at(0).book->askPriceArray[Q->watchList.at(0).book->askArrayLength - 1] << endl;
+	cout << "bid is " << Q->watchList.at(0).book->bidPriceArray[0] << " through " << Q->watchList.at(0).book->bidPriceArray[Q->watchList.at(0).book->bidArrayLength - 2] << endl;
+
 
 
 	cout << "Programs actually made it this far..." << endl;
@@ -119,15 +125,7 @@ int main(int argc, char * *argv, char * *envp) {
 	*/
 
 	/*	============================ Subscribe to Market Data ===============================	*/
-
-	sExchange.pData = (char*)"CME";
-	sExchange.iDataLen = (int)strlen(sExchange.pData);
-
-	sTicker.pData = (char*)"ESH1";
-	sTicker.iDataLen = (int)strlen(sTicker.pData);
-
 	
-
 	
 	
 	/*

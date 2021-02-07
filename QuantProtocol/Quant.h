@@ -1,6 +1,7 @@
 #pragma once
 #include "ImplRApi.h"
 #include "Globals.h"
+#include <vector>
 
 const int LoginStatus_NotLoggedIn = 0;
 const int LoginStatus_AwaitingResults = 1;
@@ -15,6 +16,7 @@ public:
 	ImplCallbacks* pCallbacks;
 
 	globals* callbackResponses;
+	vector<Contract> watchList;
 
 	/*	--------------------------------------------------------------------------	*/
 private:

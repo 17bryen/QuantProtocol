@@ -29,7 +29,7 @@ ImplAdmCallbacks::ImplAdmCallbacks(globals* callbacks) {
     callbackResponses = callbacks;
 };
 
-ImplCallbacks::ImplCallbacks(globals* callbacks, vector<Contract> toWatch) {
+ImplCallbacks::ImplCallbacks(globals* callbacks, vector<Contract>* toWatch) {
     callbackResponses = callbacks;
     watchList = toWatch;
 };
@@ -564,19 +564,18 @@ int ImplCallbacks::Quote(QuoteReport* pReport,
 
 /*   =====================================================================   */
 
-int ImplCallbacks::AskQuote(AskInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::AskQuote(AskInfo* pInfo, void* pContext, int* aiCode)
 {
     int iIgnored;
-
-    /*   ----------------------------------------------------------------   */
+    //Too fast to dump reasonably
+    /*   ----------------------------------------------------------------   
 
     cout << endl << endl;
     if (!pInfo->dump(&iIgnored))
     {
         cout << "error in pInfo -> dump : " << iIgnored << endl;
     }
+    */
 
     /*   ----------------------------------------------------------------   */
 
@@ -664,13 +663,15 @@ int ImplCallbacks::BidQuote(BidInfo* pInfo,
 {
     int iIgnored;
 
-    /*   ----------------------------------------------------------------   */
+    //FAST
+    /*   ----------------------------------------------------------------   
 
     cout << endl << endl;
     if (!pInfo->dump(&iIgnored))
     {
         cout << "error in pInfo -> dump : " << iIgnored << endl;
     }
+    */
 
     /*   ----------------------------------------------------------------   */
 
@@ -812,18 +813,50 @@ int ImplCallbacks::LimitOrderBook(LimitOrderBookInfo* pInfo, void* pContext, int
 {
     int iIgnored;
     //Set rcvd to true first (Actually doesn't matter because thread will be held in this function) 
-    
-    /*   ----------------------------------------------------------------   */
+    //Dumping this takes too long
+    /*   ----------------------------------------------------------------   
 
     cout << endl << endl;
     if (!pInfo->dump(&iIgnored))
     {
         cout << "error in pInfo -> dump : " << iIgnored << endl;
     }
+    */
+
+    OrderBook* temp = watchList->at(0).book;
+
+    if (!callbackResponses->bRcvdLimitOrderBook) {
+
+        temp->askArrayLength = pInfo->iAskArrayLen;
+        temp->bidArrayLength = pInfo->iBidArrayLen;
+
+
+        temp->askPriceArray = (double*)malloc(8 * temp->askArrayLength);
+        temp->askOrdersArray = (int*)malloc(4 * temp->askArrayLength);
+        temp->askSizeArray = (int*)malloc(4 * temp->askArrayLength);
+
+        memcpy(temp->askPriceArray, pInfo->adAskPriceArray, 8 * temp->askArrayLength);
+        memcpy(temp->askOrdersArray, pInfo->aiAskNumOrdersArray, 4 * temp->askArrayLength);
+        memcpy(temp->askSizeArray, pInfo->aiAskSizeArray, 4 * temp->askArrayLength);
+
+
+        temp->bidPriceArray = (double*)malloc(8 * pInfo->iBidArrayLen);
+        temp->bidOrdersArray = (int*)malloc(4 * pInfo->iBidArrayLen);
+        temp->bidSizeArray = (int*)malloc(4 * pInfo->iBidArrayLen);
+
+        memcpy(temp->bidPriceArray, pInfo->adBidPriceArray, 8 * temp->askArrayLength);
+        memcpy(temp->bidOrdersArray, pInfo->aiBidNumOrdersArray, 4 * temp->askArrayLength);
+        memcpy(temp->bidSizeArray, pInfo->aiBidSizeArray, 4 * temp->askArrayLength);
+
+        callbackResponses->bRcvdLimitOrderBook = true;
+
+    }
+    else {
+        cout << endl << endl << "SUBSEQUENT ORDER BOOK RECEIVED: Comparative lengths \nCurrent Ask: " << temp->askArrayLength
+            << " Bid: " << temp->bidArrayLength << "\nNew Ask: " << pInfo->iAskArrayLen << " Bid: " << pInfo->iBidArrayLen << endl;
+    }
 
     /*   ----------------------------------------------------------------   */
-
-    callbackResponses->bRcvdLimitOrderBook = true;
 
     *aiCode = API_OK;
     return (OK);
@@ -1033,11 +1066,13 @@ int ImplCallbacks::TradePrint(TradeInfo* pInfo, void* pContext, int* aiCode)
     cout << "Trade info received..." << endl;
     cout << endl << endl;
 
-    /**/
+    //ZOOM
+    /*
     if (!pInfo->dump(&iIgnored))
     {
         cout << "error in pInfo -> dump : " << iIgnored << endl;
     }
+    */
 
     /*   ----------------------------------------------------------------   */
 

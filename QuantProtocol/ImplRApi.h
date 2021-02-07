@@ -42,7 +42,7 @@ public :
 
 class ImplCallbacks : public RCallbacks {
 public :
-    ImplCallbacks(globals* callbacks, vector<Contract> toWatch);
+    ImplCallbacks(globals* callbacks, vector<Contract>* toWatch);
 	~ImplCallbacks() {};
 
     /*   ----------------------------------------------------   */
