@@ -1,4 +1,5 @@
 #include "Contract.h"
+#include <mutex>
 
 using namespace std;
 using namespace RApi;
@@ -74,8 +75,18 @@ OrderBook::OrderBook() {
 OrderBook::~OrderBook() {
 
 }
+
+/*   =====================================================================   */
 //OrderBook ask and bid arrays start[0] at the spread
 
+int OrderBook::updateAsk(AskInfo* tick) {
+    if (tick->bPriceFlag && tick->bSizeFlag) {
+        
+    }
+}
+int OrderBook::updateBid(BidInfo* tick) {
+
+}
 
 /*   =====================================================================   */
 /*                          OrderFlow definitions                            */
@@ -97,3 +108,6 @@ OrderFlow::~OrderFlow() {
 
 /*   =====================================================================   */
 
+int OrderFlow::updateTrades(TradeInfo* tick) {
+
+}

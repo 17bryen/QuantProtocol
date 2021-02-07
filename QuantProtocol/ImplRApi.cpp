@@ -576,7 +576,13 @@ int ImplCallbacks::AskQuote(AskInfo* pInfo, void* pContext, int* aiCode)
         cout << "error in pInfo -> dump : " << iIgnored << endl;
     }
     */
+    if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_BEGIN) {
+        watchList->at(0).Dom.lock();
 
+    watchList->at(0).book->updateAsk(pInfo);
+    
+    if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_END) {
+        watchList->at(0).Dom.unlock();
     /*   ----------------------------------------------------------------   */
 
     *aiCode = API_OK;
@@ -673,6 +679,14 @@ int ImplCallbacks::BidQuote(BidInfo* pInfo,
     }
     */
 
+    if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_BEGIN) {
+        watchList->at(0).Dom.lock();
+
+    watchList->at(0).book->updateBid(pInfo);
+    
+    if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_END) {
+        watchList->at(0).Dom.unlock();
+
     /*   ----------------------------------------------------------------   */
 
     *aiCode = API_OK;
@@ -735,19 +749,20 @@ int ImplCallbacks::ClosingIndicator(ClosingIndicatorInfo* pInfo,
 
 /*   =====================================================================   */
 
-int ImplCallbacks::EndQuote(EndQuoteInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::EndQuote(EndQuoteInfo* pInfo, void* pContext, int* aiCode)
 {
     int iIgnored;
 
-    /*   ----------------------------------------------------------------   */
+    /*   ----------------------------------------------------------------   
 
     cout << endl << endl;
     if (!pInfo->dump(&iIgnored))
     {
         cout << "error in pInfo -> dump : " << iIgnored << endl;
     }
+    */
+
+    watchList->at(0).Dom.unlock();
 
     /*   ----------------------------------------------------------------   */
 
@@ -1063,8 +1078,6 @@ int ImplCallbacks::TradePrint(TradeInfo* pInfo, void* pContext, int* aiCode)
     int iIgnored;
 
     /*   ----------------------------------------------------------------   */
-    cout << "Trade info received..." << endl;
-    cout << endl << endl;
 
     //ZOOM
     /*
@@ -1073,6 +1086,12 @@ int ImplCallbacks::TradePrint(TradeInfo* pInfo, void* pContext, int* aiCode)
         cout << "error in pInfo -> dump : " << iIgnored << endl;
     }
     */
+
+    watchList->at(0).Tape.lock();
+
+    watchList->at(0).flow->updateTrades(pInfo);
+
+    watchList->at(0).Tape.unlock();
 
     /*   ----------------------------------------------------------------   */
 

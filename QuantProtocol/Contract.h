@@ -4,6 +4,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+#include <mutex>
 
 #include "Windows.h"
 
@@ -65,11 +66,14 @@ public:
     REngine* pEngine;
     globals* callbackResponses;
 
-	tsNCharcb exchange;
-	tsNCharcb ticker;
+    mutex Dom;
+    mutex Tape;
 
 	OrderBook* book;
 	OrderFlow* flow;
+
+	tsNCharcb exchange;
+	tsNCharcb ticker;
 
 
 	/*	======================== Declare Member Functions ========================	*/
