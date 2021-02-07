@@ -38,8 +38,6 @@ int Contract::subscribe() {
 		return (1);
 	}
 
-    //Request Book image
-
     //Wait for Book image received before continuing
 	while (!callbackResponses->bRcvdLimitOrderBook)
 		Sleep(1000);
@@ -76,6 +74,7 @@ OrderBook::OrderBook() {
 OrderBook::~OrderBook() {
 
 }
+//OrderBook ask and bid arrays start[0] at the spread
 
 
 /*   =====================================================================   */
