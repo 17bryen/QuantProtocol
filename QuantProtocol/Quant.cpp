@@ -65,7 +65,6 @@ Quant::Quant(char* md, char* ts, char* pnl, char* ih, char* rp) {
 	user.iDataLen = 0;
 	pass.iDataLen = 0;
 
-	watchList = {};
 	watchList.reserve(3);
 
 	pEngine = nullptr;
@@ -116,6 +115,7 @@ Quant::~Quant() {
 	delete pCallbacks;
 	delete pEngine;
 	delete pAdmCallbacks;
+
 
 	delete callbackResponses;
 }

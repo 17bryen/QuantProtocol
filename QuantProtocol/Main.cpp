@@ -1,6 +1,3 @@
-#include <iostream>
-#include <vector>
-#include "Contract.h"
 #include "Main.h"
 
 #define GOOD 0
@@ -25,9 +22,6 @@ int main(int argc, char * *argv, char * *envp) {
 	Quant*				Q;
 	REngineParams		oParams;
 
-	tsNCharcb			sExchange;
-	tsNCharcb			sTicker;
-	int					iFlags;
 	int					iCode;
 
 
@@ -59,6 +53,8 @@ int main(int argc, char * *argv, char * *envp) {
 	/*	========================= Pass Rithmic Login to Quant =======================	*/
 
 
+	Q->setUser((char*)"17bryen@amp.com");
+	Q->setPass((char*)"&h$QlbrU2ha");
 
 
 	/*	========================== Check Unsigned Agreements ========================	
@@ -92,13 +88,19 @@ int main(int argc, char * *argv, char * *envp) {
 	//Contract* ES = new Contract(Q->pEngine, Q->callbackResponses, (char*)"CME", (char*)"ESH1");
     Q->watchList.push_back(*(new Contract(Q->pEngine, Q->callbackResponses, (char*)"CME", (char*)"ESH1")));
 	Q->watchList.at(0).subscribe();
+	
+	for (int i = 0; i < 10; i++) {
+		Q->watchList.at(0).Dom.lock();
+		cout << endl << endl;
+		cout << "ask is " << Q->watchList.at(0).book->priceArray[Q->watchList.at(0).book->bestAskIndex]
+			<< " with size " << Q->watchList.at(0).book->askSizeArray[Q->watchList.at(0).book->bestAskIndex] << endl;
+		cout << "bid is " << Q->watchList.at(0).book->priceArray[Q->watchList.at(0).book->bestBidIndex]
+			<< " with size " << Q->watchList.at(0).book->bidSizeArray[Q->watchList.at(0).book->bestBidIndex] << endl;
+		Q->watchList.at(0).Dom.unlock();
+
+		Sleep(2000);
+	}
 	Q->watchList.at(0).unsubscribe();
-
-	cout << endl << endl;
-	cout << "ask is " << Q->watchList.at(0).book->askPriceArray[0] << " through " << Q->watchList.at(0).book->askPriceArray[Q->watchList.at(0).book->askArrayLength - 1] << endl;
-	cout << "bid is " << Q->watchList.at(0).book->bidPriceArray[0] << " through " << Q->watchList.at(0).book->bidPriceArray[Q->watchList.at(0).book->bidArrayLength - 2] << endl;
-
-
 
 	cout << "Programs actually made it this far..." << endl;
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -107,61 +109,12 @@ int main(int argc, char * *argv, char * *envp) {
 
 	//g->pEngine->subscribePnl(g->pAccounts->asAccountInfoArray + g->iSelectedAccount, &iIgnored);
 	
-	/*
-	sExchange.pData = (char*)"CME";
-	sExchange.iDataLen = (int)strlen(sExchange.pData);
 
-	sTicker.pData = (char*)"ESH1";
-	sTicker.iDataLen = (int)strlen(sTicker.pData);
-
-
-
-	if (!Q->pEngine->rebuildBook(&sExchange, &sTicker, &iCode)) {
-		cout << "REngine::rebuildBook() error : " << iCode << endl;
-
-		delete Q;
-		return (BAD);
-	}
-	*/
-
-	/*	============================ Subscribe to Market Data ===============================	*/
-	
-	
-	
-	/*
-	sExchange.pData = (char*)"CME";
-	sExchange.iDataLen = (int)strlen(sExchange.pData);
-
-	sTicker.pData = (char*)"ESH1";
-	sTicker.iDataLen = (int)strlen(sTicker.pData);
-
-	try {
-		Q->pEngine->replayTrades(&sExchange, &sTicker, 0, 0, &iCode);
-		cout << endl << "Successfully called replayTrades with code: " << iCode << endl;
-	}
-	catch (OmneException& oEx) {
-		delete Q;
-
-		cout << "REngin::ReplayTrades() error : " << iCode << endl;
-		return (BAD);
-	}
-	*/
-
-	/*
-	while (!Q->callbackResponses->bRcvdReplayTrades)
-		Sleep(1000);
-	*/
 		
 
 	cout << "Successfully made it through the program test!" << endl;
 
-
 	fgetc(stdin);
-
-	/**/
-	
-	
-	
 
 	//g->pEngine->unsubscribePnl(g->pAccounts->asAccountInfoArray + g->iSelectedAccount, &iIgnored);
 

@@ -14,21 +14,23 @@ using namespace RApi;
 class OrderBook {
 public:
 	/*	======================== Declare Member Variables ========================	*/
-	double* askPriceArray;
-	int* askOrdersArray;
-	int* askSizeArray;
-	int askArrayLength;
+	double* priceArray;
+	int domLength;
 
-	double* bidPriceArray;
-	int* bidOrdersArray;
+	int bestAskIndex;
+	int* askOrderArray;
+	int* askSizeArray;
+
+	int bestBidIndex;
+	int* bidOrderArray;
 	int* bidSizeArray;
-	int bidArrayLength;
 
 
 	/*	======================== Declare Member Functions ========================	*/
 	OrderBook();
 	~OrderBook();
 
+	int updateBook(LimitOrderBookInfo* tick);
 	int updateAsk(AskInfo* tick);
 	int updateBid(BidInfo* tick);
 
@@ -78,6 +80,7 @@ public:
 
 	/*	======================== Declare Member Functions ========================	*/
 	Contract(REngine* toEngine, globals* responses, char* toExchange, char* toTicker);
+	Contract(const Contract &orig);
 	~Contract();
 
 	int subscribe();

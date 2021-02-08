@@ -1,6 +1,8 @@
 #pragma once
 
 #include "RApiPlus.h"
+#include "Globals.h"
+#include "Contract.h"
 
 #include <iostream>
 #include <vector>
@@ -9,8 +11,7 @@
 #include <stdio.h>
 
 #include <Windows.h>
-#include "Globals.h"
-#include "Contract.h"
+
 
 
 using namespace std;

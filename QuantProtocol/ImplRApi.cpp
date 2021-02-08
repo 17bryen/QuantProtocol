@@ -576,12 +576,12 @@ int ImplCallbacks::AskQuote(AskInfo* pInfo, void* pContext, int* aiCode)
         cout << "error in pInfo -> dump : " << iIgnored << endl;
     }
     */
-    if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_BEGIN) {
+    if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_BEGIN)
         watchList->at(0).Dom.lock();
 
     watchList->at(0).book->updateAsk(pInfo);
     
-    if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_END) {
+    if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_END)
         watchList->at(0).Dom.unlock();
     /*   ----------------------------------------------------------------   */
 
@@ -591,9 +591,7 @@ int ImplCallbacks::AskQuote(AskInfo* pInfo, void* pContext, int* aiCode)
 
 /*   =====================================================================   */
 
-int ImplCallbacks::BestAskQuote(AskInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::BestAskQuote(AskInfo* pInfo, void* pContext, int* aiCode)
 {
     int iIgnored;
 
@@ -679,12 +677,12 @@ int ImplCallbacks::BidQuote(BidInfo* pInfo,
     }
     */
 
-    if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_BEGIN) {
+    if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_BEGIN)
         watchList->at(0).Dom.lock();
 
     watchList->at(0).book->updateBid(pInfo);
     
-    if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_END) {
+    if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_END)
         watchList->at(0).Dom.unlock();
 
     /*   ----------------------------------------------------------------   */
@@ -840,36 +838,27 @@ int ImplCallbacks::LimitOrderBook(LimitOrderBookInfo* pInfo, void* pContext, int
 
     OrderBook* temp = watchList->at(0).book;
 
+    if (pInfo->iType == UPDATE_TYPE_SOLO || pInfo->iType == UPDATE_TYPE_BEGIN)
+        watchList->at(0).Dom.lock();
+
+    /*   ----------------------------------------------------------------   */
+
     if (!callbackResponses->bRcvdLimitOrderBook) {
 
-        temp->askArrayLength = pInfo->iAskArrayLen;
-        temp->bidArrayLength = pInfo->iBidArrayLen;
-
-
-        temp->askPriceArray = (double*)malloc(8 * temp->askArrayLength);
-        temp->askOrdersArray = (int*)malloc(4 * temp->askArrayLength);
-        temp->askSizeArray = (int*)malloc(4 * temp->askArrayLength);
-
-        memcpy(temp->askPriceArray, pInfo->adAskPriceArray, 8 * temp->askArrayLength);
-        memcpy(temp->askOrdersArray, pInfo->aiAskNumOrdersArray, 4 * temp->askArrayLength);
-        memcpy(temp->askSizeArray, pInfo->aiAskSizeArray, 4 * temp->askArrayLength);
-
-
-        temp->bidPriceArray = (double*)malloc(8 * pInfo->iBidArrayLen);
-        temp->bidOrdersArray = (int*)malloc(4 * pInfo->iBidArrayLen);
-        temp->bidSizeArray = (int*)malloc(4 * pInfo->iBidArrayLen);
-
-        memcpy(temp->bidPriceArray, pInfo->adBidPriceArray, 8 * temp->askArrayLength);
-        memcpy(temp->bidOrdersArray, pInfo->aiBidNumOrdersArray, 4 * temp->askArrayLength);
-        memcpy(temp->bidSizeArray, pInfo->aiBidSizeArray, 4 * temp->askArrayLength);
-
+        watchList->at(0).book->updateBook(pInfo);
         callbackResponses->bRcvdLimitOrderBook = true;
 
     }
     else {
-        cout << endl << endl << "SUBSEQUENT ORDER BOOK RECEIVED: Comparative lengths \nCurrent Ask: " << temp->askArrayLength
-            << " Bid: " << temp->bidArrayLength << "\nNew Ask: " << pInfo->iAskArrayLen << " Bid: " << pInfo->iBidArrayLen << endl;
+        watchList->at(0).book->updateBook(pInfo);
+
+        cout << endl << endl << "SUBSEQUENT ORDER BOOK RECEIVED:" << endl;
     }
+
+    /*   ----------------------------------------------------------------   */
+
+    if (pInfo->iType == UPDATE_TYPE_SOLO || pInfo->iType == UPDATE_TYPE_END)
+        watchList->at(0).Dom.unlock();
 
     /*   ----------------------------------------------------------------   */
 

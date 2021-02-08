@@ -9553,3 +9553,1231 @@
 1612671627.187000 [10680] [17468] : R | API+ 10.17.0.0 : REngine::getOmne : in
 1612671627.188000 [10680] [17468] : R | API+ 10.17.0.0 : OmneEngine::~OmneEngine : in
 1612671627.206000 [10680] [17468] : R | API+ 10.17.0.0 : The R | API log file has been closed.
+1612749154.539000 [8516] [8316] : R | API+ 10.17.0.0 : The R | API log file has been opened.
+1612749154.539000 [8516] [8316] : R | API+ 10.17.0.0 : REngineParams::envp : 00CFF988
+1612749154.539000 [8516] [8316] : R | API+ 10.17.0.0 : REngineParams::envp[0] : MML_DMN_SRVR_ADDR=ritpz01001.01.rithmic.com:65000~ritpz01000.01.rithmic.com:65000~ritpz01001.01.rithmic.net:65000~ritpz01000.01.rithmic.net:65000~ritpz01001.01.theomne.net:65000~ritpz01000.01.theomne.net:65000~ritpz01001.01.theomne.com:65000~ritpz01000.01.theomne.com:65000
+1612749154.539000 [8516] [8316] : R | API+ 10.17.0.0 : REngineParams::envp[1] : MML_DOMAIN_NAME=rithmic_prod_01_dmz_domain
+1612749154.539000 [8516] [8316] : R | API+ 10.17.0.0 : REngineParams::envp[2] : MML_LIC_SRVR_ADDR=ritpz01000.01.rithmic.com:56000~ritpz01001.01.rithmic.com:56000~ritpz01000.01.rithmic.net:56000~ritpz01001.01.rithmic.net:56000~ritpz01000.01.theomne.net:56000~ritpz01001.01.theomne.net:56000~ritpz01000.01.theomne.com:56000~ritpz01001.01.theomne.com:56000
+1612749154.539000 [8516] [8316] : R | API+ 10.17.0.0 : REngineParams::envp[3] : MML_LOC_BROK_ADDR=ritpz01000.01.rithmic.com:64100
+1612749154.539000 [8516] [8316] : R | API+ 10.17.0.0 : REngineParams::envp[4] : MML_LOGGER_ADDR=ritpz01000.01.rithmic.com:45454~ritpz01000.01.rithmic.net:45454~ritpz01000.01.theomne.net:45454~ritpz01000.01.theomne.com:45454
+1612749154.539000 [8516] [8316] : R | API+ 10.17.0.0 : REngineParams::envp[5] : MML_LOG_TYPE=log_net
+1612749154.539000 [8516] [8316] : R | API+ 10.17.0.0 : REngineParams::envp[6] : MML_SSL_CLNT_AUTH_FILE=../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params
+1612749154.540000 [8516] [8316] : R | API+ 10.17.0.0 : REngineParams::envp[7] : USER=17bryen@amp.com
+1612749154.540000 [8516] [8316] : R | API+ 10.17.0.0 : REngineParams::sAppName : brro:QuantCLI
+1612749154.540000 [8516] [8316] : R | API+ 10.17.0.0 : REngineParams::sAppVersion : 1.2.0.0
+1612749154.540000 [8516] [8316] : R | API+ 10.17.0.0 : REngineParams::sAdmCnnctPt : dd_admin_sslc
+1612749154.540000 [8516] [8316] : R | API+ 10.17.0.0 : REngineParams::pAdmCallbacks : 01117AD8
+1612749154.540000 [8516] [8316] : R | API+ 10.17.0.0 : REngineParams::pContext : 00000000
+1612749154.540000 [8516] [8316] : R | API+ 10.17.0.0 : AdminName : brro:QuantCLI-1.2.0.0-17bryen@amp.com-8516-1612749154.540000
+1612749155.627000 [8516] [8316] : R | API+ 10.17.0.0 : OS Name : Windows
+1612749155.627000 [8516] [8316] : R | API+ 10.17.0.0 : OS Version : 6.2
+1612749155.627000 [8516] [8316] : R | API+ 10.17.0.0 : Machine Type : x86 (WinOS)
+1612749155.627000 [8516] [8316] : R | API+ 10.17.0.0 : Host Name : DESKTOP-5VPJE5G
+1612749155.627000 [8516] [8316] : R | API+ 10.17.0.0 : Local Address : 10.91.70.34
+1612749155.664000 [8516] [8316] : R | API+ 10.17.0.0 : Found required SSL file : ../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params.
+1612749155.664000 [8516] [8316] : R | API+ 10.17.0.0 : Using default cert name.
+1612749155.664000 [8516] [8316] : R | API+ 10.17.0.0 : OmneEngine::OmneEngine : in
+1612749155.678000 [8516] [8316] : R | API+ 10.17.0.0 : OmneEngine::enableAdminHeartbeat : in
+1612749155.679000 [8516] [8316] : R | API+ 10.17.0.0 : OmneLock::OmneLock : in
+1612749155.679000 [8516] [8316] : R | API+ 10.17.0.0 : OmneCounter::OmneCounter : in
+1612749155.679000 [8516] [8316] : R | API+ 10.17.0.0 : REngineHook::REngineHook : in
+1612749155.679000 [8516] [8316] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749155.679000 [8516] [8316] : R | API+ 10.17.0.0 : ShutdownSignal::ShutdownSignal : in
+1612749155.679000 [8516] [8316] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749155.679000 [8516] [8316] : R | API+ 10.17.0.0 : am_open : in
+1612749155.679000 [8516] [8316] : R | API+ 10.17.0.0 : registerRoutines : in
+1612749155.679000 [8516] [8316] : R | API+ 10.17.0.0 : registerAdminPages : in
+1612749155.679000 [8516] [8316] : R | API+ 10.17.0.0 : initVec : in
+1612749155.683000 [8516] [8316] : R | API+ 10.17.0.0 : addVersion : in
+1612749155.683000 [8516] [8316] : R | API+ 10.17.0.0 : addVersion : in
+1612749155.683000 [8516] [8316] : R | API+ 10.17.0.0 : clearBlacklistTimer : in
+1612749155.683000 [8516] [8316] : R | API+ 10.17.0.0 : initSession : in
+1612749155.824000 [8516] [8316] : R | API+ 10.17.0.0 : The REngine has been opened.
+1612749155.830000 [8516] [8316] : R | API+ 10.17.0.0 : REngine::login : in
+1612749155.830000 [8516] [8316] : R | API+ 10.17.0.0 : logging in.
+1612749155.830000 [8516] [8316] : R | API+ 10.17.0.0 : LoginParams : 00CFF95C
+1612749155.830000 [8516] [8316] : R | API+ 10.17.0.0 : LoginParams::pCallbacks : 0115B518
+1612749155.831000 [8516] [8316] : R | API+ 10.17.0.0 : LoginParams::sUser : <empty>
+1612749155.831000 [8516] [8316] : R | API+ 10.17.0.0 : LoginParams::sMdUser : <empty>
+1612749155.831000 [8516] [8316] : R | API+ 10.17.0.0 : LoginParams::sMdCnnctPt : login_agent_tp_r01c
+1612749155.831000 [8516] [8316] : R | API+ 10.17.0.0 : LoginParams::sTsCnnctPt : login_agent_prodc
+1612749155.831000 [8516] [8316] : R | API+ 10.17.0.0 : LoginParams::sPnlCnnctPt : login_agent_pnl_sslc
+1612749155.831000 [8516] [8316] : R | API+ 10.17.0.0 : LoginParams::sIhUser : <empty>
+1612749155.832000 [8516] [8316] : R | API+ 10.17.0.0 : LoginParams::sIhCnnctPt : login_agent_historyc
+1612749155.832000 [8516] [8316] : R | API+ 10.17.0.0 : REngine::login : out : 6
+1612749155.832000 [8516] [8316] : R | API+ 10.17.0.0 : REngine::logoutRepository : in
+1612749155.832000 [8516] [8316] : R | API+ 10.17.0.0 : Ose is NULL : in
+1612749155.832000 [8516] [8316] : R | API+ 10.17.0.0 : REngine::logout : in
+1612749155.832000 [8516] [8316] : R | API+ 10.17.0.0 : logging out...
+1612749155.846000 [8516] [8316] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749155.846000 [8516] [8316] : R | API+ 10.17.0.0 : OmneEngine::~OmneEngine : in
+1612749155.913000 [8516] [8316] : R | API+ 10.17.0.0 : The R | API log file has been closed.
+1612749289.061000 [5872] [13588] : R | API+ 10.17.0.0 : The R | API log file has been opened.
+1612749289.061000 [5872] [13588] : R | API+ 10.17.0.0 : REngineParams::envp : 0114F828
+1612749289.061000 [5872] [13588] : R | API+ 10.17.0.0 : REngineParams::envp[0] : MML_DMN_SRVR_ADDR=ritpz01001.01.rithmic.com:65000~ritpz01000.01.rithmic.com:65000~ritpz01001.01.rithmic.net:65000~ritpz01000.01.rithmic.net:65000~ritpz01001.01.theomne.net:65000~ritpz01000.01.theomne.net:65000~ritpz01001.01.theomne.com:65000~ritpz01000.01.theomne.com:65000
+1612749289.061000 [5872] [13588] : R | API+ 10.17.0.0 : REngineParams::envp[1] : MML_DOMAIN_NAME=rithmic_prod_01_dmz_domain
+1612749289.062000 [5872] [13588] : R | API+ 10.17.0.0 : REngineParams::envp[2] : MML_LIC_SRVR_ADDR=ritpz01000.01.rithmic.com:56000~ritpz01001.01.rithmic.com:56000~ritpz01000.01.rithmic.net:56000~ritpz01001.01.rithmic.net:56000~ritpz01000.01.theomne.net:56000~ritpz01001.01.theomne.net:56000~ritpz01000.01.theomne.com:56000~ritpz01001.01.theomne.com:56000
+1612749289.062000 [5872] [13588] : R | API+ 10.17.0.0 : REngineParams::envp[3] : MML_LOC_BROK_ADDR=ritpz01000.01.rithmic.com:64100
+1612749289.062000 [5872] [13588] : R | API+ 10.17.0.0 : REngineParams::envp[4] : MML_LOGGER_ADDR=ritpz01000.01.rithmic.com:45454~ritpz01000.01.rithmic.net:45454~ritpz01000.01.theomne.net:45454~ritpz01000.01.theomne.com:45454
+1612749289.062000 [5872] [13588] : R | API+ 10.17.0.0 : REngineParams::envp[5] : MML_LOG_TYPE=log_net
+1612749289.062000 [5872] [13588] : R | API+ 10.17.0.0 : REngineParams::envp[6] : MML_SSL_CLNT_AUTH_FILE=../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params
+1612749289.062000 [5872] [13588] : R | API+ 10.17.0.0 : REngineParams::envp[7] : USER=17bryen@amp.com
+1612749289.062000 [5872] [13588] : R | API+ 10.17.0.0 : REngineParams::sAppName : brro:QuantCLI
+1612749289.062000 [5872] [13588] : R | API+ 10.17.0.0 : REngineParams::sAppVersion : 1.2.0.0
+1612749289.062000 [5872] [13588] : R | API+ 10.17.0.0 : REngineParams::sAdmCnnctPt : dd_admin_sslc
+1612749289.062000 [5872] [13588] : R | API+ 10.17.0.0 : REngineParams::pAdmCallbacks : 01537550
+1612749289.062000 [5872] [13588] : R | API+ 10.17.0.0 : REngineParams::pContext : 00000000
+1612749289.062000 [5872] [13588] : R | API+ 10.17.0.0 : AdminName : brro:QuantCLI-1.2.0.0-17bryen@amp.com-5872-1612749289.062000
+1612749289.911000 [5872] [13588] : R | API+ 10.17.0.0 : OS Name : Windows
+1612749289.911000 [5872] [13588] : R | API+ 10.17.0.0 : OS Version : 6.2
+1612749289.911000 [5872] [13588] : R | API+ 10.17.0.0 : Machine Type : x86 (WinOS)
+1612749289.911000 [5872] [13588] : R | API+ 10.17.0.0 : Host Name : DESKTOP-5VPJE5G
+1612749289.912000 [5872] [13588] : R | API+ 10.17.0.0 : Local Address : 10.91.70.34
+1612749289.936000 [5872] [13588] : R | API+ 10.17.0.0 : Found required SSL file : ../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params.
+1612749289.936000 [5872] [13588] : R | API+ 10.17.0.0 : Using default cert name.
+1612749289.936000 [5872] [13588] : R | API+ 10.17.0.0 : OmneEngine::OmneEngine : in
+1612749289.946000 [5872] [13588] : R | API+ 10.17.0.0 : OmneEngine::enableAdminHeartbeat : in
+1612749289.946000 [5872] [13588] : R | API+ 10.17.0.0 : OmneLock::OmneLock : in
+1612749289.946000 [5872] [13588] : R | API+ 10.17.0.0 : OmneCounter::OmneCounter : in
+1612749289.946000 [5872] [13588] : R | API+ 10.17.0.0 : REngineHook::REngineHook : in
+1612749289.946000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749289.946000 [5872] [13588] : R | API+ 10.17.0.0 : ShutdownSignal::ShutdownSignal : in
+1612749289.946000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749289.946000 [5872] [13588] : R | API+ 10.17.0.0 : am_open : in
+1612749289.946000 [5872] [13588] : R | API+ 10.17.0.0 : registerRoutines : in
+1612749289.946000 [5872] [13588] : R | API+ 10.17.0.0 : registerAdminPages : in
+1612749289.946000 [5872] [13588] : R | API+ 10.17.0.0 : initVec : in
+1612749289.949000 [5872] [13588] : R | API+ 10.17.0.0 : addVersion : in
+1612749289.949000 [5872] [13588] : R | API+ 10.17.0.0 : addVersion : in
+1612749289.949000 [5872] [13588] : R | API+ 10.17.0.0 : clearBlacklistTimer : in
+1612749289.949000 [5872] [13588] : R | API+ 10.17.0.0 : initSession : in
+1612749290.003000 [5872] [13588] : R | API+ 10.17.0.0 : The REngine has been opened.
+1612749290.005000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::login : in
+1612749290.005000 [5872] [13588] : R | API+ 10.17.0.0 : logging in.
+1612749290.006000 [5872] [13588] : R | API+ 10.17.0.0 : LoginParams : 0114F7FC
+1612749290.006000 [5872] [13588] : R | API+ 10.17.0.0 : LoginParams::pCallbacks : 0157B890
+1612749290.006000 [5872] [13588] : R | API+ 10.17.0.0 : LoginParams::sUser : 17bryen@amp.com
+1612749290.006000 [5872] [13588] : R | API+ 10.17.0.0 : LoginParams::sMdUser : 17bryen@amp.com
+1612749290.006000 [5872] [13588] : R | API+ 10.17.0.0 : LoginParams::sMdCnnctPt : login_agent_tp_r01c
+1612749290.006000 [5872] [13588] : R | API+ 10.17.0.0 : LoginParams::sTsCnnctPt : login_agent_prodc
+1612749290.006000 [5872] [13588] : R | API+ 10.17.0.0 : LoginParams::sPnlCnnctPt : login_agent_pnl_sslc
+1612749290.006000 [5872] [13588] : R | API+ 10.17.0.0 : LoginParams::sIhUser : 17bryen@amp.com
+1612749290.006000 [5872] [13588] : R | API+ 10.17.0.0 : LoginParams::sIhCnnctPt : login_agent_historyc
+1612749290.006000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749290.006000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612749290.006000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612749290.006000 [5872] [13588] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612749290.013000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749290.013000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612749290.013000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612749291.830000 [5872] [12556] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Opened|1|1|0|
+1612749291.830000 [5872] [12556] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749291.836000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749291.836000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612749291.836000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612749291.836000 [5872] [13588] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612749291.840000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749291.840000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612749291.840000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612749292.061000 [5872] [12556] : R | API+ 10.17.0.0 : logging into Market Data Connection : conn id : 1 : rp code : 0
+1612749292.061000 [5872] [12556] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Login Complete|4|1|0|ok
+1612749292.061000 [5872] [12556] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749292.067000 [5872] [12556] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749293.661000 [5872] [12556] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Opened|1|2|0|
+1612749293.661000 [5872] [12556] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749293.669000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749293.669000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612749293.669000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612749293.669000 [5872] [13588] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612749293.674000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749293.674000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612749293.674000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612749293.879000 [5872] [12556] : R | API+ 10.17.0.0 : logging into Trading System Connection : conn id : 2 : rp code : 0
+1612749293.879000 [5872] [12556] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Login Complete|4|2|0|ok
+1612749293.879000 [5872] [12556] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749293.892000 [5872] [12556] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749294.144000 [5872] [12556] : R | API+ 10.17.0.0 : REngine::getAccounts : in
+1612749294.386000 [5872] [12556] : R | API+ 10.17.0.0 : RCallbacks::AccountList : in
+1612749295.131000 [5872] [12556] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Opened|1|3|0|
+1612749295.131000 [5872] [12556] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749295.144000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749295.144000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612749295.145000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612749295.145000 [5872] [13588] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612749295.149000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749295.149000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612749295.149000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612749295.369000 [5872] [12556] : R | API+ 10.17.0.0 : logging into PnL Connection : conn id : 3 : rp code : 0
+1612749295.369000 [5872] [12556] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Login Complete|4|3|0|ok
+1612749295.369000 [5872] [12556] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749295.383000 [5872] [12556] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749296.565000 [5872] [12556] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Opened|1|4|0|
+1612749296.565000 [5872] [12556] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749296.793000 [5872] [12556] : R | API+ 10.17.0.0 : logging into Intraday History Connection : conn id : 4 : rp code : 0
+1612749296.793000 [5872] [12556] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Login Complete|4|4|0|ok
+1612749296.793000 [5872] [12556] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749296.805000 [5872] [12556] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749297.598000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::subscribe(CME, ESH1, 3) : in
+1612749318.750000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::unsubscribe(CME, ESH1) : in
+1612749330.401000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::logout : in
+1612749330.401000 [5872] [13588] : R | API+ 10.17.0.0 : logging out...
+1612749330.401000 [5872] [13588] : R | API+ 10.17.0.0 : OmneStreamEngine::stop : in
+1612749330.401000 [5872] [13588] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Closed|2|4|0|
+1612749330.401000 [5872] [13588] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749330.415000 [5872] [13588] : R | API+ 10.17.0.0 : OmneStreamEngine::~OmneStreamEngine : in
+1612749330.417000 [5872] [13588] : R | API+ 10.17.0.0 : OmneStreamEngine::stop : in
+1612749330.417000 [5872] [13588] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Closed|2|3|0|
+1612749330.417000 [5872] [13588] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749330.433000 [5872] [13588] : R | API+ 10.17.0.0 : OmneStreamEngine::~OmneStreamEngine : in
+1612749330.436000 [5872] [13588] : R | API+ 10.17.0.0 : OmneStreamEngine::stop : in
+1612749330.437000 [5872] [13588] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Closed|2|2|0|
+1612749330.437000 [5872] [13588] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749330.459000 [5872] [13588] : R | API+ 10.17.0.0 : OmneStreamEngine::~OmneStreamEngine : in
+1612749330.464000 [5872] [13588] : R | API+ 10.17.0.0 : OmneStreamEngine::stop : in
+1612749330.464000 [5872] [13588] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Closed|2|1|0|
+1612749330.464000 [5872] [13588] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749330.489000 [5872] [13588] : R | API+ 10.17.0.0 : OmneStreamEngine::~OmneStreamEngine : in
+1612749330.495000 [5872] [13588] : R | API+ 10.17.0.0 : logout successful.
+1612749330.495000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::logoutRepository : in
+1612749330.495000 [5872] [13588] : R | API+ 10.17.0.0 : Ose is NULL : in
+1612749330.495000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::logout : in
+1612749330.495000 [5872] [13588] : R | API+ 10.17.0.0 : logging out...
+1612749330.511000 [5872] [13588] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749330.511000 [5872] [13588] : R | API+ 10.17.0.0 : OmneEngine::~OmneEngine : in
+1612749330.527000 [5872] [13588] : R | API+ 10.17.0.0 : The R | API log file has been closed.
+1612749463.240000 [12820] [3544] : R | API+ 10.17.0.0 : The R | API log file has been opened.
+1612749463.240000 [12820] [3544] : R | API+ 10.17.0.0 : REngineParams::envp : 006FF6D4
+1612749463.240000 [12820] [3544] : R | API+ 10.17.0.0 : REngineParams::envp[0] : MML_DMN_SRVR_ADDR=ritpz01001.01.rithmic.com:65000~ritpz01000.01.rithmic.com:65000~ritpz01001.01.rithmic.net:65000~ritpz01000.01.rithmic.net:65000~ritpz01001.01.theomne.net:65000~ritpz01000.01.theomne.net:65000~ritpz01001.01.theomne.com:65000~ritpz01000.01.theomne.com:65000
+1612749463.240000 [12820] [3544] : R | API+ 10.17.0.0 : REngineParams::envp[1] : MML_DOMAIN_NAME=rithmic_prod_01_dmz_domain
+1612749463.240000 [12820] [3544] : R | API+ 10.17.0.0 : REngineParams::envp[2] : MML_LIC_SRVR_ADDR=ritpz01000.01.rithmic.com:56000~ritpz01001.01.rithmic.com:56000~ritpz01000.01.rithmic.net:56000~ritpz01001.01.rithmic.net:56000~ritpz01000.01.theomne.net:56000~ritpz01001.01.theomne.net:56000~ritpz01000.01.theomne.com:56000~ritpz01001.01.theomne.com:56000
+1612749463.240000 [12820] [3544] : R | API+ 10.17.0.0 : REngineParams::envp[3] : MML_LOC_BROK_ADDR=ritpz01000.01.rithmic.com:64100
+1612749463.240000 [12820] [3544] : R | API+ 10.17.0.0 : REngineParams::envp[4] : MML_LOGGER_ADDR=ritpz01000.01.rithmic.com:45454~ritpz01000.01.rithmic.net:45454~ritpz01000.01.theomne.net:45454~ritpz01000.01.theomne.com:45454
+1612749463.240000 [12820] [3544] : R | API+ 10.17.0.0 : REngineParams::envp[5] : MML_LOG_TYPE=log_net
+1612749463.240000 [12820] [3544] : R | API+ 10.17.0.0 : REngineParams::envp[6] : MML_SSL_CLNT_AUTH_FILE=../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params
+1612749463.240000 [12820] [3544] : R | API+ 10.17.0.0 : REngineParams::envp[7] : USER=17bryen@amp.com
+1612749463.240000 [12820] [3544] : R | API+ 10.17.0.0 : REngineParams::sAppName : brro:QuantCLI
+1612749463.240000 [12820] [3544] : R | API+ 10.17.0.0 : REngineParams::sAppVersion : 1.2.0.0
+1612749463.240000 [12820] [3544] : R | API+ 10.17.0.0 : REngineParams::sAdmCnnctPt : dd_admin_sslc
+1612749463.240000 [12820] [3544] : R | API+ 10.17.0.0 : REngineParams::pAdmCallbacks : 00F28AE0
+1612749463.240000 [12820] [3544] : R | API+ 10.17.0.0 : REngineParams::pContext : 00000000
+1612749463.240000 [12820] [3544] : R | API+ 10.17.0.0 : AdminName : brro:QuantCLI-1.2.0.0-17bryen@amp.com-12820-1612749463.240000
+1612749464.057000 [12820] [3544] : R | API+ 10.17.0.0 : OS Name : Windows
+1612749464.057000 [12820] [3544] : R | API+ 10.17.0.0 : OS Version : 6.2
+1612749464.057000 [12820] [3544] : R | API+ 10.17.0.0 : Machine Type : x86 (WinOS)
+1612749464.058000 [12820] [3544] : R | API+ 10.17.0.0 : Host Name : DESKTOP-5VPJE5G
+1612749464.058000 [12820] [3544] : R | API+ 10.17.0.0 : Local Address : 10.91.70.34
+1612749464.083000 [12820] [3544] : R | API+ 10.17.0.0 : Found required SSL file : ../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params.
+1612749464.083000 [12820] [3544] : R | API+ 10.17.0.0 : Using default cert name.
+1612749464.084000 [12820] [3544] : R | API+ 10.17.0.0 : OmneEngine::OmneEngine : in
+1612749464.092000 [12820] [3544] : R | API+ 10.17.0.0 : OmneEngine::enableAdminHeartbeat : in
+1612749464.092000 [12820] [3544] : R | API+ 10.17.0.0 : OmneLock::OmneLock : in
+1612749464.092000 [12820] [3544] : R | API+ 10.17.0.0 : OmneCounter::OmneCounter : in
+1612749464.092000 [12820] [3544] : R | API+ 10.17.0.0 : REngineHook::REngineHook : in
+1612749464.092000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749464.092000 [12820] [3544] : R | API+ 10.17.0.0 : ShutdownSignal::ShutdownSignal : in
+1612749464.092000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749464.093000 [12820] [3544] : R | API+ 10.17.0.0 : am_open : in
+1612749464.093000 [12820] [3544] : R | API+ 10.17.0.0 : registerRoutines : in
+1612749464.093000 [12820] [3544] : R | API+ 10.17.0.0 : registerAdminPages : in
+1612749464.093000 [12820] [3544] : R | API+ 10.17.0.0 : initVec : in
+1612749464.095000 [12820] [3544] : R | API+ 10.17.0.0 : addVersion : in
+1612749464.096000 [12820] [3544] : R | API+ 10.17.0.0 : addVersion : in
+1612749464.096000 [12820] [3544] : R | API+ 10.17.0.0 : clearBlacklistTimer : in
+1612749464.096000 [12820] [3544] : R | API+ 10.17.0.0 : initSession : in
+1612749464.139000 [12820] [3544] : R | API+ 10.17.0.0 : The REngine has been opened.
+1612749464.142000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::login : in
+1612749464.142000 [12820] [3544] : R | API+ 10.17.0.0 : logging in.
+1612749464.142000 [12820] [3544] : R | API+ 10.17.0.0 : LoginParams : 006FF6A8
+1612749464.142000 [12820] [3544] : R | API+ 10.17.0.0 : LoginParams::pCallbacks : 00F6B890
+1612749464.142000 [12820] [3544] : R | API+ 10.17.0.0 : LoginParams::sUser : 17bryen@amp.com
+1612749464.142000 [12820] [3544] : R | API+ 10.17.0.0 : LoginParams::sMdUser : 17bryen@amp.com
+1612749464.142000 [12820] [3544] : R | API+ 10.17.0.0 : LoginParams::sMdCnnctPt : login_agent_tp_r01c
+1612749464.142000 [12820] [3544] : R | API+ 10.17.0.0 : LoginParams::sTsCnnctPt : login_agent_prodc
+1612749464.143000 [12820] [3544] : R | API+ 10.17.0.0 : LoginParams::sPnlCnnctPt : login_agent_pnl_sslc
+1612749464.143000 [12820] [3544] : R | API+ 10.17.0.0 : LoginParams::sIhUser : 17bryen@amp.com
+1612749464.143000 [12820] [3544] : R | API+ 10.17.0.0 : LoginParams::sIhCnnctPt : login_agent_historyc
+1612749464.143000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749464.143000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612749464.143000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612749464.143000 [12820] [3544] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612749464.148000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749464.148000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612749464.148000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612749466.002000 [12820] [3744] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Opened|1|1|0|
+1612749466.002000 [12820] [3744] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749466.008000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749466.008000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612749466.008000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612749466.008000 [12820] [3544] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612749466.011000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749466.011000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612749466.011000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612749466.253000 [12820] [3744] : R | API+ 10.17.0.0 : logging into Market Data Connection : conn id : 1 : rp code : 0
+1612749466.253000 [12820] [3744] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Login Complete|4|1|0|ok
+1612749466.253000 [12820] [3744] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749466.259000 [12820] [3744] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749467.436000 [12820] [3744] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Opened|1|2|0|
+1612749467.436000 [12820] [3744] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749467.444000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749467.444000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612749467.445000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612749467.445000 [12820] [3544] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612749467.450000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749467.450000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612749467.450000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612749467.754000 [12820] [3744] : R | API+ 10.17.0.0 : logging into Trading System Connection : conn id : 2 : rp code : 0
+1612749467.754000 [12820] [3744] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Login Complete|4|2|0|ok
+1612749467.754000 [12820] [3744] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749467.767000 [12820] [3744] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749468.014000 [12820] [3744] : R | API+ 10.17.0.0 : REngine::getAccounts : in
+1612749468.246000 [12820] [3744] : R | API+ 10.17.0.0 : RCallbacks::AccountList : in
+1612749468.993000 [12820] [3744] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Opened|1|3|0|
+1612749468.993000 [12820] [3744] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749469.010000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749469.010000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612749469.010000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612749469.010000 [12820] [3544] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612749469.014000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749469.014000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612749469.014000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612749469.238000 [12820] [3744] : R | API+ 10.17.0.0 : logging into PnL Connection : conn id : 3 : rp code : 0
+1612749469.238000 [12820] [3744] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Login Complete|4|3|0|ok
+1612749469.238000 [12820] [3744] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749469.255000 [12820] [3744] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749470.466000 [12820] [3744] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Opened|1|4|0|
+1612749470.466000 [12820] [3744] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749470.699000 [12820] [3744] : R | API+ 10.17.0.0 : logging into Intraday History Connection : conn id : 4 : rp code : 0
+1612749470.699000 [12820] [3744] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Login Complete|4|4|0|ok
+1612749470.699000 [12820] [3744] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749470.716000 [12820] [3744] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749471.495000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::subscribe(CME, ESH1, 3) : in
+1612749492.653000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::unsubscribe(CME, ESH1) : in
+1612749571.767000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::logout : in
+1612749571.767000 [12820] [3544] : R | API+ 10.17.0.0 : logging out...
+1612749571.767000 [12820] [3544] : R | API+ 10.17.0.0 : OmneStreamEngine::stop : in
+1612749571.768000 [12820] [3544] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Closed|2|4|0|
+1612749571.768000 [12820] [3544] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749571.778000 [12820] [3544] : R | API+ 10.17.0.0 : OmneStreamEngine::~OmneStreamEngine : in
+1612749571.780000 [12820] [3544] : R | API+ 10.17.0.0 : OmneStreamEngine::stop : in
+1612749571.780000 [12820] [3544] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Closed|2|3|0|
+1612749571.780000 [12820] [3544] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749571.793000 [12820] [3544] : R | API+ 10.17.0.0 : OmneStreamEngine::~OmneStreamEngine : in
+1612749571.798000 [12820] [3544] : R | API+ 10.17.0.0 : OmneStreamEngine::stop : in
+1612749571.798000 [12820] [3544] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Closed|2|2|0|
+1612749571.798000 [12820] [3544] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749571.816000 [12820] [3544] : R | API+ 10.17.0.0 : OmneStreamEngine::~OmneStreamEngine : in
+1612749571.819000 [12820] [3544] : R | API+ 10.17.0.0 : OmneStreamEngine::stop : in
+1612749571.819000 [12820] [3544] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Closed|2|1|0|
+1612749571.819000 [12820] [3544] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612749571.837000 [12820] [3544] : R | API+ 10.17.0.0 : OmneStreamEngine::~OmneStreamEngine : in
+1612749571.843000 [12820] [3544] : R | API+ 10.17.0.0 : logout successful.
+1612749571.843000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::logoutRepository : in
+1612749571.843000 [12820] [3544] : R | API+ 10.17.0.0 : Ose is NULL : in
+1612749571.843000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::logout : in
+1612749571.843000 [12820] [3544] : R | API+ 10.17.0.0 : logging out...
+1612749571.859000 [12820] [3544] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612749571.859000 [12820] [3544] : R | API+ 10.17.0.0 : OmneEngine::~OmneEngine : in
+1612749571.874000 [12820] [3544] : R | API+ 10.17.0.0 : The R | API log file has been closed.
+1612753370.605000 [8516] [15000] : R | API+ 10.17.0.0 : The R | API log file has been opened.
+1612753370.605000 [8516] [15000] : R | API+ 10.17.0.0 : REngineParams::envp : 00FEFB64
+1612753370.605000 [8516] [15000] : R | API+ 10.17.0.0 : REngineParams::envp[0] : MML_DMN_SRVR_ADDR=ritpz01001.01.rithmic.com:65000~ritpz01000.01.rithmic.com:65000~ritpz01001.01.rithmic.net:65000~ritpz01000.01.rithmic.net:65000~ritpz01001.01.theomne.net:65000~ritpz01000.01.theomne.net:65000~ritpz01001.01.theomne.com:65000~ritpz01000.01.theomne.com:65000
+1612753370.605000 [8516] [15000] : R | API+ 10.17.0.0 : REngineParams::envp[1] : MML_DOMAIN_NAME=rithmic_prod_01_dmz_domain
+1612753370.605000 [8516] [15000] : R | API+ 10.17.0.0 : REngineParams::envp[2] : MML_LIC_SRVR_ADDR=ritpz01000.01.rithmic.com:56000~ritpz01001.01.rithmic.com:56000~ritpz01000.01.rithmic.net:56000~ritpz01001.01.rithmic.net:56000~ritpz01000.01.theomne.net:56000~ritpz01001.01.theomne.net:56000~ritpz01000.01.theomne.com:56000~ritpz01001.01.theomne.com:56000
+1612753370.605000 [8516] [15000] : R | API+ 10.17.0.0 : REngineParams::envp[3] : MML_LOC_BROK_ADDR=ritpz01000.01.rithmic.com:64100
+1612753370.605000 [8516] [15000] : R | API+ 10.17.0.0 : REngineParams::envp[4] : MML_LOGGER_ADDR=ritpz01000.01.rithmic.com:45454~ritpz01000.01.rithmic.net:45454~ritpz01000.01.theomne.net:45454~ritpz01000.01.theomne.com:45454
+1612753370.605000 [8516] [15000] : R | API+ 10.17.0.0 : REngineParams::envp[5] : MML_LOG_TYPE=log_net
+1612753370.605000 [8516] [15000] : R | API+ 10.17.0.0 : REngineParams::envp[6] : MML_SSL_CLNT_AUTH_FILE=../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params
+1612753370.605000 [8516] [15000] : R | API+ 10.17.0.0 : REngineParams::envp[7] : USER=17bryen@amp.com
+1612753370.605000 [8516] [15000] : R | API+ 10.17.0.0 : REngineParams::sAppName : brro:QuantCLI
+1612753370.605000 [8516] [15000] : R | API+ 10.17.0.0 : REngineParams::sAppVersion : 1.2.0.0
+1612753370.605000 [8516] [15000] : R | API+ 10.17.0.0 : REngineParams::sAdmCnnctPt : dd_admin_sslc
+1612753370.605000 [8516] [15000] : R | API+ 10.17.0.0 : REngineParams::pAdmCallbacks : 01A97C98
+1612753370.605000 [8516] [15000] : R | API+ 10.17.0.0 : REngineParams::pContext : 00000000
+1612753370.605000 [8516] [15000] : R | API+ 10.17.0.0 : AdminName : brro:QuantCLI-1.2.0.0-17bryen@amp.com-8516-1612753370.605000
+1612753371.686000 [8516] [15000] : R | API+ 10.17.0.0 : OS Name : Windows
+1612753371.686000 [8516] [15000] : R | API+ 10.17.0.0 : OS Version : 6.2
+1612753371.686000 [8516] [15000] : R | API+ 10.17.0.0 : Machine Type : x86 (WinOS)
+1612753371.686000 [8516] [15000] : R | API+ 10.17.0.0 : Host Name : DESKTOP-5VPJE5G
+1612753371.687000 [8516] [15000] : R | API+ 10.17.0.0 : Local Address : 10.91.70.34
+1612753371.712000 [8516] [15000] : R | API+ 10.17.0.0 : Found required SSL file : ../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params.
+1612753371.712000 [8516] [15000] : R | API+ 10.17.0.0 : Using default cert name.
+1612753371.712000 [8516] [15000] : R | API+ 10.17.0.0 : OmneEngine::OmneEngine : in
+1612753371.734000 [8516] [15000] : R | API+ 10.17.0.0 : OmneEngine::enableAdminHeartbeat : in
+1612753371.734000 [8516] [15000] : R | API+ 10.17.0.0 : OmneLock::OmneLock : in
+1612753371.734000 [8516] [15000] : R | API+ 10.17.0.0 : OmneCounter::OmneCounter : in
+1612753371.734000 [8516] [15000] : R | API+ 10.17.0.0 : REngineHook::REngineHook : in
+1612753371.734000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612753371.734000 [8516] [15000] : R | API+ 10.17.0.0 : ShutdownSignal::ShutdownSignal : in
+1612753371.734000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612753371.734000 [8516] [15000] : R | API+ 10.17.0.0 : am_open : in
+1612753371.734000 [8516] [15000] : R | API+ 10.17.0.0 : registerRoutines : in
+1612753371.735000 [8516] [15000] : R | API+ 10.17.0.0 : registerAdminPages : in
+1612753371.735000 [8516] [15000] : R | API+ 10.17.0.0 : initVec : in
+1612753371.738000 [8516] [15000] : R | API+ 10.17.0.0 : addVersion : in
+1612753371.738000 [8516] [15000] : R | API+ 10.17.0.0 : addVersion : in
+1612753371.738000 [8516] [15000] : R | API+ 10.17.0.0 : clearBlacklistTimer : in
+1612753371.738000 [8516] [15000] : R | API+ 10.17.0.0 : initSession : in
+1612753371.779000 [8516] [15000] : R | API+ 10.17.0.0 : The REngine has been opened.
+1612753371.781000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::login : in
+1612753371.781000 [8516] [15000] : R | API+ 10.17.0.0 : logging in.
+1612753371.781000 [8516] [15000] : R | API+ 10.17.0.0 : LoginParams : 00FEFB38
+1612753371.781000 [8516] [15000] : R | API+ 10.17.0.0 : LoginParams::pCallbacks : 01AD9F38
+1612753371.782000 [8516] [15000] : R | API+ 10.17.0.0 : LoginParams::sUser : 17bryen@amp.com
+1612753371.782000 [8516] [15000] : R | API+ 10.17.0.0 : LoginParams::sMdUser : 17bryen@amp.com
+1612753371.782000 [8516] [15000] : R | API+ 10.17.0.0 : LoginParams::sMdCnnctPt : login_agent_tp_r01c
+1612753371.782000 [8516] [15000] : R | API+ 10.17.0.0 : LoginParams::sTsCnnctPt : login_agent_prodc
+1612753371.782000 [8516] [15000] : R | API+ 10.17.0.0 : LoginParams::sPnlCnnctPt : login_agent_pnl_sslc
+1612753371.782000 [8516] [15000] : R | API+ 10.17.0.0 : LoginParams::sIhUser : 17bryen@amp.com
+1612753371.782000 [8516] [15000] : R | API+ 10.17.0.0 : LoginParams::sIhCnnctPt : login_agent_historyc
+1612753371.782000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612753371.782000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612753371.782000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612753371.782000 [8516] [15000] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612753371.786000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612753371.786000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612753371.786000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612753373.816000 [8516] [12728] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Opened|1|1|0|
+1612753373.816000 [8516] [12728] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612753373.824000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612753373.824000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612753373.824000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612753373.824000 [8516] [15000] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612753373.827000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612753373.827000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612753373.828000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612753374.050000 [8516] [12728] : R | API+ 10.17.0.0 : logging into Market Data Connection : conn id : 1 : rp code : 0
+1612753374.051000 [8516] [12728] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Login Complete|4|1|0|ok
+1612753374.051000 [8516] [12728] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612753374.057000 [8516] [12728] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612753375.326000 [8516] [12728] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Opened|1|2|0|
+1612753375.326000 [8516] [12728] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612753375.334000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612753375.334000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612753375.334000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612753375.334000 [8516] [15000] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612753375.338000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612753375.338000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612753375.338000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612753375.595000 [8516] [12728] : R | API+ 10.17.0.0 : logging into Trading System Connection : conn id : 2 : rp code : 0
+1612753375.595000 [8516] [12728] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Login Complete|4|2|0|ok
+1612753375.595000 [8516] [12728] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612753375.609000 [8516] [12728] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612753375.933000 [8516] [12728] : R | API+ 10.17.0.0 : REngine::getAccounts : in
+1612753376.248000 [8516] [12728] : R | API+ 10.17.0.0 : RCallbacks::AccountList : in
+1612753377.021000 [8516] [12728] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Opened|1|3|0|
+1612753377.021000 [8516] [12728] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612753377.034000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612753377.034000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612753377.034000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612753377.034000 [8516] [15000] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612753377.039000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612753377.039000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612753377.039000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612753377.257000 [8516] [12728] : R | API+ 10.17.0.0 : logging into PnL Connection : conn id : 3 : rp code : 0
+1612753377.257000 [8516] [12728] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Login Complete|4|3|0|ok
+1612753377.257000 [8516] [12728] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612753377.271000 [8516] [12728] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612753378.493000 [8516] [12728] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Opened|1|4|0|
+1612753378.493000 [8516] [12728] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612753378.725000 [8516] [12728] : R | API+ 10.17.0.0 : logging into Intraday History Connection : conn id : 4 : rp code : 0
+1612753378.725000 [8516] [12728] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Login Complete|4|4|0|ok
+1612753378.725000 [8516] [12728] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612753378.743000 [8516] [12728] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612753379.521000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::subscribe(CME, ESH1, 3) : in
+1612753400.678000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::unsubscribe(CME, ESH1) : in
+1612753417.392000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::logout : in
+1612753417.392000 [8516] [15000] : R | API+ 10.17.0.0 : logging out...
+1612753417.392000 [8516] [15000] : R | API+ 10.17.0.0 : OmneStreamEngine::stop : in
+1612753417.392000 [8516] [15000] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Closed|2|4|0|
+1612753417.392000 [8516] [15000] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612753417.407000 [8516] [15000] : R | API+ 10.17.0.0 : OmneStreamEngine::~OmneStreamEngine : in
+1612753417.412000 [8516] [15000] : R | API+ 10.17.0.0 : OmneStreamEngine::stop : in
+1612753417.412000 [8516] [15000] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Closed|2|3|0|
+1612753417.412000 [8516] [15000] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612753417.431000 [8516] [15000] : R | API+ 10.17.0.0 : OmneStreamEngine::~OmneStreamEngine : in
+1612753417.434000 [8516] [15000] : R | API+ 10.17.0.0 : OmneStreamEngine::stop : in
+1612753417.435000 [8516] [15000] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Closed|2|2|0|
+1612753417.435000 [8516] [15000] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612753417.459000 [8516] [15000] : R | API+ 10.17.0.0 : OmneStreamEngine::~OmneStreamEngine : in
+1612753417.463000 [8516] [15000] : R | API+ 10.17.0.0 : OmneStreamEngine::stop : in
+1612753417.463000 [8516] [15000] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Closed|2|1|0|
+1612753417.463000 [8516] [15000] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612753417.481000 [8516] [15000] : R | API+ 10.17.0.0 : OmneStreamEngine::~OmneStreamEngine : in
+1612753417.487000 [8516] [15000] : R | API+ 10.17.0.0 : logout successful.
+1612753417.487000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::logoutRepository : in
+1612753417.487000 [8516] [15000] : R | API+ 10.17.0.0 : Ose is NULL : in
+1612753417.487000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::logout : in
+1612753417.487000 [8516] [15000] : R | API+ 10.17.0.0 : logging out...
+1612753417.502000 [8516] [15000] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612753417.502000 [8516] [15000] : R | API+ 10.17.0.0 : OmneEngine::~OmneEngine : in
+1612753417.517000 [8516] [15000] : R | API+ 10.17.0.0 : The R | API log file has been closed.
+1612757685.202000 [14740] [2832] : R | API+ 10.17.0.0 : The R | API log file has been opened.
+1612757685.202000 [14740] [2832] : R | API+ 10.17.0.0 : REngineParams::envp : 009BFAAC
+1612757685.202000 [14740] [2832] : R | API+ 10.17.0.0 : REngineParams::envp[0] : MML_DMN_SRVR_ADDR=ritpz01001.01.rithmic.com:65000~ritpz01000.01.rithmic.com:65000~ritpz01001.01.rithmic.net:65000~ritpz01000.01.rithmic.net:65000~ritpz01001.01.theomne.net:65000~ritpz01000.01.theomne.net:65000~ritpz01001.01.theomne.com:65000~ritpz01000.01.theomne.com:65000
+1612757685.202000 [14740] [2832] : R | API+ 10.17.0.0 : REngineParams::envp[1] : MML_DOMAIN_NAME=rithmic_prod_01_dmz_domain
+1612757685.202000 [14740] [2832] : R | API+ 10.17.0.0 : REngineParams::envp[2] : MML_LIC_SRVR_ADDR=ritpz01000.01.rithmic.com:56000~ritpz01001.01.rithmic.com:56000~ritpz01000.01.rithmic.net:56000~ritpz01001.01.rithmic.net:56000~ritpz01000.01.theomne.net:56000~ritpz01001.01.theomne.net:56000~ritpz01000.01.theomne.com:56000~ritpz01001.01.theomne.com:56000
+1612757685.202000 [14740] [2832] : R | API+ 10.17.0.0 : REngineParams::envp[3] : MML_LOC_BROK_ADDR=ritpz01000.01.rithmic.com:64100
+1612757685.202000 [14740] [2832] : R | API+ 10.17.0.0 : REngineParams::envp[4] : MML_LOGGER_ADDR=ritpz01000.01.rithmic.com:45454~ritpz01000.01.rithmic.net:45454~ritpz01000.01.theomne.net:45454~ritpz01000.01.theomne.com:45454
+1612757685.202000 [14740] [2832] : R | API+ 10.17.0.0 : REngineParams::envp[5] : MML_LOG_TYPE=log_net
+1612757685.202000 [14740] [2832] : R | API+ 10.17.0.0 : REngineParams::envp[6] : MML_SSL_CLNT_AUTH_FILE=../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params
+1612757685.202000 [14740] [2832] : R | API+ 10.17.0.0 : REngineParams::envp[7] : USER=17bryen@amp.com
+1612757685.202000 [14740] [2832] : R | API+ 10.17.0.0 : REngineParams::sAppName : brro:QuantCLI
+1612757685.202000 [14740] [2832] : R | API+ 10.17.0.0 : REngineParams::sAppVersion : 1.2.0.0
+1612757685.202000 [14740] [2832] : R | API+ 10.17.0.0 : REngineParams::sAdmCnnctPt : dd_admin_sslc
+1612757685.202000 [14740] [2832] : R | API+ 10.17.0.0 : REngineParams::pAdmCallbacks : 00E58340
+1612757685.202000 [14740] [2832] : R | API+ 10.17.0.0 : REngineParams::pContext : 00000000
+1612757685.203000 [14740] [2832] : R | API+ 10.17.0.0 : AdminName : brro:QuantCLI-1.2.0.0-17bryen@amp.com-14740-1612757685.203000
+1612757686.405000 [14740] [2832] : R | API+ 10.17.0.0 : OS Name : Windows
+1612757686.405000 [14740] [2832] : R | API+ 10.17.0.0 : OS Version : 6.2
+1612757686.405000 [14740] [2832] : R | API+ 10.17.0.0 : Machine Type : x86 (WinOS)
+1612757686.405000 [14740] [2832] : R | API+ 10.17.0.0 : Host Name : DESKTOP-5VPJE5G
+1612757686.405000 [14740] [2832] : R | API+ 10.17.0.0 : Local Address : 10.91.70.34
+1612757686.431000 [14740] [2832] : R | API+ 10.17.0.0 : Found required SSL file : ../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params.
+1612757686.431000 [14740] [2832] : R | API+ 10.17.0.0 : Using default cert name.
+1612757686.431000 [14740] [2832] : R | API+ 10.17.0.0 : OmneEngine::OmneEngine : in
+1612757686.443000 [14740] [2832] : R | API+ 10.17.0.0 : OmneEngine::enableAdminHeartbeat : in
+1612757686.443000 [14740] [2832] : R | API+ 10.17.0.0 : OmneLock::OmneLock : in
+1612757686.443000 [14740] [2832] : R | API+ 10.17.0.0 : OmneCounter::OmneCounter : in
+1612757686.443000 [14740] [2832] : R | API+ 10.17.0.0 : REngineHook::REngineHook : in
+1612757686.443000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757686.443000 [14740] [2832] : R | API+ 10.17.0.0 : ShutdownSignal::ShutdownSignal : in
+1612757686.443000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757686.443000 [14740] [2832] : R | API+ 10.17.0.0 : am_open : in
+1612757686.443000 [14740] [2832] : R | API+ 10.17.0.0 : registerRoutines : in
+1612757686.443000 [14740] [2832] : R | API+ 10.17.0.0 : registerAdminPages : in
+1612757686.443000 [14740] [2832] : R | API+ 10.17.0.0 : initVec : in
+1612757686.447000 [14740] [2832] : R | API+ 10.17.0.0 : addVersion : in
+1612757686.447000 [14740] [2832] : R | API+ 10.17.0.0 : addVersion : in
+1612757686.447000 [14740] [2832] : R | API+ 10.17.0.0 : clearBlacklistTimer : in
+1612757686.447000 [14740] [2832] : R | API+ 10.17.0.0 : initSession : in
+1612757686.492000 [14740] [2832] : R | API+ 10.17.0.0 : The REngine has been opened.
+1612757686.494000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::login : in
+1612757686.495000 [14740] [2832] : R | API+ 10.17.0.0 : logging in.
+1612757686.495000 [14740] [2832] : R | API+ 10.17.0.0 : LoginParams : 009BFA80
+1612757686.495000 [14740] [2832] : R | API+ 10.17.0.0 : LoginParams::pCallbacks : 00E9B838
+1612757686.495000 [14740] [2832] : R | API+ 10.17.0.0 : LoginParams::sUser : 17bryen@amp.com
+1612757686.495000 [14740] [2832] : R | API+ 10.17.0.0 : LoginParams::sMdUser : 17bryen@amp.com
+1612757686.495000 [14740] [2832] : R | API+ 10.17.0.0 : LoginParams::sMdCnnctPt : login_agent_tp_r01c
+1612757686.495000 [14740] [2832] : R | API+ 10.17.0.0 : LoginParams::sTsCnnctPt : login_agent_prodc
+1612757686.495000 [14740] [2832] : R | API+ 10.17.0.0 : LoginParams::sPnlCnnctPt : login_agent_pnl_sslc
+1612757686.495000 [14740] [2832] : R | API+ 10.17.0.0 : LoginParams::sIhUser : 17bryen@amp.com
+1612757686.495000 [14740] [2832] : R | API+ 10.17.0.0 : LoginParams::sIhCnnctPt : login_agent_historyc
+1612757686.495000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757686.495000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612757686.496000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612757686.496000 [14740] [2832] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612757686.501000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757686.501000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612757686.501000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612757688.554000 [14740] [15812] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Opened|1|1|0|
+1612757688.554000 [14740] [15812] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612757688.560000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757688.560000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612757688.560000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612757688.560000 [14740] [2832] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612757688.563000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757688.563000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612757688.563000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612757688.797000 [14740] [15812] : R | API+ 10.17.0.0 : logging into Market Data Connection : conn id : 1 : rp code : 0
+1612757688.797000 [14740] [15812] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Login Complete|4|1|0|ok
+1612757688.797000 [14740] [15812] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612757688.803000 [14740] [15812] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757690.018000 [14740] [15812] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Opened|1|2|0|
+1612757690.018000 [14740] [15812] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612757690.025000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757690.025000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612757690.025000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612757690.025000 [14740] [2832] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612757690.029000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757690.030000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612757690.030000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612757690.267000 [14740] [15812] : R | API+ 10.17.0.0 : logging into Trading System Connection : conn id : 2 : rp code : 0
+1612757690.267000 [14740] [15812] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Login Complete|4|2|0|ok
+1612757690.267000 [14740] [15812] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612757690.280000 [14740] [15812] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757690.509000 [14740] [15812] : R | API+ 10.17.0.0 : REngine::getAccounts : in
+1612757690.749000 [14740] [15812] : R | API+ 10.17.0.0 : RCallbacks::AccountList : in
+1612757692.708000 [14740] [15812] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Opened|1|3|0|
+1612757692.708000 [14740] [15812] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612757692.724000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757692.724000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612757692.724000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612757692.724000 [14740] [2832] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612757692.729000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757692.729000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612757692.729000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612757693.196000 [14740] [15812] : R | API+ 10.17.0.0 : logging into PnL Connection : conn id : 3 : rp code : 0
+1612757693.196000 [14740] [15812] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Login Complete|4|3|0|ok
+1612757693.196000 [14740] [15812] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612757693.215000 [14740] [15812] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757694.111000 [14740] [15812] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Opened|1|4|0|
+1612757694.112000 [14740] [15812] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612757694.350000 [14740] [15812] : R | API+ 10.17.0.0 : logging into Intraday History Connection : conn id : 4 : rp code : 0
+1612757694.350000 [14740] [15812] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Login Complete|4|4|0|ok
+1612757694.350000 [14740] [15812] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612757694.384000 [14740] [15812] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757695.133000 [14740] [2832] : R | API+ 10.17.0.0 : REngine::subscribe(CME, ESH1, 3) : in
+1612757804.828000 [5520] [3024] : R | API+ 10.17.0.0 : The R | API log file has been opened.
+1612757804.828000 [5520] [3024] : R | API+ 10.17.0.0 : REngineParams::envp : 00EFF5CC
+1612757804.828000 [5520] [3024] : R | API+ 10.17.0.0 : REngineParams::envp[0] : MML_DMN_SRVR_ADDR=ritpz01001.01.rithmic.com:65000~ritpz01000.01.rithmic.com:65000~ritpz01001.01.rithmic.net:65000~ritpz01000.01.rithmic.net:65000~ritpz01001.01.theomne.net:65000~ritpz01000.01.theomne.net:65000~ritpz01001.01.theomne.com:65000~ritpz01000.01.theomne.com:65000
+1612757804.828000 [5520] [3024] : R | API+ 10.17.0.0 : REngineParams::envp[1] : MML_DOMAIN_NAME=rithmic_prod_01_dmz_domain
+1612757804.828000 [5520] [3024] : R | API+ 10.17.0.0 : REngineParams::envp[2] : MML_LIC_SRVR_ADDR=ritpz01000.01.rithmic.com:56000~ritpz01001.01.rithmic.com:56000~ritpz01000.01.rithmic.net:56000~ritpz01001.01.rithmic.net:56000~ritpz01000.01.theomne.net:56000~ritpz01001.01.theomne.net:56000~ritpz01000.01.theomne.com:56000~ritpz01001.01.theomne.com:56000
+1612757804.828000 [5520] [3024] : R | API+ 10.17.0.0 : REngineParams::envp[3] : MML_LOC_BROK_ADDR=ritpz01000.01.rithmic.com:64100
+1612757804.828000 [5520] [3024] : R | API+ 10.17.0.0 : REngineParams::envp[4] : MML_LOGGER_ADDR=ritpz01000.01.rithmic.com:45454~ritpz01000.01.rithmic.net:45454~ritpz01000.01.theomne.net:45454~ritpz01000.01.theomne.com:45454
+1612757804.828000 [5520] [3024] : R | API+ 10.17.0.0 : REngineParams::envp[5] : MML_LOG_TYPE=log_net
+1612757804.828000 [5520] [3024] : R | API+ 10.17.0.0 : REngineParams::envp[6] : MML_SSL_CLNT_AUTH_FILE=../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params
+1612757804.828000 [5520] [3024] : R | API+ 10.17.0.0 : REngineParams::envp[7] : USER=17bryen@amp.com
+1612757804.828000 [5520] [3024] : R | API+ 10.17.0.0 : REngineParams::sAppName : brro:QuantCLI
+1612757804.828000 [5520] [3024] : R | API+ 10.17.0.0 : REngineParams::sAppVersion : 1.2.0.0
+1612757804.828000 [5520] [3024] : R | API+ 10.17.0.0 : REngineParams::sAdmCnnctPt : dd_admin_sslc
+1612757804.828000 [5520] [3024] : R | API+ 10.17.0.0 : REngineParams::pAdmCallbacks : 010B8AE0
+1612757804.828000 [5520] [3024] : R | API+ 10.17.0.0 : REngineParams::pContext : 00000000
+1612757804.828000 [5520] [3024] : R | API+ 10.17.0.0 : AdminName : brro:QuantCLI-1.2.0.0-17bryen@amp.com-5520-1612757804.828000
+1612757805.610000 [5520] [3024] : R | API+ 10.17.0.0 : OS Name : Windows
+1612757805.610000 [5520] [3024] : R | API+ 10.17.0.0 : OS Version : 6.2
+1612757805.610000 [5520] [3024] : R | API+ 10.17.0.0 : Machine Type : x86 (WinOS)
+1612757805.610000 [5520] [3024] : R | API+ 10.17.0.0 : Host Name : DESKTOP-5VPJE5G
+1612757805.611000 [5520] [3024] : R | API+ 10.17.0.0 : Local Address : 10.91.70.34
+1612757805.635000 [5520] [3024] : R | API+ 10.17.0.0 : Found required SSL file : ../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params.
+1612757805.635000 [5520] [3024] : R | API+ 10.17.0.0 : Using default cert name.
+1612757805.635000 [5520] [3024] : R | API+ 10.17.0.0 : OmneEngine::OmneEngine : in
+1612757805.679000 [5520] [3024] : R | API+ 10.17.0.0 : OmneEngine::enableAdminHeartbeat : in
+1612757805.679000 [5520] [3024] : R | API+ 10.17.0.0 : OmneLock::OmneLock : in
+1612757805.679000 [5520] [3024] : R | API+ 10.17.0.0 : OmneCounter::OmneCounter : in
+1612757805.679000 [5520] [3024] : R | API+ 10.17.0.0 : REngineHook::REngineHook : in
+1612757805.680000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757805.680000 [5520] [3024] : R | API+ 10.17.0.0 : ShutdownSignal::ShutdownSignal : in
+1612757805.680000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757805.680000 [5520] [3024] : R | API+ 10.17.0.0 : am_open : in
+1612757805.680000 [5520] [3024] : R | API+ 10.17.0.0 : registerRoutines : in
+1612757805.680000 [5520] [3024] : R | API+ 10.17.0.0 : registerAdminPages : in
+1612757805.680000 [5520] [3024] : R | API+ 10.17.0.0 : initVec : in
+1612757805.683000 [5520] [3024] : R | API+ 10.17.0.0 : addVersion : in
+1612757805.683000 [5520] [3024] : R | API+ 10.17.0.0 : addVersion : in
+1612757805.683000 [5520] [3024] : R | API+ 10.17.0.0 : clearBlacklistTimer : in
+1612757805.683000 [5520] [3024] : R | API+ 10.17.0.0 : initSession : in
+1612757805.722000 [5520] [3024] : R | API+ 10.17.0.0 : The REngine has been opened.
+1612757805.725000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::login : in
+1612757805.725000 [5520] [3024] : R | API+ 10.17.0.0 : logging in.
+1612757805.725000 [5520] [3024] : R | API+ 10.17.0.0 : LoginParams : 00EFF5A0
+1612757805.725000 [5520] [3024] : R | API+ 10.17.0.0 : LoginParams::pCallbacks : 010FA780
+1612757805.725000 [5520] [3024] : R | API+ 10.17.0.0 : LoginParams::sUser : 17bryen@amp.com
+1612757805.725000 [5520] [3024] : R | API+ 10.17.0.0 : LoginParams::sMdUser : 17bryen@amp.com
+1612757805.725000 [5520] [3024] : R | API+ 10.17.0.0 : LoginParams::sMdCnnctPt : login_agent_tp_r01c
+1612757805.725000 [5520] [3024] : R | API+ 10.17.0.0 : LoginParams::sTsCnnctPt : login_agent_prodc
+1612757805.725000 [5520] [3024] : R | API+ 10.17.0.0 : LoginParams::sPnlCnnctPt : login_agent_pnl_sslc
+1612757805.725000 [5520] [3024] : R | API+ 10.17.0.0 : LoginParams::sIhUser : 17bryen@amp.com
+1612757805.725000 [5520] [3024] : R | API+ 10.17.0.0 : LoginParams::sIhCnnctPt : login_agent_historyc
+1612757805.726000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757805.726000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612757805.726000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612757805.726000 [5520] [3024] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612757805.730000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757805.730000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612757805.730000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612757807.564000 [5520] [4840] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Opened|1|1|0|
+1612757807.564000 [5520] [4840] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612757807.570000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757807.570000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612757807.570000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612757807.570000 [5520] [3024] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612757807.573000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757807.573000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612757807.573000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612757807.817000 [5520] [4840] : R | API+ 10.17.0.0 : logging into Market Data Connection : conn id : 1 : rp code : 0
+1612757807.817000 [5520] [4840] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Login Complete|4|1|0|ok
+1612757807.817000 [5520] [4840] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612757807.824000 [5520] [4840] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757809.059000 [5520] [4840] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Opened|1|2|0|
+1612757809.059000 [5520] [4840] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612757809.067000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757809.067000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612757809.067000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612757809.067000 [5520] [3024] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612757809.071000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757809.071000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612757809.071000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612757809.293000 [5520] [4840] : R | API+ 10.17.0.0 : logging into Trading System Connection : conn id : 2 : rp code : 0
+1612757809.293000 [5520] [4840] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Login Complete|4|2|0|ok
+1612757809.293000 [5520] [4840] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612757809.307000 [5520] [4840] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757809.604000 [5520] [4840] : R | API+ 10.17.0.0 : REngine::getAccounts : in
+1612757809.850000 [5520] [4840] : R | API+ 10.17.0.0 : RCallbacks::AccountList : in
+1612757810.619000 [5520] [4840] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Opened|1|3|0|
+1612757810.619000 [5520] [4840] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612757810.633000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757810.633000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612757810.633000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612757810.633000 [5520] [3024] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612757810.636000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757810.636000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612757810.636000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612757810.881000 [5520] [4840] : R | API+ 10.17.0.0 : logging into PnL Connection : conn id : 3 : rp code : 0
+1612757810.881000 [5520] [4840] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Login Complete|4|3|0|ok
+1612757810.881000 [5520] [4840] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612757810.894000 [5520] [4840] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757812.164000 [5520] [4840] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Opened|1|4|0|
+1612757812.164000 [5520] [4840] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612757812.395000 [5520] [4840] : R | API+ 10.17.0.0 : logging into Intraday History Connection : conn id : 4 : rp code : 0
+1612757812.395000 [5520] [4840] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Login Complete|4|4|0|ok
+1612757812.395000 [5520] [4840] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612757812.412000 [5520] [4840] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612757813.190000 [5520] [3024] : R | API+ 10.17.0.0 : REngine::subscribe(CME, ESH1, 3) : in
+1612758009.584000 [3480] [15644] : R | API+ 10.17.0.0 : The R | API log file has been opened.
+1612758009.584000 [3480] [15644] : R | API+ 10.17.0.0 : REngineParams::envp : 00F5F4F0
+1612758009.584000 [3480] [15644] : R | API+ 10.17.0.0 : REngineParams::envp[0] : MML_DMN_SRVR_ADDR=ritpz01001.01.rithmic.com:65000~ritpz01000.01.rithmic.com:65000~ritpz01001.01.rithmic.net:65000~ritpz01000.01.rithmic.net:65000~ritpz01001.01.theomne.net:65000~ritpz01000.01.theomne.net:65000~ritpz01001.01.theomne.com:65000~ritpz01000.01.theomne.com:65000
+1612758009.584000 [3480] [15644] : R | API+ 10.17.0.0 : REngineParams::envp[1] : MML_DOMAIN_NAME=rithmic_prod_01_dmz_domain
+1612758009.584000 [3480] [15644] : R | API+ 10.17.0.0 : REngineParams::envp[2] : MML_LIC_SRVR_ADDR=ritpz01000.01.rithmic.com:56000~ritpz01001.01.rithmic.com:56000~ritpz01000.01.rithmic.net:56000~ritpz01001.01.rithmic.net:56000~ritpz01000.01.theomne.net:56000~ritpz01001.01.theomne.net:56000~ritpz01000.01.theomne.com:56000~ritpz01001.01.theomne.com:56000
+1612758009.584000 [3480] [15644] : R | API+ 10.17.0.0 : REngineParams::envp[3] : MML_LOC_BROK_ADDR=ritpz01000.01.rithmic.com:64100
+1612758009.584000 [3480] [15644] : R | API+ 10.17.0.0 : REngineParams::envp[4] : MML_LOGGER_ADDR=ritpz01000.01.rithmic.com:45454~ritpz01000.01.rithmic.net:45454~ritpz01000.01.theomne.net:45454~ritpz01000.01.theomne.com:45454
+1612758009.584000 [3480] [15644] : R | API+ 10.17.0.0 : REngineParams::envp[5] : MML_LOG_TYPE=log_net
+1612758009.584000 [3480] [15644] : R | API+ 10.17.0.0 : REngineParams::envp[6] : MML_SSL_CLNT_AUTH_FILE=../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params
+1612758009.584000 [3480] [15644] : R | API+ 10.17.0.0 : REngineParams::envp[7] : USER=17bryen@amp.com
+1612758009.584000 [3480] [15644] : R | API+ 10.17.0.0 : REngineParams::sAppName : brro:QuantCLI
+1612758009.584000 [3480] [15644] : R | API+ 10.17.0.0 : REngineParams::sAppVersion : 1.2.0.0
+1612758009.584000 [3480] [15644] : R | API+ 10.17.0.0 : REngineParams::sAdmCnnctPt : dd_admin_sslc
+1612758009.584000 [3480] [15644] : R | API+ 10.17.0.0 : REngineParams::pAdmCallbacks : 012975B8
+1612758009.584000 [3480] [15644] : R | API+ 10.17.0.0 : REngineParams::pContext : 00000000
+1612758009.584000 [3480] [15644] : R | API+ 10.17.0.0 : AdminName : brro:QuantCLI-1.2.0.0-17bryen@amp.com-3480-1612758009.584000
+1612758010.365000 [3480] [15644] : R | API+ 10.17.0.0 : OS Name : Windows
+1612758010.365000 [3480] [15644] : R | API+ 10.17.0.0 : OS Version : 6.2
+1612758010.365000 [3480] [15644] : R | API+ 10.17.0.0 : Machine Type : x86 (WinOS)
+1612758010.365000 [3480] [15644] : R | API+ 10.17.0.0 : Host Name : DESKTOP-5VPJE5G
+1612758010.365000 [3480] [15644] : R | API+ 10.17.0.0 : Local Address : 10.91.70.34
+1612758010.389000 [3480] [15644] : R | API+ 10.17.0.0 : Found required SSL file : ../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params.
+1612758010.389000 [3480] [15644] : R | API+ 10.17.0.0 : Using default cert name.
+1612758010.389000 [3480] [15644] : R | API+ 10.17.0.0 : OmneEngine::OmneEngine : in
+1612758010.398000 [3480] [15644] : R | API+ 10.17.0.0 : OmneEngine::enableAdminHeartbeat : in
+1612758010.398000 [3480] [15644] : R | API+ 10.17.0.0 : OmneLock::OmneLock : in
+1612758010.398000 [3480] [15644] : R | API+ 10.17.0.0 : OmneCounter::OmneCounter : in
+1612758010.398000 [3480] [15644] : R | API+ 10.17.0.0 : REngineHook::REngineHook : in
+1612758010.398000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758010.398000 [3480] [15644] : R | API+ 10.17.0.0 : ShutdownSignal::ShutdownSignal : in
+1612758010.398000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758010.398000 [3480] [15644] : R | API+ 10.17.0.0 : am_open : in
+1612758010.398000 [3480] [15644] : R | API+ 10.17.0.0 : registerRoutines : in
+1612758010.398000 [3480] [15644] : R | API+ 10.17.0.0 : registerAdminPages : in
+1612758010.398000 [3480] [15644] : R | API+ 10.17.0.0 : initVec : in
+1612758010.401000 [3480] [15644] : R | API+ 10.17.0.0 : addVersion : in
+1612758010.401000 [3480] [15644] : R | API+ 10.17.0.0 : addVersion : in
+1612758010.401000 [3480] [15644] : R | API+ 10.17.0.0 : clearBlacklistTimer : in
+1612758010.401000 [3480] [15644] : R | API+ 10.17.0.0 : initSession : in
+1612758010.438000 [3480] [15644] : R | API+ 10.17.0.0 : The REngine has been opened.
+1612758010.441000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::login : in
+1612758010.441000 [3480] [15644] : R | API+ 10.17.0.0 : logging in.
+1612758010.441000 [3480] [15644] : R | API+ 10.17.0.0 : LoginParams : 00F5F4C4
+1612758010.441000 [3480] [15644] : R | API+ 10.17.0.0 : LoginParams::pCallbacks : 012DA980
+1612758010.441000 [3480] [15644] : R | API+ 10.17.0.0 : LoginParams::sUser : 17bryen@amp.com
+1612758010.441000 [3480] [15644] : R | API+ 10.17.0.0 : LoginParams::sMdUser : 17bryen@amp.com
+1612758010.442000 [3480] [15644] : R | API+ 10.17.0.0 : LoginParams::sMdCnnctPt : login_agent_tp_r01c
+1612758010.442000 [3480] [15644] : R | API+ 10.17.0.0 : LoginParams::sTsCnnctPt : login_agent_prodc
+1612758010.442000 [3480] [15644] : R | API+ 10.17.0.0 : LoginParams::sPnlCnnctPt : login_agent_pnl_sslc
+1612758010.442000 [3480] [15644] : R | API+ 10.17.0.0 : LoginParams::sIhUser : 17bryen@amp.com
+1612758010.442000 [3480] [15644] : R | API+ 10.17.0.0 : LoginParams::sIhCnnctPt : login_agent_historyc
+1612758010.442000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758010.442000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758010.442000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758010.442000 [3480] [15644] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758010.446000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758010.446000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758010.446000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758012.130000 [3480] [9568] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Opened|1|1|0|
+1612758012.130000 [3480] [9568] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758012.136000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758012.136000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758012.136000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758012.136000 [3480] [15644] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758012.139000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758012.139000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758012.139000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758012.385000 [3480] [9568] : R | API+ 10.17.0.0 : logging into Market Data Connection : conn id : 1 : rp code : 0
+1612758012.385000 [3480] [9568] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Login Complete|4|1|0|ok
+1612758012.385000 [3480] [9568] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758012.391000 [3480] [9568] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758013.568000 [3480] [9568] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Opened|1|2|0|
+1612758013.568000 [3480] [9568] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758013.576000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758013.576000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758013.577000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758013.577000 [3480] [15644] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758013.580000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758013.580000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758013.580000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758013.831000 [3480] [9568] : R | API+ 10.17.0.0 : logging into Trading System Connection : conn id : 2 : rp code : 0
+1612758013.831000 [3480] [9568] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Login Complete|4|2|0|ok
+1612758013.831000 [3480] [9568] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758013.850000 [3480] [9568] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758014.094000 [3480] [9568] : R | API+ 10.17.0.0 : REngine::getAccounts : in
+1612758014.316000 [3480] [9568] : R | API+ 10.17.0.0 : RCallbacks::AccountList : in
+1612758014.981000 [3480] [9568] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Opened|1|3|0|
+1612758014.981000 [3480] [9568] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758014.996000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758014.996000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758014.996000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758014.996000 [3480] [15644] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758015.000000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758015.000000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758015.000000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758015.200000 [3480] [9568] : R | API+ 10.17.0.0 : logging into PnL Connection : conn id : 3 : rp code : 0
+1612758015.200000 [3480] [9568] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Login Complete|4|3|0|ok
+1612758015.200000 [3480] [9568] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758015.221000 [3480] [9568] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758016.474000 [3480] [9568] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Opened|1|4|0|
+1612758016.474000 [3480] [9568] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758016.724000 [3480] [9568] : R | API+ 10.17.0.0 : logging into Intraday History Connection : conn id : 4 : rp code : 0
+1612758016.724000 [3480] [9568] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Login Complete|4|4|0|ok
+1612758016.724000 [3480] [9568] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758016.737000 [3480] [9568] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758017.491000 [3480] [15644] : R | API+ 10.17.0.0 : REngine::subscribe(CME, ESH1, 3) : in
+1612758085.649000 [13052] [5576] : R | API+ 10.17.0.0 : The R | API log file has been opened.
+1612758085.650000 [13052] [5576] : R | API+ 10.17.0.0 : REngineParams::envp : 0113FC14
+1612758085.650000 [13052] [5576] : R | API+ 10.17.0.0 : REngineParams::envp[0] : MML_DMN_SRVR_ADDR=ritpz01001.01.rithmic.com:65000~ritpz01000.01.rithmic.com:65000~ritpz01001.01.rithmic.net:65000~ritpz01000.01.rithmic.net:65000~ritpz01001.01.theomne.net:65000~ritpz01000.01.theomne.net:65000~ritpz01001.01.theomne.com:65000~ritpz01000.01.theomne.com:65000
+1612758085.650000 [13052] [5576] : R | API+ 10.17.0.0 : REngineParams::envp[1] : MML_DOMAIN_NAME=rithmic_prod_01_dmz_domain
+1612758085.650000 [13052] [5576] : R | API+ 10.17.0.0 : REngineParams::envp[2] : MML_LIC_SRVR_ADDR=ritpz01000.01.rithmic.com:56000~ritpz01001.01.rithmic.com:56000~ritpz01000.01.rithmic.net:56000~ritpz01001.01.rithmic.net:56000~ritpz01000.01.theomne.net:56000~ritpz01001.01.theomne.net:56000~ritpz01000.01.theomne.com:56000~ritpz01001.01.theomne.com:56000
+1612758085.650000 [13052] [5576] : R | API+ 10.17.0.0 : REngineParams::envp[3] : MML_LOC_BROK_ADDR=ritpz01000.01.rithmic.com:64100
+1612758085.650000 [13052] [5576] : R | API+ 10.17.0.0 : REngineParams::envp[4] : MML_LOGGER_ADDR=ritpz01000.01.rithmic.com:45454~ritpz01000.01.rithmic.net:45454~ritpz01000.01.theomne.net:45454~ritpz01000.01.theomne.com:45454
+1612758085.650000 [13052] [5576] : R | API+ 10.17.0.0 : REngineParams::envp[5] : MML_LOG_TYPE=log_net
+1612758085.650000 [13052] [5576] : R | API+ 10.17.0.0 : REngineParams::envp[6] : MML_SSL_CLNT_AUTH_FILE=../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params
+1612758085.650000 [13052] [5576] : R | API+ 10.17.0.0 : REngineParams::envp[7] : USER=17bryen@amp.com
+1612758085.650000 [13052] [5576] : R | API+ 10.17.0.0 : REngineParams::sAppName : brro:QuantCLI
+1612758085.650000 [13052] [5576] : R | API+ 10.17.0.0 : REngineParams::sAppVersion : 1.2.0.0
+1612758085.650000 [13052] [5576] : R | API+ 10.17.0.0 : REngineParams::sAdmCnnctPt : dd_admin_sslc
+1612758085.650000 [13052] [5576] : R | API+ 10.17.0.0 : REngineParams::pAdmCallbacks : 01417620
+1612758085.650000 [13052] [5576] : R | API+ 10.17.0.0 : REngineParams::pContext : 00000000
+1612758085.650000 [13052] [5576] : R | API+ 10.17.0.0 : AdminName : brro:QuantCLI-1.2.0.0-17bryen@amp.com-13052-1612758085.650000
+1612758086.491000 [13052] [5576] : R | API+ 10.17.0.0 : OS Name : Windows
+1612758086.491000 [13052] [5576] : R | API+ 10.17.0.0 : OS Version : 6.2
+1612758086.491000 [13052] [5576] : R | API+ 10.17.0.0 : Machine Type : x86 (WinOS)
+1612758086.491000 [13052] [5576] : R | API+ 10.17.0.0 : Host Name : DESKTOP-5VPJE5G
+1612758086.491000 [13052] [5576] : R | API+ 10.17.0.0 : Local Address : 10.91.70.34
+1612758086.516000 [13052] [5576] : R | API+ 10.17.0.0 : Found required SSL file : ../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params.
+1612758086.516000 [13052] [5576] : R | API+ 10.17.0.0 : Using default cert name.
+1612758086.516000 [13052] [5576] : R | API+ 10.17.0.0 : OmneEngine::OmneEngine : in
+1612758086.524000 [13052] [5576] : R | API+ 10.17.0.0 : OmneEngine::enableAdminHeartbeat : in
+1612758086.524000 [13052] [5576] : R | API+ 10.17.0.0 : OmneLock::OmneLock : in
+1612758086.524000 [13052] [5576] : R | API+ 10.17.0.0 : OmneCounter::OmneCounter : in
+1612758086.524000 [13052] [5576] : R | API+ 10.17.0.0 : REngineHook::REngineHook : in
+1612758086.524000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758086.525000 [13052] [5576] : R | API+ 10.17.0.0 : ShutdownSignal::ShutdownSignal : in
+1612758086.525000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758086.525000 [13052] [5576] : R | API+ 10.17.0.0 : am_open : in
+1612758086.525000 [13052] [5576] : R | API+ 10.17.0.0 : registerRoutines : in
+1612758086.525000 [13052] [5576] : R | API+ 10.17.0.0 : registerAdminPages : in
+1612758086.525000 [13052] [5576] : R | API+ 10.17.0.0 : initVec : in
+1612758086.528000 [13052] [5576] : R | API+ 10.17.0.0 : addVersion : in
+1612758086.528000 [13052] [5576] : R | API+ 10.17.0.0 : addVersion : in
+1612758086.528000 [13052] [5576] : R | API+ 10.17.0.0 : clearBlacklistTimer : in
+1612758086.528000 [13052] [5576] : R | API+ 10.17.0.0 : initSession : in
+1612758086.564000 [13052] [5576] : R | API+ 10.17.0.0 : The REngine has been opened.
+1612758086.567000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::login : in
+1612758086.567000 [13052] [5576] : R | API+ 10.17.0.0 : logging in.
+1612758086.567000 [13052] [5576] : R | API+ 10.17.0.0 : LoginParams : 0113FBE8
+1612758086.567000 [13052] [5576] : R | API+ 10.17.0.0 : LoginParams::pCallbacks : 0145B7E8
+1612758086.567000 [13052] [5576] : R | API+ 10.17.0.0 : LoginParams::sUser : 17bryen@amp.com
+1612758086.567000 [13052] [5576] : R | API+ 10.17.0.0 : LoginParams::sMdUser : 17bryen@amp.com
+1612758086.567000 [13052] [5576] : R | API+ 10.17.0.0 : LoginParams::sMdCnnctPt : login_agent_tp_r01c
+1612758086.567000 [13052] [5576] : R | API+ 10.17.0.0 : LoginParams::sTsCnnctPt : login_agent_prodc
+1612758086.567000 [13052] [5576] : R | API+ 10.17.0.0 : LoginParams::sPnlCnnctPt : login_agent_pnl_sslc
+1612758086.568000 [13052] [5576] : R | API+ 10.17.0.0 : LoginParams::sIhUser : 17bryen@amp.com
+1612758086.568000 [13052] [5576] : R | API+ 10.17.0.0 : LoginParams::sIhCnnctPt : login_agent_historyc
+1612758086.568000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758086.568000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758086.568000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758086.568000 [13052] [5576] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758086.572000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758086.572000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758086.572000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758088.329000 [13052] [16480] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Opened|1|1|0|
+1612758088.329000 [13052] [16480] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758088.337000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758088.337000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758088.337000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758088.337000 [13052] [5576] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758088.340000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758088.340000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758088.340000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758088.560000 [13052] [16480] : R | API+ 10.17.0.0 : logging into Market Data Connection : conn id : 1 : rp code : 0
+1612758088.560000 [13052] [16480] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Login Complete|4|1|0|ok
+1612758088.560000 [13052] [16480] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758088.566000 [13052] [16480] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758089.793000 [13052] [16480] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Opened|1|2|0|
+1612758089.793000 [13052] [16480] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758089.801000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758089.801000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758089.801000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758089.801000 [13052] [5576] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758089.805000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758089.805000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758089.805000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758090.057000 [13052] [16480] : R | API+ 10.17.0.0 : logging into Trading System Connection : conn id : 2 : rp code : 0
+1612758090.057000 [13052] [16480] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Login Complete|4|2|0|ok
+1612758090.057000 [13052] [16480] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758090.070000 [13052] [16480] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758090.312000 [13052] [16480] : R | API+ 10.17.0.0 : REngine::getAccounts : in
+1612758090.552000 [13052] [16480] : R | API+ 10.17.0.0 : RCallbacks::AccountList : in
+1612758091.307000 [13052] [16480] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Opened|1|3|0|
+1612758091.307000 [13052] [16480] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758091.319000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758091.319000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758091.319000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758091.319000 [13052] [5576] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758091.323000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758091.323000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758091.323000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758091.528000 [13052] [16480] : R | API+ 10.17.0.0 : logging into PnL Connection : conn id : 3 : rp code : 0
+1612758091.528000 [13052] [16480] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Login Complete|4|3|0|ok
+1612758091.528000 [13052] [16480] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758091.541000 [13052] [16480] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758092.795000 [13052] [16480] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Opened|1|4|0|
+1612758092.795000 [13052] [16480] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758093.048000 [13052] [16480] : R | API+ 10.17.0.0 : logging into Intraday History Connection : conn id : 4 : rp code : 0
+1612758093.048000 [13052] [16480] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Login Complete|4|4|0|ok
+1612758093.048000 [13052] [16480] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758093.062000 [13052] [16480] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758093.817000 [13052] [5576] : R | API+ 10.17.0.0 : REngine::subscribe(CME, ESH1, 3) : in
+1612758229.897000 [10380] [13084] : R | API+ 10.17.0.0 : The R | API log file has been opened.
+1612758229.897000 [10380] [13084] : R | API+ 10.17.0.0 : REngineParams::envp : 003CFAE4
+1612758229.897000 [10380] [13084] : R | API+ 10.17.0.0 : REngineParams::envp[0] : MML_DMN_SRVR_ADDR=ritpz01001.01.rithmic.com:65000~ritpz01000.01.rithmic.com:65000~ritpz01001.01.rithmic.net:65000~ritpz01000.01.rithmic.net:65000~ritpz01001.01.theomne.net:65000~ritpz01000.01.theomne.net:65000~ritpz01001.01.theomne.com:65000~ritpz01000.01.theomne.com:65000
+1612758229.897000 [10380] [13084] : R | API+ 10.17.0.0 : REngineParams::envp[1] : MML_DOMAIN_NAME=rithmic_prod_01_dmz_domain
+1612758229.898000 [10380] [13084] : R | API+ 10.17.0.0 : REngineParams::envp[2] : MML_LIC_SRVR_ADDR=ritpz01000.01.rithmic.com:56000~ritpz01001.01.rithmic.com:56000~ritpz01000.01.rithmic.net:56000~ritpz01001.01.rithmic.net:56000~ritpz01000.01.theomne.net:56000~ritpz01001.01.theomne.net:56000~ritpz01000.01.theomne.com:56000~ritpz01001.01.theomne.com:56000
+1612758229.898000 [10380] [13084] : R | API+ 10.17.0.0 : REngineParams::envp[3] : MML_LOC_BROK_ADDR=ritpz01000.01.rithmic.com:64100
+1612758229.898000 [10380] [13084] : R | API+ 10.17.0.0 : REngineParams::envp[4] : MML_LOGGER_ADDR=ritpz01000.01.rithmic.com:45454~ritpz01000.01.rithmic.net:45454~ritpz01000.01.theomne.net:45454~ritpz01000.01.theomne.com:45454
+1612758229.898000 [10380] [13084] : R | API+ 10.17.0.0 : REngineParams::envp[5] : MML_LOG_TYPE=log_net
+1612758229.898000 [10380] [13084] : R | API+ 10.17.0.0 : REngineParams::envp[6] : MML_SSL_CLNT_AUTH_FILE=../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params
+1612758229.898000 [10380] [13084] : R | API+ 10.17.0.0 : REngineParams::envp[7] : USER=17bryen@amp.com
+1612758229.898000 [10380] [13084] : R | API+ 10.17.0.0 : REngineParams::sAppName : brro:QuantCLI
+1612758229.898000 [10380] [13084] : R | API+ 10.17.0.0 : REngineParams::sAppVersion : 1.2.0.0
+1612758229.898000 [10380] [13084] : R | API+ 10.17.0.0 : REngineParams::sAdmCnnctPt : dd_admin_sslc
+1612758229.898000 [10380] [13084] : R | API+ 10.17.0.0 : REngineParams::pAdmCallbacks : 008579C8
+1612758229.898000 [10380] [13084] : R | API+ 10.17.0.0 : REngineParams::pContext : 00000000
+1612758229.898000 [10380] [13084] : R | API+ 10.17.0.0 : AdminName : brro:QuantCLI-1.2.0.0-17bryen@amp.com-10380-1612758229.898000
+1612758230.655000 [10380] [13084] : R | API+ 10.17.0.0 : OS Name : Windows
+1612758230.655000 [10380] [13084] : R | API+ 10.17.0.0 : OS Version : 6.2
+1612758230.655000 [10380] [13084] : R | API+ 10.17.0.0 : Machine Type : x86 (WinOS)
+1612758230.655000 [10380] [13084] : R | API+ 10.17.0.0 : Host Name : DESKTOP-5VPJE5G
+1612758230.655000 [10380] [13084] : R | API+ 10.17.0.0 : Local Address : 10.91.70.34
+1612758230.682000 [10380] [13084] : R | API+ 10.17.0.0 : Found required SSL file : ../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params.
+1612758230.682000 [10380] [13084] : R | API+ 10.17.0.0 : Using default cert name.
+1612758230.682000 [10380] [13084] : R | API+ 10.17.0.0 : OmneEngine::OmneEngine : in
+1612758230.693000 [10380] [13084] : R | API+ 10.17.0.0 : OmneEngine::enableAdminHeartbeat : in
+1612758230.693000 [10380] [13084] : R | API+ 10.17.0.0 : OmneLock::OmneLock : in
+1612758230.694000 [10380] [13084] : R | API+ 10.17.0.0 : OmneCounter::OmneCounter : in
+1612758230.694000 [10380] [13084] : R | API+ 10.17.0.0 : REngineHook::REngineHook : in
+1612758230.694000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758230.694000 [10380] [13084] : R | API+ 10.17.0.0 : ShutdownSignal::ShutdownSignal : in
+1612758230.694000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758230.694000 [10380] [13084] : R | API+ 10.17.0.0 : am_open : in
+1612758230.694000 [10380] [13084] : R | API+ 10.17.0.0 : registerRoutines : in
+1612758230.694000 [10380] [13084] : R | API+ 10.17.0.0 : registerAdminPages : in
+1612758230.694000 [10380] [13084] : R | API+ 10.17.0.0 : initVec : in
+1612758230.697000 [10380] [13084] : R | API+ 10.17.0.0 : addVersion : in
+1612758230.697000 [10380] [13084] : R | API+ 10.17.0.0 : addVersion : in
+1612758230.697000 [10380] [13084] : R | API+ 10.17.0.0 : clearBlacklistTimer : in
+1612758230.697000 [10380] [13084] : R | API+ 10.17.0.0 : initSession : in
+1612758230.739000 [10380] [13084] : R | API+ 10.17.0.0 : The REngine has been opened.
+1612758230.743000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::login : in
+1612758230.743000 [10380] [13084] : R | API+ 10.17.0.0 : logging in.
+1612758230.743000 [10380] [13084] : R | API+ 10.17.0.0 : LoginParams : 003CFAB8
+1612758230.743000 [10380] [13084] : R | API+ 10.17.0.0 : LoginParams::pCallbacks : 03027E00
+1612758230.743000 [10380] [13084] : R | API+ 10.17.0.0 : LoginParams::sUser : 17bryen@amp.com
+1612758230.743000 [10380] [13084] : R | API+ 10.17.0.0 : LoginParams::sMdUser : 17bryen@amp.com
+1612758230.744000 [10380] [13084] : R | API+ 10.17.0.0 : LoginParams::sMdCnnctPt : login_agent_tp_r01c
+1612758230.744000 [10380] [13084] : R | API+ 10.17.0.0 : LoginParams::sTsCnnctPt : login_agent_prodc
+1612758230.744000 [10380] [13084] : R | API+ 10.17.0.0 : LoginParams::sPnlCnnctPt : login_agent_pnl_sslc
+1612758230.744000 [10380] [13084] : R | API+ 10.17.0.0 : LoginParams::sIhUser : 17bryen@amp.com
+1612758230.744000 [10380] [13084] : R | API+ 10.17.0.0 : LoginParams::sIhCnnctPt : login_agent_historyc
+1612758230.744000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758230.744000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758230.744000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758230.744000 [10380] [13084] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758230.748000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758230.748000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758230.748000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758232.525000 [10380] [2860] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Opened|1|1|0|
+1612758232.525000 [10380] [2860] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758232.532000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758232.532000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758232.532000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758232.532000 [10380] [13084] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758232.535000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758232.535000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758232.535000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758232.755000 [10380] [2860] : R | API+ 10.17.0.0 : logging into Market Data Connection : conn id : 1 : rp code : 0
+1612758232.756000 [10380] [2860] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Login Complete|4|1|0|ok
+1612758232.756000 [10380] [2860] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758232.762000 [10380] [2860] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758233.995000 [10380] [2860] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Opened|1|2|0|
+1612758233.995000 [10380] [2860] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758234.003000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758234.003000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758234.003000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758234.003000 [10380] [13084] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758234.007000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758234.007000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758234.007000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758234.233000 [10380] [2860] : R | API+ 10.17.0.0 : logging into Trading System Connection : conn id : 2 : rp code : 0
+1612758234.233000 [10380] [2860] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Login Complete|4|2|0|ok
+1612758234.233000 [10380] [2860] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758234.245000 [10380] [2860] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758234.460000 [10380] [2860] : R | API+ 10.17.0.0 : REngine::getAccounts : in
+1612758234.691000 [10380] [2860] : R | API+ 10.17.0.0 : RCallbacks::AccountList : in
+1612758236.026000 [10380] [2860] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Opened|1|3|0|
+1612758236.026000 [10380] [2860] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758236.043000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758236.043000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758236.043000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758236.043000 [10380] [13084] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758236.048000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758236.048000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758236.048000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758236.315000 [10380] [2860] : R | API+ 10.17.0.0 : logging into PnL Connection : conn id : 3 : rp code : 0
+1612758236.315000 [10380] [2860] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Login Complete|4|3|0|ok
+1612758236.315000 [10380] [2860] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758236.328000 [10380] [2860] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758237.459000 [10380] [2860] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Opened|1|4|0|
+1612758237.459000 [10380] [2860] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758237.715000 [10380] [2860] : R | API+ 10.17.0.0 : logging into Intraday History Connection : conn id : 4 : rp code : 0
+1612758237.715000 [10380] [2860] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Login Complete|4|4|0|ok
+1612758237.715000 [10380] [2860] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758237.730000 [10380] [2860] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758238.475000 [10380] [13084] : R | API+ 10.17.0.0 : REngine::subscribe(CME, ESH1, 3) : in
+1612758365.282000 [11088] [14828] : R | API+ 10.17.0.0 : The R | API log file has been opened.
+1612758365.282000 [11088] [14828] : R | API+ 10.17.0.0 : REngineParams::envp : 0113F66C
+1612758365.282000 [11088] [14828] : R | API+ 10.17.0.0 : REngineParams::envp[0] : MML_DMN_SRVR_ADDR=ritpz01001.01.rithmic.com:65000~ritpz01000.01.rithmic.com:65000~ritpz01001.01.rithmic.net:65000~ritpz01000.01.rithmic.net:65000~ritpz01001.01.theomne.net:65000~ritpz01000.01.theomne.net:65000~ritpz01001.01.theomne.com:65000~ritpz01000.01.theomne.com:65000
+1612758365.283000 [11088] [14828] : R | API+ 10.17.0.0 : REngineParams::envp[1] : MML_DOMAIN_NAME=rithmic_prod_01_dmz_domain
+1612758365.283000 [11088] [14828] : R | API+ 10.17.0.0 : REngineParams::envp[2] : MML_LIC_SRVR_ADDR=ritpz01000.01.rithmic.com:56000~ritpz01001.01.rithmic.com:56000~ritpz01000.01.rithmic.net:56000~ritpz01001.01.rithmic.net:56000~ritpz01000.01.theomne.net:56000~ritpz01001.01.theomne.net:56000~ritpz01000.01.theomne.com:56000~ritpz01001.01.theomne.com:56000
+1612758365.283000 [11088] [14828] : R | API+ 10.17.0.0 : REngineParams::envp[3] : MML_LOC_BROK_ADDR=ritpz01000.01.rithmic.com:64100
+1612758365.283000 [11088] [14828] : R | API+ 10.17.0.0 : REngineParams::envp[4] : MML_LOGGER_ADDR=ritpz01000.01.rithmic.com:45454~ritpz01000.01.rithmic.net:45454~ritpz01000.01.theomne.net:45454~ritpz01000.01.theomne.com:45454
+1612758365.283000 [11088] [14828] : R | API+ 10.17.0.0 : REngineParams::envp[5] : MML_LOG_TYPE=log_net
+1612758365.283000 [11088] [14828] : R | API+ 10.17.0.0 : REngineParams::envp[6] : MML_SSL_CLNT_AUTH_FILE=../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params
+1612758365.283000 [11088] [14828] : R | API+ 10.17.0.0 : REngineParams::envp[7] : USER=17bryen@amp.com
+1612758365.283000 [11088] [14828] : R | API+ 10.17.0.0 : REngineParams::sAppName : brro:QuantCLI
+1612758365.283000 [11088] [14828] : R | API+ 10.17.0.0 : REngineParams::sAppVersion : 1.2.0.0
+1612758365.283000 [11088] [14828] : R | API+ 10.17.0.0 : REngineParams::sAdmCnnctPt : dd_admin_sslc
+1612758365.283000 [11088] [14828] : R | API+ 10.17.0.0 : REngineParams::pAdmCallbacks : 013778A8
+1612758365.283000 [11088] [14828] : R | API+ 10.17.0.0 : REngineParams::pContext : 00000000
+1612758365.283000 [11088] [14828] : R | API+ 10.17.0.0 : AdminName : brro:QuantCLI-1.2.0.0-17bryen@amp.com-11088-1612758365.283000
+1612758366.205000 [11088] [14828] : R | API+ 10.17.0.0 : OS Name : Windows
+1612758366.205000 [11088] [14828] : R | API+ 10.17.0.0 : OS Version : 6.2
+1612758366.205000 [11088] [14828] : R | API+ 10.17.0.0 : Machine Type : x86 (WinOS)
+1612758366.206000 [11088] [14828] : R | API+ 10.17.0.0 : Host Name : DESKTOP-5VPJE5G
+1612758366.206000 [11088] [14828] : R | API+ 10.17.0.0 : Local Address : 10.91.70.34
+1612758366.230000 [11088] [14828] : R | API+ 10.17.0.0 : Found required SSL file : ../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params.
+1612758366.230000 [11088] [14828] : R | API+ 10.17.0.0 : Using default cert name.
+1612758366.230000 [11088] [14828] : R | API+ 10.17.0.0 : OmneEngine::OmneEngine : in
+1612758366.239000 [11088] [14828] : R | API+ 10.17.0.0 : OmneEngine::enableAdminHeartbeat : in
+1612758366.239000 [11088] [14828] : R | API+ 10.17.0.0 : OmneLock::OmneLock : in
+1612758366.239000 [11088] [14828] : R | API+ 10.17.0.0 : OmneCounter::OmneCounter : in
+1612758366.240000 [11088] [14828] : R | API+ 10.17.0.0 : REngineHook::REngineHook : in
+1612758366.240000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758366.240000 [11088] [14828] : R | API+ 10.17.0.0 : ShutdownSignal::ShutdownSignal : in
+1612758366.240000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758366.240000 [11088] [14828] : R | API+ 10.17.0.0 : am_open : in
+1612758366.240000 [11088] [14828] : R | API+ 10.17.0.0 : registerRoutines : in
+1612758366.240000 [11088] [14828] : R | API+ 10.17.0.0 : registerAdminPages : in
+1612758366.240000 [11088] [14828] : R | API+ 10.17.0.0 : initVec : in
+1612758366.243000 [11088] [14828] : R | API+ 10.17.0.0 : addVersion : in
+1612758366.243000 [11088] [14828] : R | API+ 10.17.0.0 : addVersion : in
+1612758366.243000 [11088] [14828] : R | API+ 10.17.0.0 : clearBlacklistTimer : in
+1612758366.243000 [11088] [14828] : R | API+ 10.17.0.0 : initSession : in
+1612758366.282000 [11088] [14828] : R | API+ 10.17.0.0 : The REngine has been opened.
+1612758366.296000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::login : in
+1612758366.296000 [11088] [14828] : R | API+ 10.17.0.0 : logging in.
+1612758366.296000 [11088] [14828] : R | API+ 10.17.0.0 : LoginParams : 0113F640
+1612758366.296000 [11088] [14828] : R | API+ 10.17.0.0 : LoginParams::pCallbacks : 013BB358
+1612758366.297000 [11088] [14828] : R | API+ 10.17.0.0 : LoginParams::sUser : 17bryen@amp.com
+1612758366.297000 [11088] [14828] : R | API+ 10.17.0.0 : LoginParams::sMdUser : 17bryen@amp.com
+1612758366.297000 [11088] [14828] : R | API+ 10.17.0.0 : LoginParams::sMdCnnctPt : login_agent_tp_r01c
+1612758366.298000 [11088] [14828] : R | API+ 10.17.0.0 : LoginParams::sTsCnnctPt : login_agent_prodc
+1612758366.298000 [11088] [14828] : R | API+ 10.17.0.0 : LoginParams::sPnlCnnctPt : login_agent_pnl_sslc
+1612758366.298000 [11088] [14828] : R | API+ 10.17.0.0 : LoginParams::sIhUser : 17bryen@amp.com
+1612758366.299000 [11088] [14828] : R | API+ 10.17.0.0 : LoginParams::sIhCnnctPt : login_agent_historyc
+1612758366.299000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758366.299000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758366.299000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758366.299000 [11088] [14828] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758366.306000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758366.306000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758366.306000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758368.092000 [11088] [7776] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Opened|1|1|0|
+1612758368.092000 [11088] [7776] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758368.100000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758368.100000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758368.100000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758368.100000 [11088] [14828] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758368.103000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758368.103000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758368.103000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758368.383000 [11088] [7776] : R | API+ 10.17.0.0 : logging into Market Data Connection : conn id : 1 : rp code : 0
+1612758368.383000 [11088] [7776] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Login Complete|4|1|0|ok
+1612758368.383000 [11088] [7776] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758368.389000 [11088] [7776] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758369.574000 [11088] [7776] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Opened|1|2|0|
+1612758369.574000 [11088] [7776] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758369.582000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758369.582000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758369.582000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758369.582000 [11088] [14828] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758369.585000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758369.585000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758369.585000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758369.882000 [11088] [7776] : R | API+ 10.17.0.0 : logging into Trading System Connection : conn id : 2 : rp code : 0
+1612758369.882000 [11088] [7776] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Login Complete|4|2|0|ok
+1612758369.882000 [11088] [7776] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758369.899000 [11088] [7776] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758370.231000 [11088] [7776] : R | API+ 10.17.0.0 : REngine::getAccounts : in
+1612758370.497000 [11088] [7776] : R | API+ 10.17.0.0 : RCallbacks::AccountList : in
+1612758371.305000 [11088] [7776] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Opened|1|3|0|
+1612758371.305000 [11088] [7776] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758371.318000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758371.318000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758371.318000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758371.318000 [11088] [14828] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758371.322000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758371.322000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758371.322000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758371.574000 [11088] [7776] : R | API+ 10.17.0.0 : logging into PnL Connection : conn id : 3 : rp code : 0
+1612758371.575000 [11088] [7776] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Login Complete|4|3|0|ok
+1612758371.575000 [11088] [7776] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758371.592000 [11088] [7776] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758372.843000 [11088] [7776] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Opened|1|4|0|
+1612758372.843000 [11088] [7776] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758373.152000 [11088] [7776] : R | API+ 10.17.0.0 : logging into Intraday History Connection : conn id : 4 : rp code : 0
+1612758373.152000 [11088] [7776] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Login Complete|4|4|0|ok
+1612758373.152000 [11088] [7776] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758373.173000 [11088] [7776] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758373.860000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::subscribe(CME, ESH1, 3) : in
+1612758395.018000 [11088] [14828] : R | API+ 10.17.0.0 : REngine::unsubscribe(CME, ESH1) : in
+1612758462.351000 [568] [4556] : R | API+ 10.17.0.0 : The R | API log file has been opened.
+1612758462.351000 [568] [4556] : R | API+ 10.17.0.0 : REngineParams::envp : 012FF598
+1612758462.351000 [568] [4556] : R | API+ 10.17.0.0 : REngineParams::envp[0] : MML_DMN_SRVR_ADDR=ritpz01001.01.rithmic.com:65000~ritpz01000.01.rithmic.com:65000~ritpz01001.01.rithmic.net:65000~ritpz01000.01.rithmic.net:65000~ritpz01001.01.theomne.net:65000~ritpz01000.01.theomne.net:65000~ritpz01001.01.theomne.com:65000~ritpz01000.01.theomne.com:65000
+1612758462.351000 [568] [4556] : R | API+ 10.17.0.0 : REngineParams::envp[1] : MML_DOMAIN_NAME=rithmic_prod_01_dmz_domain
+1612758462.351000 [568] [4556] : R | API+ 10.17.0.0 : REngineParams::envp[2] : MML_LIC_SRVR_ADDR=ritpz01000.01.rithmic.com:56000~ritpz01001.01.rithmic.com:56000~ritpz01000.01.rithmic.net:56000~ritpz01001.01.rithmic.net:56000~ritpz01000.01.theomne.net:56000~ritpz01001.01.theomne.net:56000~ritpz01000.01.theomne.com:56000~ritpz01001.01.theomne.com:56000
+1612758462.351000 [568] [4556] : R | API+ 10.17.0.0 : REngineParams::envp[3] : MML_LOC_BROK_ADDR=ritpz01000.01.rithmic.com:64100
+1612758462.351000 [568] [4556] : R | API+ 10.17.0.0 : REngineParams::envp[4] : MML_LOGGER_ADDR=ritpz01000.01.rithmic.com:45454~ritpz01000.01.rithmic.net:45454~ritpz01000.01.theomne.net:45454~ritpz01000.01.theomne.com:45454
+1612758462.351000 [568] [4556] : R | API+ 10.17.0.0 : REngineParams::envp[5] : MML_LOG_TYPE=log_net
+1612758462.351000 [568] [4556] : R | API+ 10.17.0.0 : REngineParams::envp[6] : MML_SSL_CLNT_AUTH_FILE=../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params
+1612758462.351000 [568] [4556] : R | API+ 10.17.0.0 : REngineParams::envp[7] : USER=17bryen@amp.com
+1612758462.351000 [568] [4556] : R | API+ 10.17.0.0 : REngineParams::sAppName : brro:QuantCLI
+1612758462.351000 [568] [4556] : R | API+ 10.17.0.0 : REngineParams::sAppVersion : 1.2.0.0
+1612758462.351000 [568] [4556] : R | API+ 10.17.0.0 : REngineParams::sAdmCnnctPt : dd_admin_sslc
+1612758462.351000 [568] [4556] : R | API+ 10.17.0.0 : REngineParams::pAdmCallbacks : 016B7E90
+1612758462.351000 [568] [4556] : R | API+ 10.17.0.0 : REngineParams::pContext : 00000000
+1612758462.351000 [568] [4556] : R | API+ 10.17.0.0 : AdminName : brro:QuantCLI-1.2.0.0-17bryen@amp.com-568-1612758462.351000
+1612758463.160000 [568] [4556] : R | API+ 10.17.0.0 : OS Name : Windows
+1612758463.160000 [568] [4556] : R | API+ 10.17.0.0 : OS Version : 6.2
+1612758463.160000 [568] [4556] : R | API+ 10.17.0.0 : Machine Type : x86 (WinOS)
+1612758463.160000 [568] [4556] : R | API+ 10.17.0.0 : Host Name : DESKTOP-5VPJE5G
+1612758463.161000 [568] [4556] : R | API+ 10.17.0.0 : Local Address : 10.91.70.34
+1612758463.185000 [568] [4556] : R | API+ 10.17.0.0 : Found required SSL file : ../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params.
+1612758463.185000 [568] [4556] : R | API+ 10.17.0.0 : Using default cert name.
+1612758463.186000 [568] [4556] : R | API+ 10.17.0.0 : OmneEngine::OmneEngine : in
+1612758463.195000 [568] [4556] : R | API+ 10.17.0.0 : OmneEngine::enableAdminHeartbeat : in
+1612758463.195000 [568] [4556] : R | API+ 10.17.0.0 : OmneLock::OmneLock : in
+1612758463.195000 [568] [4556] : R | API+ 10.17.0.0 : OmneCounter::OmneCounter : in
+1612758463.195000 [568] [4556] : R | API+ 10.17.0.0 : REngineHook::REngineHook : in
+1612758463.195000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758463.195000 [568] [4556] : R | API+ 10.17.0.0 : ShutdownSignal::ShutdownSignal : in
+1612758463.195000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758463.195000 [568] [4556] : R | API+ 10.17.0.0 : am_open : in
+1612758463.195000 [568] [4556] : R | API+ 10.17.0.0 : registerRoutines : in
+1612758463.195000 [568] [4556] : R | API+ 10.17.0.0 : registerAdminPages : in
+1612758463.195000 [568] [4556] : R | API+ 10.17.0.0 : initVec : in
+1612758463.198000 [568] [4556] : R | API+ 10.17.0.0 : addVersion : in
+1612758463.198000 [568] [4556] : R | API+ 10.17.0.0 : addVersion : in
+1612758463.198000 [568] [4556] : R | API+ 10.17.0.0 : clearBlacklistTimer : in
+1612758463.198000 [568] [4556] : R | API+ 10.17.0.0 : initSession : in
+1612758463.240000 [568] [4556] : R | API+ 10.17.0.0 : The REngine has been opened.
+1612758463.243000 [568] [4556] : R | API+ 10.17.0.0 : REngine::login : in
+1612758463.243000 [568] [4556] : R | API+ 10.17.0.0 : logging in.
+1612758463.243000 [568] [4556] : R | API+ 10.17.0.0 : LoginParams : 012FF56C
+1612758463.243000 [568] [4556] : R | API+ 10.17.0.0 : LoginParams::pCallbacks : 016FB010
+1612758463.243000 [568] [4556] : R | API+ 10.17.0.0 : LoginParams::sUser : 17bryen@amp.com
+1612758463.243000 [568] [4556] : R | API+ 10.17.0.0 : LoginParams::sMdUser : 17bryen@amp.com
+1612758463.243000 [568] [4556] : R | API+ 10.17.0.0 : LoginParams::sMdCnnctPt : login_agent_tp_r01c
+1612758463.244000 [568] [4556] : R | API+ 10.17.0.0 : LoginParams::sTsCnnctPt : login_agent_prodc
+1612758463.244000 [568] [4556] : R | API+ 10.17.0.0 : LoginParams::sPnlCnnctPt : login_agent_pnl_sslc
+1612758463.244000 [568] [4556] : R | API+ 10.17.0.0 : LoginParams::sIhUser : 17bryen@amp.com
+1612758463.244000 [568] [4556] : R | API+ 10.17.0.0 : LoginParams::sIhCnnctPt : login_agent_historyc
+1612758463.244000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758463.244000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758463.244000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758463.244000 [568] [4556] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758463.248000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758463.249000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758463.249000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758465.076000 [568] [4168] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Opened|1|1|0|
+1612758465.076000 [568] [4168] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758465.083000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758465.083000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758465.083000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758465.083000 [568] [4556] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758465.086000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758465.086000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758465.086000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758465.311000 [568] [4168] : R | API+ 10.17.0.0 : logging into Market Data Connection : conn id : 1 : rp code : 0
+1612758465.311000 [568] [4168] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Login Complete|4|1|0|ok
+1612758465.311000 [568] [4168] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758465.317000 [568] [4168] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758466.641000 [568] [4168] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Opened|1|2|0|
+1612758466.641000 [568] [4168] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758466.650000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758466.650000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758466.650000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758466.650000 [568] [4556] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758466.653000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758466.653000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758466.653000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758466.901000 [568] [4168] : R | API+ 10.17.0.0 : logging into Trading System Connection : conn id : 2 : rp code : 0
+1612758466.902000 [568] [4168] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Login Complete|4|2|0|ok
+1612758466.902000 [568] [4168] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758466.920000 [568] [4168] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758467.218000 [568] [4168] : R | API+ 10.17.0.0 : REngine::getAccounts : in
+1612758467.470000 [568] [4168] : R | API+ 10.17.0.0 : RCallbacks::AccountList : in
+1612758468.196000 [568] [4168] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Opened|1|3|0|
+1612758468.196000 [568] [4168] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758468.212000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758468.212000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758468.212000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758468.212000 [568] [4556] : R | API+ 10.17.0.0 : OmneStreamEngine::OmneStreamEngine : in
+1612758468.216000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758468.217000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getAppName : in
+1612758468.217000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getAppVersion : in
+1612758468.431000 [568] [4168] : R | API+ 10.17.0.0 : logging into PnL Connection : conn id : 3 : rp code : 0
+1612758468.432000 [568] [4168] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Login Complete|4|3|0|ok
+1612758468.432000 [568] [4168] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758468.445000 [568] [4168] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758469.647000 [568] [4168] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Opened|1|4|0|
+1612758469.647000 [568] [4168] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758469.894000 [568] [4168] : R | API+ 10.17.0.0 : logging into Intraday History Connection : conn id : 4 : rp code : 0
+1612758469.894000 [568] [4168] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Login Complete|4|4|0|ok
+1612758469.894000 [568] [4168] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758469.913000 [568] [4168] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758470.668000 [568] [4556] : R | API+ 10.17.0.0 : REngine::subscribe(CME, ESH1, 3) : in
+1612758491.825000 [568] [4556] : R | API+ 10.17.0.0 : REngine::unsubscribe(CME, ESH1) : in
+1612758496.604000 [568] [4556] : R | API+ 10.17.0.0 : REngine::logout : in
+1612758496.604000 [568] [4556] : R | API+ 10.17.0.0 : logging out...
+1612758496.604000 [568] [4556] : R | API+ 10.17.0.0 : OmneStreamEngine::stop : in
+1612758496.605000 [568] [4556] : R | API+ 10.17.0.0 : AlertInfo : ||Intraday History Connection Closed|2|4|0|
+1612758496.605000 [568] [4556] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758496.619000 [568] [4556] : R | API+ 10.17.0.0 : OmneStreamEngine::~OmneStreamEngine : in
+1612758496.622000 [568] [4556] : R | API+ 10.17.0.0 : OmneStreamEngine::stop : in
+1612758496.622000 [568] [4556] : R | API+ 10.17.0.0 : AlertInfo : ||PnL Connection Closed|2|3|0|
+1612758496.622000 [568] [4556] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758496.642000 [568] [4556] : R | API+ 10.17.0.0 : OmneStreamEngine::~OmneStreamEngine : in
+1612758496.647000 [568] [4556] : R | API+ 10.17.0.0 : OmneStreamEngine::stop : in
+1612758496.647000 [568] [4556] : R | API+ 10.17.0.0 : AlertInfo : ||Trading System Connection Closed|2|2|0|
+1612758496.647000 [568] [4556] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758496.662000 [568] [4556] : R | API+ 10.17.0.0 : OmneStreamEngine::~OmneStreamEngine : in
+1612758496.665000 [568] [4556] : R | API+ 10.17.0.0 : OmneStreamEngine::stop : in
+1612758496.666000 [568] [4556] : R | API+ 10.17.0.0 : AlertInfo : ||Market Data Connection Closed|2|1|0|
+1612758496.666000 [568] [4556] : R | API+ 10.17.0.0 : RCallbacks::Alert : in
+1612758496.684000 [568] [4556] : R | API+ 10.17.0.0 : OmneStreamEngine::~OmneStreamEngine : in
+1612758496.690000 [568] [4556] : R | API+ 10.17.0.0 : logout successful.
+1612758496.690000 [568] [4556] : R | API+ 10.17.0.0 : REngine::logoutRepository : in
+1612758496.690000 [568] [4556] : R | API+ 10.17.0.0 : Ose is NULL : in
+1612758496.690000 [568] [4556] : R | API+ 10.17.0.0 : REngine::logout : in
+1612758496.690000 [568] [4556] : R | API+ 10.17.0.0 : logging out...
+1612758496.705000 [568] [4556] : R | API+ 10.17.0.0 : REngine::getOmne : in
+1612758496.705000 [568] [4556] : R | API+ 10.17.0.0 : OmneEngine::~OmneEngine : in
+1612758496.724000 [568] [4556] : R | API+ 10.17.0.0 : The R | API log file has been closed.

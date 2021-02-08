@@ -1,6 +1,6 @@
 #pragma once
-#include "ImplRApi.h"
 #include "Globals.h"
+#include "ImplRApi.h"
 #include <vector>
 
 const int LoginStatus_NotLoggedIn = 0;

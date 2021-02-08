@@ -1,5 +1,5 @@
 #include "Contract.h"
-#include <mutex>
+
 
 using namespace std;
 using namespace RApi;
@@ -20,6 +20,24 @@ Contract::Contract(REngine* toEngine, globals* responses, char* toExchange, char
 
 	book = new OrderBook();
 	flow = new OrderFlow();
+}
+
+Contract::Contract(const Contract &orig) {
+	Dom.lock();
+
+	pEngine = orig.pEngine;
+	callbackResponses = orig.callbackResponses;
+
+	book = orig.book;
+	flow = orig.flow;
+
+	exchange.pData = orig.exchange.pData;
+	exchange.iDataLen = orig.exchange.iDataLen;
+
+	ticker.pData = orig.ticker.pData;
+	ticker.iDataLen = orig.ticker.iDataLen;
+
+	Dom.unlock();
 }
 
 Contract::~Contract() {
@@ -62,30 +80,113 @@ int Contract::unsubscribe() {
 
 
 OrderBook::OrderBook() {
-	askPriceArray = nullptr;
-	askOrdersArray = nullptr;
-	askSizeArray = nullptr;
-	askArrayLength = 0;
+	priceArray = nullptr;
+	domLength = 0;
 
-	bidPriceArray = nullptr;
-	bidOrdersArray = nullptr;
+	bestAskIndex = 0;
+	askOrderArray = nullptr;
+	askSizeArray = nullptr;
+
+	bestBidIndex = 0;
+	bidOrderArray = nullptr;
 	bidSizeArray = nullptr;
-	bidArrayLength = 0;
 }
 OrderBook::~OrderBook() {
+	delete priceArray;
 
+	delete askOrderArray;
+	delete askSizeArray;
+
+	delete bidOrderArray;
+	delete bidSizeArray;
 }
 
 /*   =====================================================================   */
-//OrderBook ask and bid arrays start[0] at the spread
 
+int OrderBook::updateBook(LimitOrderBookInfo* tick) {
+
+	domLength = tick->iAskArrayLen + tick->iBidArrayLen;
+
+	priceArray = new double[domLength];
+
+	bestAskIndex = tick->iBidArrayLen;
+	askOrderArray = new int[domLength];
+	askSizeArray = new int[domLength];
+
+	bestBidIndex = tick->iBidArrayLen - 1;
+	bidOrderArray = new int[domLength];
+	bidSizeArray = new int[domLength];
+
+	for (int i = bestBidIndex; i >= 0; i--) {
+		priceArray[bestBidIndex - i] = tick->adBidPriceArray[i];
+		bidOrderArray[bestBidIndex - i] = tick->aiBidNumOrdersArray[i];
+		bidSizeArray[bestBidIndex - i] = tick->aiBidSizeArray[i];
+	}
+
+
+	for (int i = bestAskIndex; i < domLength; i++) {
+		priceArray[i] = tick->adAskPriceArray[i - bestAskIndex];
+		askOrderArray[i] = tick->aiAskNumOrdersArray[i - bestAskIndex];
+		askSizeArray[i] = tick->aiAskSizeArray[i - bestAskIndex];
+	}
+
+	return 0;
+}
+
+//OrderBook ask and bid arrays start[0] at the spread
 int OrderBook::updateAsk(AskInfo* tick) {
+	bool added = false;
+
     if (tick->bPriceFlag && tick->bSizeFlag) {
-        
-    }
+		while (tick->dPrice < priceArray[bestAskIndex]) {
+			if (--bestAskIndex == bestBidIndex)
+				bestBidIndex--;
+		}
+		while (bidOrderArray[bestBidIndex] <= 0)
+			bestBidIndex--;
+        for (int i = bestAskIndex; i < domLength; i++)
+			if (priceArray[i] == tick->dPrice) {
+				askOrderArray[i] = tick->iNumOrders;
+				askSizeArray[i] = tick->iSize;
+				added = true;
+			}
+	}
+	else
+		cout << endl << "Ask update to Orderbook did not contain enough info..." << endl;
+
+	if (!added) {
+		cout << endl << "could not find ask array price update!" << endl;
+		return 1;
+	}
+		
+	return 0;
 }
 int OrderBook::updateBid(BidInfo* tick) {
+	bool added = false;
 
+	if (tick->bPriceFlag && tick->bSizeFlag) {
+		while (tick->dPrice > priceArray[bestBidIndex]) {
+			if (++bestBidIndex == bestAskIndex)
+				bestAskIndex++;
+		}
+		while (askOrderArray[bestAskIndex] <= 0)
+			bestAskIndex++;
+		for (int i = bestBidIndex; i >= 0; i--)
+			if (priceArray[i] == tick->dPrice) {
+				bidOrderArray[i] = tick->iNumOrders;
+				bidSizeArray[i] = tick->iSize;
+				added = true;
+			}
+	}
+	else
+		cout << endl << "Bid update to Orderbook did not contain enough info..." << endl;
+
+	if (!added) {
+		cout << endl << "could not find bid array price update!" << endl;
+		return 1;
+	}
+
+	return 0;
 }
 
 /*   =====================================================================   */
@@ -103,11 +204,16 @@ OrderFlow::OrderFlow() {
 	bidArrayLength = 0;
 }
 OrderFlow::~OrderFlow() {
-
+	delete askPriceArray;
+	delete askVolumeArray;
+	
+	delete bidPriceArray;
+	delete bidVolumeArray;
 }
 
 /*   =====================================================================   */
 
 int OrderFlow::updateTrades(TradeInfo* tick) {
-
+	cout << endl << tick->iSize << " @" << tick->dPrice;
+	return 0;
 }
