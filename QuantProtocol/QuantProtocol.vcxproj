@@ -143,6 +143,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Account.cpp" />
+    <ClCompile Include="Analysis.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="ImplRApi.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -151,6 +153,8 @@
     <ClCompile Include="Quant.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Account.h" />
+    <ClInclude Include="Analysis.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="ImplRApi.h" />
     <ClInclude Include="Main.h" />

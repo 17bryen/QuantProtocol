@@ -117,6 +117,13 @@ int OrderBook::updateBook(LimitOrderBookInfo* tick) {
 	bidOrderArray = new int[domLength];
 	bidSizeArray = new int[domLength];
 
+	for (int i = 0; i < domLength; i++) {
+		askOrderArray[i] = 0;
+		bidOrderArray[i] = 0;
+		askSizeArray[i] = 0;
+		bidSizeArray[i] = 0;
+	}
+
 	for (int i = bestBidIndex; i >= 0; i--) {
 		priceArray[bestBidIndex - i] = tick->adBidPriceArray[i];
 		bidOrderArray[bestBidIndex - i] = tick->aiBidNumOrdersArray[i];
@@ -155,7 +162,7 @@ int OrderBook::updateAsk(AskInfo* tick) {
 		cout << endl << "Ask update to Orderbook did not contain enough info..." << endl;
 
 	if (!added) {
-		cout << endl << "could not find ask array price update!" << endl;
+		cout << endl << "could not find ask array price update: " << tick->dPrice << endl;
 		return 1;
 	}
 		
@@ -214,6 +221,6 @@ OrderFlow::~OrderFlow() {
 /*   =====================================================================   */
 
 int OrderFlow::updateTrades(TradeInfo* tick) {
-	cout << endl << tick->iSize << " @" << tick->dPrice;
+	//cout << endl << tick->iSize << " @" << tick->dPrice;
 	return 0;
 }

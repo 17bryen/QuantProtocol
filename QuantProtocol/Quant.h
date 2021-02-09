@@ -11,12 +11,14 @@ const int LoginStatus_Complete = 3;
 class Quant {
 	/*	======================== Declare Member Variables ========================	*/
 public:
+	bool runtime;
 	REngine* pEngine;
 	ImplAdmCallbacks* pAdmCallbacks;
 	ImplCallbacks* pCallbacks;
 
 	globals* callbackResponses;
 	vector<Contract> watchList;
+	vector<Account> accounts;
 
 	/*	--------------------------------------------------------------------------	*/
 private:

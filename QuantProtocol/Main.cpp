@@ -80,48 +80,49 @@ int main(int argc, char * *argv, char * *envp) {
 	while (!Q->callbackResponses->bRcvdAccountsList) {
 		Sleep(1000);
 	}
-	
+	Q->callbackResponses->iSelectedAccount = 0;
+
 
 	/*	============================ Init List of Contracts ==========================	*/
 
 	//Contract* ES = new Contract(Q->pEngine, Q->callbackResponses, (char*)"CME", (char*)"ESH1");
     Q->watchList.push_back(*(new Contract(Q->pEngine, Q->callbackResponses, (char*)"CME", (char*)"ESH1")));
-	Q->watchList.at(0).subscribe();
-	
-	for (int i = 0; i < 10; i++) {
-		Q->watchList.at(0).Dom.lock();
-		cout << endl << endl;
-		cout << "ask is " << Q->watchList.at(0).book->priceArray[Q->watchList.at(0).book->bestAskIndex]
-			<< " with size " << Q->watchList.at(0).book->askSizeArray[Q->watchList.at(0).book->bestAskIndex] << endl;
-		cout << "bid is " << Q->watchList.at(0).book->priceArray[Q->watchList.at(0).book->bestBidIndex]
-			<< " with size " << Q->watchList.at(0).book->bidSizeArray[Q->watchList.at(0).book->bestBidIndex] << endl;
-		Q->watchList.at(0).Dom.unlock();
 
-		Sleep(2000);
-	}
-	Q->watchList.at(0).unsubscribe();
-
-	cout << "Programs actually made it this far..." << endl;
-	///////////////////////////////////////////////////////////////////////////////////////////////
-	///////////////////////// FROM HERE ON IS JUST PROTOTYPING PURPOSES ///////////////////////////
-	///////////////////////////////////////////////////////////////////////////////////////////////
-
-	//g->pEngine->subscribePnl(g->pAccounts->asAccountInfoArray + g->iSelectedAccount, &iIgnored);
+	for (int i = 0; i < (int)Q->watchList.size(); i++)
+		Q->watchList.at(0).subscribe();
 	
 
-		
+	/*	============================= Begin Main Loop ===========================	*/
 
-	cout << "Successfully made it through the program test!" << endl;
+	thread bot(Analysis, Q);
 
 	fgetc(stdin);
+	
 
-	//g->pEngine->unsubscribePnl(g->pAccounts->asAccountInfoArray + g->iSelectedAccount, &iIgnored);
+	/*	============================= Exit Main Loop ============================	*/
+
+	Q->runtime = false;
+	bot.join();
+	
+	cout << "Successfully made it through the program test!" << endl;
+	Sleep(3000);
+
+	/*	========================== DeInit List of Contracts =========================	*/
+	for (int i = 0; i < (int)Q->watchList.size(); i++)
+		Q->watchList.at(0).unsubscribe();
+
+	/*	=========================== DeInit List of Accounts =========================	*/
+
+
+	/*	========================= Logout Quant Connect Points =======================	*/
 
 	iCode = Q->logout(false);
 	if (iCode != 0) {
 		delete Q;
 		return (BAD);
 	}
+
+	/*	============================= Delete Quant Object ===========================	*/
 
 	delete Q;
 	return (GOOD);

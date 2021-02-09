@@ -16,6 +16,15 @@
     <Filter Include="R API+">
       <UniqueIdentifier>{31dce020-1eb3-4fb5-a416-8c9aee576db1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Strategies">
+      <UniqueIdentifier>{56079b70-690e-441c-91dd-35a1d90b3b77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Strategies\Order Flow">
+      <UniqueIdentifier>{94a45edc-ff57-447a-99aa-3ed394590598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Strategies\Order Book">
+      <UniqueIdentifier>{05f651bd-95cc-45a6-a1d2-9c4ca6847d1b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -36,6 +45,12 @@
     <ClCompile Include="Contract.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Account.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Analysis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h">
@@ -54,6 +69,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Contract.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Account.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Analysis.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

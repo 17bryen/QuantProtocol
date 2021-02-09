@@ -1,6 +1,7 @@
 #pragma once
 #include <stdio.h>
 #include <stdlib.h>
+#include <vector>
 #include "RApiPlus.h"
 
 using namespace std;

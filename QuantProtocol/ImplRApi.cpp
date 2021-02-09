@@ -29,8 +29,9 @@ ImplAdmCallbacks::ImplAdmCallbacks(globals* callbacks) {
     callbackResponses = callbacks;
 };
 
-ImplCallbacks::ImplCallbacks(globals* callbacks, vector<Contract>* toWatch) {
+ImplCallbacks::ImplCallbacks(globals* callbacks, vector<Account>* accounts, vector<Contract>* toWatch) {
     callbackResponses = callbacks;
+    accounts = accounts;
     watchList = toWatch;
 };
 
@@ -75,7 +76,7 @@ int ImplCallbacks::AccountList(AccountListInfo* pInfo, void* pContext, int* aiCo
 
     if (pInfo->iArrayLen <= 0){
         cout << "No accounts associated with this login or failed to retrieve accounts..." << endl;
-        //return (NOT_OK);
+        return (NOT_OK);
     } 
 
 
@@ -92,12 +93,12 @@ int ImplCallbacks::AccountList(AccountListInfo* pInfo, void* pContext, int* aiCo
             AccountInfo* tempOld = pInfo->asAccountInfoArray;
             AccountInfo* tempNew = callbackResponses->pAccounts->asAccountInfoArray;
 
-            cpytsNCharcb(tempNew[0].sAccountId, tempOld[0].sAccountId);
-            cpytsNCharcb(tempNew[0].sAccountName, tempOld[0].sAccountName);
-            cpytsNCharcb(tempNew[0].sFcmId, tempOld[0].sFcmId);
-            cpytsNCharcb(tempNew[0].sIbId, tempOld[0].sIbId);
-
-            callbackResponses->iSelectedAccount = 0;
+            for (int i = 0; i < pInfo->iArrayLen; i++) {
+                cpytsNCharcb(tempNew[i].sAccountId, tempOld[i].sAccountId);
+                cpytsNCharcb(tempNew[i].sAccountName, tempOld[i].sAccountName);
+                cpytsNCharcb(tempNew[i].sFcmId, tempOld[i].sFcmId);
+                cpytsNCharcb(tempNew[i].sIbId, tempOld[i].sIbId);
+            }
 
             //pRmsInfo copy here
             {

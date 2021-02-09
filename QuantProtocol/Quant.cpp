@@ -70,6 +70,7 @@ Quant::Quant(char* md, char* ts, char* pnl, char* ih, char* rp) {
 	pEngine = nullptr;
 	pAdmCallbacks = nullptr;
 	pCallbacks = nullptr;
+	runtime = false;
 }
 
 Quant::Quant() {
@@ -103,6 +104,7 @@ Quant::Quant() {
 	pEngine = nullptr;
 	pAdmCallbacks = nullptr;
 	pCallbacks = nullptr;
+	runtime = false;
 }
 
 /* Deconstructor to properly allocate memory back from complex objects.
@@ -176,7 +178,7 @@ int Quant::init(REngineParams &oParams) {
 
 /*	-------------------------- Initialize Callbacks --------------------------	*/
 	try {
-		pCallbacks = new ImplCallbacks(callbackResponses, &watchList);
+		pCallbacks = new ImplCallbacks(callbackResponses, &accounts, &watchList);
 		cout << "Created callbacks object." << endl;
 	}
 	catch (OmneException& oEx) {
@@ -233,6 +235,7 @@ int Quant::login() {
 		return 1;
 	}
 
+	runtime = true;
 	return 0;
 }
 

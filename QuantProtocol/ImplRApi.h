@@ -3,6 +3,7 @@
 #include "RApiPlus.h"
 #include "Globals.h"
 #include "Contract.h"
+#include "Account.h"
 
 #include <iostream>
 #include <vector>
@@ -43,7 +44,7 @@ public :
 
 class ImplCallbacks : public RCallbacks {
 public :
-    ImplCallbacks(globals* callbacks, vector<Contract>* toWatch);
+    ImplCallbacks(globals* callbacks, vector<Account>* accounts, vector<Contract>* toWatch);
 	~ImplCallbacks() {};
 
     /*   ----------------------------------------------------   */
