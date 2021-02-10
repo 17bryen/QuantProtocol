@@ -11,10 +11,18 @@
 using namespace std;
 using namespace RApi;
 
+struct Trade {
+	double price = 0;
+	double size = 0;
+	int time = 0;
+	tsNCharcb aggrSide;
+};
+
 class OrderBook {
 public:
 	/*	======================== Declare Member Variables ========================	*/
 	double* priceArray;
+	double* timeArray;
 	int domLength;
 
 	int bestAskIndex;
@@ -39,14 +47,16 @@ public:
 class OrderFlow {
 public:
 	/*	======================== Declare Member Variables ========================	*/
-	double* askPriceArray;
+	double* priceArray;
+	int priceArrayLength;
+
+	int* recAskVolArray;
 	int* askVolumeArray;
-	int askArrayLength;
 
-	double* bidPriceArray;
+	int* recBidVolArray;
 	int* bidVolumeArray;
-	int bidArrayLength;
 
+	vector<Trade> tradeFilter;
 
 	/*	======================== Declare Member Functions ========================	*/
 	OrderFlow();
@@ -54,6 +64,9 @@ public:
 
 	int updateTrades(TradeInfo* tick);
 
+private:
+	int findPriceIndex(double toFind);
+	int insertPrice(double toInsert);
 };
 
 /*

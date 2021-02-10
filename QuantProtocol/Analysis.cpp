@@ -4,6 +4,7 @@ using namespace std;
 using namespace RApi;
 
 int Analysis(Quant* Q) {
+	cout << "Begining analysis with account " << Q->accounts.at(0).accName.pData << " with balance $" << Q->accounts.at(0).accBalance << endl;
 	while (Q->runtime) {
 		cout << endl << "bid: " << Q->watchList.at(0).book->priceArray[Q->watchList.at(0).book->bestBidIndex]
 			<< "  ask: " << Q->watchList.at(0).book->priceArray[Q->watchList.at(0).book->bestAskIndex] << endl;

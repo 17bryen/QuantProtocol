@@ -49,6 +49,7 @@ public :
 
     /*   ----------------------------------------------------   */
     globals* callbackResponses;
+    vector<Account>* accounts;
     vector<Contract>* watchList;
 
 	/*	------------------------------------------------------	*/

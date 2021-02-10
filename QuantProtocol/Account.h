@@ -12,18 +12,19 @@ public:
 	tsNCharcb fcmId;
 	tsNCharcb ibId;
 	tsNCharcb accName;
+	tsNCharcb accId;
 
-	int accId;
 	double accBalance;
 
-	AccountInfo* acc;
+	AccountInfo* account;
 	REngine* pEngine;
 	globals* responseCallbacks;
 
 	/*	======================== Declare Member Functions ========================	*/
 	Account();
+	Account(AccountInfo* acc);
 	Account(REngine* engine, globals* responses);
-	Account(int Id, tsNCharcb* name, tsNCharcb* fcm, tsNCharcb* ib);
+	Account(REngine* engine, globals* responses, AccountInfo* acc);
 	~Account();
 
 	int initAcc();

@@ -52,8 +52,8 @@ int main(int argc, char * *argv, char * *envp) {
 
 	/*	========================= Pass Rithmic Login to Quant =======================	*/
 
-
-	
+	Q->setUser((char*)"17bryen@amp.com");
+	Q->setPass((char*)"&h$QlbrU2ha");
 
 
 	/*	========================== Check Unsigned Agreements ========================	
@@ -72,16 +72,22 @@ int main(int argc, char * *argv, char * *envp) {
 		delete Q;
 		return (BAD);
 	}
+	while (!Q->callbackResponses->bLoggedIn)
+		Sleep(1000);
 
 
 	/*	============================ Get List of Accounts ===========================	*/
 
 	
-	while (!Q->callbackResponses->bRcvdAccountsList) {
+	while (!Q->callbackResponses->bRcvdAccountsList) 
 		Sleep(1000);
-	}
+
+	for (int i = 0; i < Q->callbackResponses->pAccounts->iArrayLen; i++)
+		Q->accounts.push_back(*(new Account(Q->pEngine, Q->callbackResponses, Q->callbackResponses->pAccounts->asAccountInfoArray + i)));
+
 	Q->callbackResponses->iSelectedAccount = 0;
 
+	Q->accounts.at(0).subscribe();
 
 	/*	============================ Init List of Contracts ==========================	*/
 
@@ -108,11 +114,14 @@ int main(int argc, char * *argv, char * *envp) {
 	Sleep(3000);
 
 	/*	========================== DeInit List of Contracts =========================	*/
+
 	for (int i = 0; i < (int)Q->watchList.size(); i++)
-		Q->watchList.at(0).unsubscribe();
+		Q->watchList.at(i).unsubscribe();
 
 	/*	=========================== DeInit List of Accounts =========================	*/
 
+	for (int i = 0; i < (int)Q->watchList.size(); i++)
+		Q->accounts.at(0).unsubscribe();
 
 	/*	========================= Logout Quant Connect Points =======================	*/
 

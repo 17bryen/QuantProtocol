@@ -12,13 +12,12 @@ struct globals {
 	~globals();
 
 	AccountListInfo* pAccounts;
-	PnlInfo* pSelectedAccountPnl;
 
 	bool bRcvdUnacceptedAgreements = false;
     bool bRcvdLimitOrderBook = false;
 	bool bRcvdReplayTrades = false;
 	bool bRcvdAccountsList = false;
-	bool bRcvdExchanges = false;
+	bool bLoggedIn = false;
 	bool bRcvdPnl = false;
 
 	int iSelectedAccount = 0;

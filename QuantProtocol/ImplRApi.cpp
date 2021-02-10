@@ -29,9 +29,9 @@ ImplAdmCallbacks::ImplAdmCallbacks(globals* callbacks) {
     callbackResponses = callbacks;
 };
 
-ImplCallbacks::ImplCallbacks(globals* callbacks, vector<Account>* accounts, vector<Contract>* toWatch) {
+ImplCallbacks::ImplCallbacks(globals* callbacks, vector<Account>* toAccount, vector<Contract>* toWatch) {
     callbackResponses = callbacks;
-    accounts = accounts;
+    accounts = toAccount;
     watchList = toWatch;
 };
 
@@ -294,7 +294,7 @@ int ImplCallbacks::ExchangeList(ExchangeListInfo* pInfo, void* pContext, int* ai
         }
     }
     
-    callbackResponses->bRcvdExchanges = true;
+    //callbackResponses->bRcvdExchanges = true;
 
     *aiCode = API_OK;
     return (OK);
@@ -365,8 +365,17 @@ int ImplCallbacks::PnlUpdate(PnlInfo* pInfo, void* pContext, int* aiCode)
             cout << "error in pInfo -> dump : " << iIgnored << endl;
         }
     }
+    /*   ----------------------------------------------------------------   */
 
+    if (pInfo->eAccountBalance == VALUE_STATE_USE)
+        for (int i = 0; i < accounts->size(); i++)
+            if (accounts->at(i).accId.pData == pInfo->oAccount.sAccountId.pData)
+                accounts->at(i).accBalance = pInfo->dAccountBalance;
 
+    /*   ----------------------------------------------------------------   */
+    //ADD CODE TO ACCURATELY TRACK CURRENT POSITIONS
+
+    /*   ----------------------------------------------------------------   */
 
     *aiCode = API_OK;
     return(OK);

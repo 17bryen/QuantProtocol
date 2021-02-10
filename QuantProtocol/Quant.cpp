@@ -65,6 +65,7 @@ Quant::Quant(char* md, char* ts, char* pnl, char* ih, char* rp) {
 	user.iDataLen = 0;
 	pass.iDataLen = 0;
 
+	accounts.reserve(3);
 	watchList.reserve(3);
 
 	pEngine = nullptr;
@@ -101,6 +102,9 @@ Quant::Quant() {
 	user.iDataLen = 0;
 	pass.iDataLen = 0;
 
+	accounts.reserve(3);
+	watchList.reserve(3);
+
 	pEngine = nullptr;
 	pAdmCallbacks = nullptr;
 	pCallbacks = nullptr;
@@ -114,10 +118,12 @@ Quant::~Quant() {
 	
 
 	/*	---------------------- Delete Member Objects -------------------------	*/
-	delete pCallbacks;
-	delete pEngine;
-	delete pAdmCallbacks;
-
+	if (pCallbacks != nullptr)
+		delete pCallbacks;
+	if (pEngine != nullptr)
+		delete pEngine;
+	if (pAdmCallbacks != nullptr)
+		delete pAdmCallbacks;
 
 	delete callbackResponses;
 }
@@ -235,6 +241,7 @@ int Quant::login() {
 		return 1;
 	}
 
+	callbackResponses->bLoggedIn = true;
 	runtime = true;
 	return 0;
 }
