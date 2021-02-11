@@ -146,11 +146,14 @@
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="Analysis.cpp" />
     <ClCompile Include="Globals.cpp" />
+    <ClCompile Include="HeavyVolume.cpp" />
     <ClCompile Include="ImplRApi.cpp" />
+    <ClCompile Include="LimitOrderVolume.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Contract.cpp" />
     <ClCompile Include="Quant.cpp" />
+    <ClCompile Include="TradeFilter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Account.h" />

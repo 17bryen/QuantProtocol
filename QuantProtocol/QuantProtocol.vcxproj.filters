@@ -25,6 +25,9 @@
     <Filter Include="Strategies\Order Book">
       <UniqueIdentifier>{05f651bd-95cc-45a6-a1d2-9c4ca6847d1b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Strategies\Confirmation">
+      <UniqueIdentifier>{22c3eb40-8f0e-4cc4-917c-3d02b9d6404f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -50,6 +53,15 @@
     </ClCompile>
     <ClCompile Include="Analysis.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HeavyVolume.cpp">
+      <Filter>Strategies\Order Flow</Filter>
+    </ClCompile>
+    <ClCompile Include="LimitOrderVolume.cpp">
+      <Filter>Strategies\Order Book</Filter>
+    </ClCompile>
+    <ClCompile Include="TradeFilter.cpp">
+      <Filter>Strategies\Confirmation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

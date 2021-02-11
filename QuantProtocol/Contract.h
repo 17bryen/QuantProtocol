@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <mutex>
+#include <string.h>
 
 #include "Windows.h"
 
@@ -56,6 +57,8 @@ public:
 	int* recBidVolArray;
 	int* bidVolumeArray;
 
+	int* recTime;
+
 	vector<Trade> tradeFilter;
 
 	/*	======================== Declare Member Functions ========================	*/
@@ -64,7 +67,7 @@ public:
 
 	int updateTrades(TradeInfo* tick);
 
-private:
+//private:
 	int findPriceIndex(double toFind);
 	int insertPrice(double toInsert);
 };

@@ -309,24 +309,27 @@ OrderFlow::OrderFlow() {
 	priceArray = {};
 	priceArrayLength = 0;
 
-	recBidVolArray = {};
+	recAskVolArray = {};
 	askVolumeArray = {};
 
 	recBidVolArray = {};
 	bidVolumeArray = {};
+
+	recTime = {};
 
 	tradeFilter.reserve(21);
 }
 OrderFlow::~OrderFlow() {
 	delete priceArray;
 	delete askVolumeArray;
+	delete recAskVolArray;
 	delete bidVolumeArray;
+	delete recBidVolArray;
 }
 
 /*   =====================================================================   */
 
 int OrderFlow::updateTrades(TradeInfo* tick) {
-	//cout << endl << tick->iSize << " @" << tick->dPrice;
 	if (!tick->bPriceFlag) {
 		return 1;
 	}
@@ -348,12 +351,21 @@ int OrderFlow::updateTrades(TradeInfo* tick) {
 	if (priceIndex == -1)
 		priceIndex = insertPrice(tick->dPrice);
 
-	//if (tick->sAggressorSide.pData = ?)
-	recAskVolArray[priceIndex] += tick->iSize;
-	askVolumeArray[priceIndex] += tick->iSize;
-	//else
-	recBidVolArray[priceIndex] += tick->iSize;
-	bidVolumeArray[priceIndex] += tick->iSize;
+	if (tick->iSsboe - recTime[priceIndex] > 120) {
+		recAskVolArray[priceIndex] = 0;
+		recBidVolArray[priceIndex] = 0;
+	}
+
+	recTime[priceIndex] = tick->iSsboe;
+
+	if ((char)*tick->sAggressorSide.pData == 'B') {
+		recAskVolArray[priceIndex] += tick->iSize;
+		askVolumeArray[priceIndex] += tick->iSize;
+	} 
+	else if ((char)*tick->sAggressorSide.pData == 'S') {
+		recBidVolArray[priceIndex] += tick->iSize;
+		bidVolumeArray[priceIndex] += tick->iSize;
+	}
 
 	return 0;
 }
@@ -373,12 +385,11 @@ int OrderFlow::insertPrice(double toInsert) {
 	int* newAskVol = new int[priceArrayLength + 1];
 	int* newRecBidVol = new int[priceArrayLength + 1];
 	int* newBidVol = new int[priceArrayLength + 1];
+	int* newRecTime = new int[priceArrayLength + 1];
 
 	for (int i = 0; i < priceArrayLength; i++)
 		if (priceArray[i] < toInsert)
 			insertIndex = i + 1;
-		else
-			break;
 
 	for (int i = 0; i < insertIndex; i++) {
 		newPriceArray[i] = priceArray[i];
@@ -386,6 +397,7 @@ int OrderFlow::insertPrice(double toInsert) {
 		newAskVol[i] = askVolumeArray[i];
 		newRecBidVol[i] = recBidVolArray[i];
 		newBidVol[i] = bidVolumeArray[i];
+		newRecTime[i] = recTime[i];
 	}
 
 	newPriceArray[insertIndex] = toInsert;
@@ -393,6 +405,7 @@ int OrderFlow::insertPrice(double toInsert) {
 	newAskVol[insertIndex] = 0;
 	newRecBidVol[insertIndex] = 0;
 	newBidVol[insertIndex] = 0;
+	newRecTime[insertIndex] = 0;
 	priceArrayLength++;
 
 	for (int i = insertIndex + 1; i < priceArrayLength; i++) {
@@ -401,6 +414,7 @@ int OrderFlow::insertPrice(double toInsert) {
 		newAskVol[i] = askVolumeArray[i - 1];
 		newRecBidVol[i] = recBidVolArray[i - 1];
 		newBidVol[i] = bidVolumeArray[i - 1];
+		newRecTime[i] = recTime[i - 1];
 	}
 
 	delete priceArray;
@@ -408,12 +422,14 @@ int OrderFlow::insertPrice(double toInsert) {
 	delete askVolumeArray;
 	delete recBidVolArray;
 	delete bidVolumeArray;
+	delete recTime;
 	
 	priceArray = newPriceArray;
 	recAskVolArray = newRecAskVol;
 	askVolumeArray = newAskVol;
 	recBidVolArray = newRecBidVol;
 	bidVolumeArray = newBidVol;
+	recTime = newRecTime;
 
 	return insertIndex;
 }

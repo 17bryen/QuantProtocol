@@ -45,7 +45,7 @@ Account::Account(REngine* engine, globals* responses) {
 	accId.pData = NULL;
 	accId.iDataLen = 0;
 
-	accBalance = 0;
+	accBalance = 2300;
 
 	account = nullptr;
 	pEngine = engine;
