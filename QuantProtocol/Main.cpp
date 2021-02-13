@@ -52,8 +52,6 @@ int main(int argc, char * *argv, char * *envp) {
 
 	/*	========================= Pass Rithmic Login to Quant =======================	*/
 
-	Q->setUser((char*)"17bryen@amp.com");
-	Q->setPass((char*)"&h$QlbrU2ha");
 
 
 	/*	========================== Check Unsigned Agreements ========================	
