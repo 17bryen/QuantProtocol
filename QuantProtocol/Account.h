@@ -1,6 +1,8 @@
 #pragma once
 #include "RApiPlus.h"
 #include "Globals.h"
+#include "Contract.h"
+#include "Order.h"
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,6 +17,8 @@ public:
 	tsNCharcb accId;
 
 	double accBalance;
+	Order* order;
+	TradeRouteListInfo* tradeRoutes;
 
 	AccountInfo* account;
 	REngine* pEngine;
@@ -30,4 +34,5 @@ public:
 	int initAcc();
 	int subscribe();
 	int unsubscribe();
+
 };

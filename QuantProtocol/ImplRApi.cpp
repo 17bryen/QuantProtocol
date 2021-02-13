@@ -1074,17 +1074,22 @@ int ImplCallbacks::TradeCondition(TradeInfo* pInfo,
 
 int ImplCallbacks::TradePrint(TradeInfo* pInfo, void* pContext, int* aiCode)
 {
-    int iIgnored;
+    int iIgnored = 0;
 
     /*   ----------------------------------------------------------------   */
 
     //ZOOM
     /*
-    if (!pInfo->dump(&iIgnored))
-    {
-        cout << "error in pInfo -> dump : " << iIgnored << endl;
+    if (pInfo->iType == MD_HISTORY_CB) {
+        if (!pInfo->dump(&iIgnored))
+        {
+            cout << "error in pInfo -> dump : " << iIgnored << endl;
+        }
     }
     */
+    if (pInfo->iSourceSsboe % 60 == 0)
+        cout << pInfo->iSourceSsboe << endl;
+    cout << "replay trade received" << endl;
 
     watchList->at(0).Tape.lock();
 
@@ -1122,20 +1127,38 @@ int ImplCallbacks::TradeReplay(TradeReplayInfo* pInfo, void* pContext, int* aiCo
 
 /*   =====================================================================   */
 
-int ImplCallbacks::TradeRoute(TradeRouteInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::TradeRoute(TradeRouteInfo* pInfo, void* pContext, int* aiCode)
 {
+    int iIgnored;
+    pInfo->dump(&iIgnored);
+    
     *aiCode = API_OK;
     return(OK);
 }
 
 /*   =====================================================================   */
 
-int ImplCallbacks::TradeRouteList(TradeRouteListInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::TradeRouteList(TradeRouteListInfo* pInfo, void* pContext, int* aiCode)
 {
+    int iIgnored;
+    pInfo->dump(&iIgnored);
+
+    accounts->at(0).tradeRoutes->iArrayLen = pInfo->iArrayLen;
+    accounts->at(0).tradeRoutes->asTradeRouteInfoArray = new TradeRouteInfo[pInfo->iArrayLen];
+    TradeRouteInfo* temp = accounts->at(0).tradeRoutes->asTradeRouteInfoArray;
+
+    for (int i = 0; i < pInfo->iArrayLen; i++) {
+        temp[i].iType = pInfo->asTradeRouteInfoArray[i].iType;
+        cpytsNCharcb(temp[i].sDefault, pInfo->asTradeRouteInfoArray[i].sDefault);
+        cpytsNCharcb(temp[i].sExchange, pInfo->asTradeRouteInfoArray[i].sExchange);
+        cpytsNCharcb(temp[i].sFcmId, pInfo->asTradeRouteInfoArray[i].sFcmId);
+        cpytsNCharcb(temp[i].sIbId, pInfo->asTradeRouteInfoArray[i].sIbId);
+        cpytsNCharcb(temp[i].sStatus, pInfo->asTradeRouteInfoArray[i].sStatus);
+        cpytsNCharcb(temp[i].sTradeRoute, pInfo->asTradeRouteInfoArray[i].sTradeRoute);
+    }
+
+    callbackResponses->bRcvdTradeRoutes = true;
+
     *aiCode = API_OK;
     return(OK);
 }

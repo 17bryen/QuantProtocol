@@ -2,53 +2,23 @@
 
 class HeavyVolume {
 private:
-	//double* priceArray;
-	//bool* choiceArray;
-
 	int averageVolume;
-	//int arrayLength;
 
-	vector<double> toReturn;
+	vector<zone>* toSupp;
+	vector<zone>* toResist;
 	OrderFlow* flow;
 public:
-	HeavyVolume(OrderFlow* toFlow) {
+	HeavyVolume(OrderFlow* toFlow, vector<zone>* support, vector<zone>* resists) {
 		flow = toFlow;
-		toReturn = {};
-		toReturn.reserve(25);
-
-		//priceArray = {};
-		//choiceArray = {};
+		toSupp = support;
+		toResist = resists;
 
 		averageVolume = 0;
-		//arrayLength = 0;
 	}
 	~HeavyVolume() {
-		//delete priceArray;
-		//delete choiceArray;
 	}
-	vector<double>* analysis() {
-		//If returning a vector anyway, what use do the other two arrays have?
-		toReturn.clear();
 
-		/*
-		if (arrayLength != flow->priceArrayLength) {
-			double* newPrice = new double[flow->priceArrayLength];
-			bool* newChoice = new bool[flow->priceArrayLength];
-			memcpy(newPrice, flow->priceArray, flow->priceArrayLength);
-
-			for (int i = 0; i < arrayLength; i++) {
-				if (choiceArray[i]) {
-					newChoice[flow->findPriceIndex(priceArray[i])] = true;
-				}
-			}
-			
-			arrayLength = flow->priceArrayLength;
-			delete priceArray;
-			delete choiceArray;
-			priceArray = newPrice;
-			choiceArray = newChoice;
-		}
-		*/
+	int analysis(double bid, double ask) {
 		averageVolume = 0;
 
 		for (int i = 0; i < flow->priceArrayLength; i++) {
@@ -58,10 +28,33 @@ public:
 
 		averageVolume /= flow->priceArrayLength;
 		cout << endl << "Average Volume: " << averageVolume << endl;
-		for (int i = 0; i < flow->priceArrayLength; i++)
-			if ((flow->recAskVolArray[i] + flow->recBidVolArray[i]) > (int)(1.6 * averageVolume))
-				toReturn.push_back(flow->priceArray[i]);
+		for (int i = 0; i < flow->priceArrayLength; i++) {
+			if ((flow->recAskVolArray[i] + flow->recBidVolArray[i]) > (int)(2 * averageVolume)) {
 
-		return &toReturn;
+				/*	------------------------- Delete Redundancies ----------------------------	*/
+				if (!(flow->recBidVolArray[i] - flow->recAskVolArray[i] > (3 * averageVolume / 4))) {
+					toSupp->push_back(zone(flow->priceArray[i], flow->recTime[i]));
+					for (int j = 0; j < toSupp->size() - 1; j++) {
+						if (toSupp->at(j).price == toSupp->at(toSupp->size() - 1).price) {
+							toSupp->pop_back();
+							break;
+						}
+					}
+				}
+
+				/*	------------------------- Delete Redundancies ----------------------------	*/
+				if (!(flow->recAskVolArray[i] - flow->recBidVolArray[i] > (3 * averageVolume / 4))) {
+					toResist->push_back(zone(flow->priceArray[i], flow->recTime[i]));
+					for (int j = 0; j < toResist->size() - 1; j++) {
+						if (toResist->at(j).price == toResist->at(toResist->size() - 1).price) {
+							toResist->pop_back();
+							break;
+						}
+					}
+				}
+			}
+		}
+
+		return 0;
 	}
 };

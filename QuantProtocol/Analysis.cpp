@@ -2,92 +2,98 @@
 
 /**/
 #include "HeavyVolume.cpp"
+#include "TradeFilter.cpp"
 /**/
 #include "LimitOrderVolume.cpp"
+#include "Delta.cpp"
 
-using namespace std;
 using namespace RApi;
+using namespace std;
 
 int Analysis(Quant* Q) {
 	cout << "Begining analysis with account " << Q->accounts.at(0).accName.pData << " with balance $" << Q->accounts.at(0).accBalance << endl;
 
-	vector<double>* SRLevels = new vector<double>(25);
-	vector<double>* temp = {};
-	HeavyVolume* heavyVol = new HeavyVolume(Q->watchList.at(0).flow);
-	LimitOrderVolume* limitVol = new LimitOrderVolume(Q->watchList.at(0).book);
+	vector<zone>* suppLevels = new vector<zone>;
+	vector<zone>* resistLevels = new vector<zone>;
+	double* currBidAsk = new double[2];
+
+	HeavyVolume* heavyVol = new HeavyVolume(Q->watchList.at(0).flow, suppLevels, resistLevels);
+	LimitOrderVolume* limitVol = new LimitOrderVolume(Q->watchList.at(0).book, suppLevels, resistLevels);
+	TradeFilter* tradeFilt = new TradeFilter(Q->watchList.at(0).flow, suppLevels, resistLevels);
+	Delta* delta = new Delta(Q->watchList.at(0).book, suppLevels, resistLevels);
 
 	while (Q->runtime) {
-		/*	------------------------- Order Flow Analysis ----------------------------	*/
-		Q->watchList.at(0).Tape.lock();
-		temp = heavyVol->analysis();
-		
-		Q->watchList.at(0).Tape.unlock();
 
-		for (int i = 0; i < temp->size(); i++) {
-			if (temp->at(i) == 0)
-				continue;
-			SRLevels->push_back(temp->at(i));
-			for (int j = 0; j < SRLevels->size() - 1; j++)
-				if (SRLevels->at(j) == SRLevels->at(SRLevels->size() - 1)) {
-					SRLevels->pop_back();
-					break;
-				}
-		}
 		/*	------------------------- Order Book Analysis ----------------------------	*/
 		Q->watchList.at(0).Dom.lock();
-		temp = limitVol->analysis();
+		currBidAsk[0] = Q->watchList.at(0).book->priceArray[Q->watchList.at(0).book->bestBidIndex];
+		currBidAsk[1] = Q->watchList.at(0).book->priceArray[Q->watchList.at(0).book->bestAskIndex];
+
+		//Analysis
+		limitVol->analysis(currBidAsk[0], currBidAsk[1]);
 		
+		//Confirmations
+		delta->confirmation(currBidAsk[0], currBidAsk[1]);
+
 		Q->watchList.at(0).Dom.unlock();
 
-		for (int i = 0; i < temp->size(); i++) {
-			if (temp->at(i) == 0)
-				continue;
-			SRLevels->push_back(temp->at(i));
-			for (int j = 0; j < SRLevels->size() - 1; j++)
-				if (SRLevels->at(j) == SRLevels->at(SRLevels->size() - 1)) {
-					SRLevels->pop_back();
-					break;
-				}
-		}
-		/*	------------------------- Delete Redundancies ----------------------------	*/
+		/*	------------------------- Order Flow Analysis ----------------------------	*/
+		Q->watchList.at(0).Tape.lock();
+		//Analysis
+		heavyVol->analysis(currBidAsk[0], currBidAsk[1]);
+		tradeFilt->analysis(currBidAsk[0], currBidAsk[1]);
+
+		//Confirmations
 		
+		Q->watchList.at(0).Tape.unlock();		
 
 		/*	------------------------ Confirmation Analysis ---------------------------	*/
 
+		for (int i = 0; i < suppLevels->size(); i++) {		//Delete support levels the price has broken through
+			if ((suppLevels->at(i).price - currBidAsk[0]) >= 1.25)
+				suppLevels->erase(suppLevels->begin() + i);
 
-		//Output
-		cout << endl << "The following prices have been identified as supports and/or resistances: " << endl;
-		for (int i = 0; i < SRLevels->size(); i++)
-			cout << SRLevels->at(i) << endl;
-		Sleep(3000);
+			else if ((currBidAsk[0] - suppLevels->at(i).price) >= 1.5)
+				suppLevels->at(i).pulledAway = true;
+
+			else if (suppLevels->at(i).confirmed) {
+				Q->accounts.at(0).order->shortMarket(&Q->watchList.at(0));
+				suppLevels->erase(suppLevels->begin() + i);
+				i--;
+			}
+		}
+
+		for (int i = 0; i < resistLevels->size(); i++) {	//Delete resistance levels the price has broken through
+			if ((currBidAsk[1] - resistLevels->at(i).price) >= 1.25)
+				resistLevels->erase(resistLevels->begin() + i);
+
+			else if ((resistLevels->at(i).price - currBidAsk[1]) >= 1.5)
+				suppLevels->at(i).pulledAway = true;
+
+			else if (resistLevels->at(i).confirmed) {
+				Q->accounts.at(0).order->shortMarket(&Q->watchList.at(0));
+				resistLevels->erase(resistLevels->begin() + i);
+				i--;
+			}
+		}
+
+		/*	------------------------ Final Analysis Output ---------------------------	*/
+
+		cout << endl << "The current bid/ask spread is " << currBidAsk[0] << " / " << currBidAsk[1];
+		cout << endl << "The following prices have been identified as possible supports: " << endl;
+		for (int i = 0; i < suppLevels->size(); i++)
+			cout << suppLevels->at(i).price << endl;
+		cout << endl << "The following prices have been identified as possible resistances: " << endl;
+		for (int i = 0; i < resistLevels->size(); i++)
+			cout << resistLevels->at(i).price << endl;
+		Sleep(500);
+
 	}
+
 	cout << endl << "Ending trade analysis..." << endl;
 
-	delete SRLevels;
 	delete heavyVol;
+	delete limitVol;
 	return 0;
 };
 
-/*CODE TO PRINT DOM OVER 20 SECONDS:
- 	for (int i = 0; i < 10; i++) {
-		Q->watchList.at(0).Dom.lock();
-		cout << endl << endl;
-		cout << "  bid  | price |  ask  " << endl;
-
-		for (int j = Q->watchList.at(0).book->bestAskIndex + 5; j >= Q->watchList.at(0).book->bestBidIndex - 5; j--) {
-			cout <<
-				Q->watchList.at(0).book->bidSizeArray[j] << "  " <<
-				Q->watchList.at(0).book->priceArray[j] << "  " <<
-				Q->watchList.at(0).book->askSizeArray[j] << endl;
-		}
-			
-		Q->watchList.at(0).Dom.unlock();
-
-		Sleep(2000);
-	}
-*/
-
-/*
-cout << endl << "bid: " << Q->watchList.at(0).book->priceArray[Q->watchList.at(0).book->bestBidIndex]
-	<< "  ask: " << Q->watchList.at(0).book->priceArray[Q->watchList.at(0).book->bestAskIndex] << endl;
-*/

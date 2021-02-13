@@ -61,6 +61,12 @@
       <Filter>Strategies\Order Book</Filter>
     </ClCompile>
     <ClCompile Include="TradeFilter.cpp">
+      <Filter>Strategies\Order Flow</Filter>
+    </ClCompile>
+    <ClCompile Include="Delta.cpp">
+      <Filter>Strategies\Confirmation</Filter>
+    </ClCompile>
+    <ClCompile Include="Absorbtion.cpp">
       <Filter>Strategies\Confirmation</Filter>
     </ClCompile>
   </ItemGroup>

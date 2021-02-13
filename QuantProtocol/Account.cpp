@@ -11,7 +11,9 @@ Account::Account() {
 	accId.pData = NULL;
 	accId.iDataLen = 0;
 
-	accBalance = 0;
+	accBalance = 2300;
+	order = nullptr;
+	tradeRoutes = new TradeRouteListInfo();
 
 	account = nullptr;
 	pEngine = nullptr;
@@ -28,7 +30,9 @@ Account::Account(AccountInfo* acc) {
 	accId.pData = acc->sAccountId.pData;
 	accId.iDataLen = acc->sAccountId.iDataLen;
 
-	accBalance = 0;
+	accBalance = 2300;
+	order = nullptr;
+	tradeRoutes = new TradeRouteListInfo();
 
 	account = acc;
 	pEngine = nullptr;
@@ -46,6 +50,8 @@ Account::Account(REngine* engine, globals* responses) {
 	accId.iDataLen = 0;
 
 	accBalance = 2300;
+	order = nullptr;
+	tradeRoutes = new TradeRouteListInfo();
 
 	account = nullptr;
 	pEngine = engine;
@@ -63,6 +69,8 @@ Account::Account(REngine* engine, globals* responses, AccountInfo* acc) {
 	accId.iDataLen = acc->sAccountId.iDataLen;
 
 	accBalance = 0;
+	order = nullptr;
+	tradeRoutes = new TradeRouteListInfo();
 
 	account = acc;
 	pEngine = engine;
@@ -75,6 +83,17 @@ Account::~Account() {
 /*	=========================================================================	*/
 
 int Account::initAcc() {
+	int iCode;
+	order = new Order(pEngine, responseCallbacks, account, fcmId, ibId, accBalance);
+	
+	try {
+		pEngine->subscribeOrder(account, &iCode);
+	}
+	catch (OmneException oEx) {
+		cout << endl << "REngine::subscribeOrder() error : " << iCode << endl;
+		return 1;
+	}
+	order->init();
 
 	return 0;
 }

@@ -93,7 +93,8 @@ public:
 	tsNCharcb exchange;
 	tsNCharcb ticker;
 
-
+	int position;
+	
 	/*	======================== Declare Member Functions ========================	*/
 	Contract(REngine* toEngine, globals* responses, char* toExchange, char* toTicker);
 	Contract(const Contract &orig);

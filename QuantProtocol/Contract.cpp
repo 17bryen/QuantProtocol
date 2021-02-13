@@ -20,6 +20,8 @@ Contract::Contract(REngine* toEngine, globals* responses, char* toExchange, char
 
 	book = new OrderBook();
 	flow = new OrderFlow();
+
+	position = 0;
 }
 
 Contract::Contract(const Contract &orig) {
@@ -37,6 +39,8 @@ Contract::Contract(const Contract &orig) {
 	ticker.pData = orig.ticker.pData;
 	ticker.iDataLen = orig.ticker.iDataLen;
 
+	position = 0;
+
 	Dom.unlock();
 }
 
@@ -50,11 +54,37 @@ Contract::~Contract() {
 int Contract::subscribe() {
     int iCode;
 	int iFlags = (MD_QUOTES | MD_PRINTS);
+	int timeNow = getCurrentTime();
+	int timeBack = timeNow - (60 * 15);
+
+	timeNow = 0;
+	timeBack = 0;
+
+	/*
+	try {
+		pEngine->suspendInput(&iCode);
+	}
+	catch (OmneException oEx) {
+		cout << endl << "REngine::suspendInput() error : " << iCode << endl;
+		return 1;
+	}
+	*/
 
 	if (!pEngine->subscribe(&exchange, &ticker, iFlags, &iCode)) {
 		cout << "REngine::subscribe() error : " << iCode << endl;
 
 		return (1);
+	}
+	if (!pEngine->replayTrades(&exchange, &ticker, timeBack, timeNow, &iCode)) {
+		cout << "REngine::replayTrades() error : " << iCode << endl;
+
+		return (1);
+	}
+
+	//Wait for past hour of trades to replay before continuing
+	cout << "Waiting on past hour of trade data before continuing..." << endl;
+	while (!callbackResponses->bRcvdReplayTrades) {
+		Sleep(1000);
 	}
 
     //Wait for Book image received before continuing
@@ -81,6 +111,7 @@ int Contract::unsubscribe() {
 
 OrderBook::OrderBook() {
 	priceArray = nullptr;
+	timeArray = nullptr;
 	domLength = 0;
 
 	bestAskIndex = 0;
@@ -334,7 +365,7 @@ int OrderFlow::updateTrades(TradeInfo* tick) {
 		return 1;
 	}
 	//Trade Filter
-	if (tick->iSize > 25) {
+	if (tick->iSize > 20) {
 		Trade temp;
 		temp.price = tick->bPriceFlag;
 		temp.size = tick->iSize;
@@ -351,7 +382,7 @@ int OrderFlow::updateTrades(TradeInfo* tick) {
 	if (priceIndex == -1)
 		priceIndex = insertPrice(tick->dPrice);
 
-	if (tick->iSsboe - recTime[priceIndex] > 120) {
+	if (tick->iSsboe - recTime[priceIndex] > 60) {
 		recAskVolArray[priceIndex] = 0;
 		recBidVolArray[priceIndex] = 0;
 	}

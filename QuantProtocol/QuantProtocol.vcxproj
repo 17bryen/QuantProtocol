@@ -143,8 +143,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Absorbtion.cpp" />
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="Analysis.cpp" />
+    <ClCompile Include="Delta.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="HeavyVolume.cpp" />
     <ClCompile Include="ImplRApi.cpp" />

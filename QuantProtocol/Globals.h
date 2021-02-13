@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
+#include <chrono>
 #include "RApiPlus.h"
 
 using namespace std;
@@ -17,6 +18,7 @@ struct globals {
     bool bRcvdLimitOrderBook = false;
 	bool bRcvdReplayTrades = false;
 	bool bRcvdAccountsList = false;
+	bool bRcvdTradeRoutes = false;
 	bool bLoggedIn = false;
 	bool bRcvdPnl = false;
 
@@ -28,3 +30,5 @@ struct globals {
 	int iIhLoginStatus = 0;
 	int iPnlLoginStatus = 0;
 };
+
+int getCurrentTime();

@@ -52,7 +52,8 @@ int main(int argc, char * *argv, char * *envp) {
 
 	/*	========================= Pass Rithmic Login to Quant =======================	*/
 
-	
+	Q->setUser((char*)"17bryen@amp.com");
+	Q->setPass((char*)"&h$QlbrU2ha");
 
 
 	/*	========================== Check Unsigned Agreements ========================	
@@ -82,11 +83,11 @@ int main(int argc, char * *argv, char * *envp) {
 		Sleep(1000);
 
 	for (int i = 0; i < Q->callbackResponses->pAccounts->iArrayLen; i++)
-		Q->accounts.push_back(*(new Account(Q->pEngine, Q->callbackResponses, Q->callbackResponses->pAccounts->asAccountInfoArray + i)));
+		Q->accounts.push_back(*(new Account(Q->pEngine, Q->callbackResponses, &Q->callbackResponses->pAccounts->asAccountInfoArray[i])));
 
 	Q->callbackResponses->iSelectedAccount = 0;
-
 	Q->accounts.at(0).subscribe();
+	Q->accounts.at(0).initAcc();
 
 	/*	============================ Init List of Contracts ==========================	*/
 
@@ -99,7 +100,7 @@ int main(int argc, char * *argv, char * *envp) {
 
 	/*	============================= Begin Main Loop ===========================	*/
 
-	thread bot(Analysis, Q);
+	//thread bot(Analysis, Q);
 
 	fgetc(stdin);
 	
@@ -107,7 +108,7 @@ int main(int argc, char * *argv, char * *envp) {
 	/*	============================= Exit Main Loop ============================	*/
 
 	Q->runtime = false;
-	bot.join();
+	//bot.join();
 	
 	cout << "Successfully made it through the program test!" << endl;
 	Sleep(3000);
