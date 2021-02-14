@@ -1,19 +1,6 @@
 #pragma once
 
-#include "RApiPlus.h"
-#include "Globals.h"
-#include "Contract.h"
-#include "Account.h"
-
-#include <iostream>
-#include <vector>
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-
-#include <Windows.h>
-
-
+#include "Systems.h"
 
 using namespace std;
 using namespace RApi;
@@ -24,18 +11,14 @@ using namespace RApi;
 
 bool cpytsNCharcb(tsNCharcb &dest, tsNCharcb &src);
 
-
-
 /*	===========================================================	*/
 /*						Clase Declarations						*/
 /*	===========================================================	*/
 
 class ImplAdmCallbacks : public AdmCallbacks {
 public :
-    ImplAdmCallbacks(globals* callbacks);
+    ImplAdmCallbacks();
 	~ImplAdmCallbacks() {};
-
-    globals* callbackResponses;
 
 	virtual int Alert(AlertInfo *pInfo, void *pContext, int *aiCode);
 };
@@ -44,13 +27,10 @@ public :
 
 class ImplCallbacks : public RCallbacks {
 public :
-    ImplCallbacks(globals* callbacks, vector<Account>* accounts, vector<Contract>* toWatch);
+    ImplCallbacks(Systems* toSystem);
 	~ImplCallbacks() {};
 
-    /*   ----------------------------------------------------   */
-    globals* callbackResponses;
-    vector<Account>* accounts;
-    vector<Contract>* watchList;
+    Systems* system;
 
 	/*	------------------------------------------------------	*/
 

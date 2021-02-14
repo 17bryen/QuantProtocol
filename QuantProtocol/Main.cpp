@@ -12,18 +12,14 @@ GOAL IS TO HAVE THIS BOT AUTOMATICALLY TRADE /ES CONTRACTS FROM OPEN TO CLOSE
 
 using namespace std;
 
-
-
 int main(int argc, char * *argv, char * *envp) {
 	cout << "============================== Quant Protocol v0.1a ==============================" << endl << endl;
 
 	/*	=============================== Declare Variables ===========================	*/
-
 	Quant*				Q;
 	REngineParams		oParams;
 
 	int					iCode;
-
 
 	/*	======= REngineParams::sAdmCnnctPt assumes connection to Rithmic 01 ==========	*/
 	{
@@ -52,11 +48,13 @@ int main(int argc, char * *argv, char * *envp) {
 
 	/*	========================= Pass Rithmic Login to Quant =======================	*/
 
+	Q->system->setUser((char*)"17bryen@amp.com");
+	Q->system->setPass((char*)"&h$QlbrU2ha");
 
 
 	/*	========================== Check Unsigned Agreements ========================	
 
-	iCode = Q->checkAgreements();
+	iCode = Q->system->checkAgreements();
 	if (iCode != 0) {
 		delete Q;
 		return (BAD);
@@ -65,48 +63,41 @@ int main(int argc, char * *argv, char * *envp) {
 
 	/*	======================== Login to Quant Connect Points ======================	*/
 
-	iCode = Q->login();
+	Q->system->init();
+	iCode = Q->system->login();
 	if (iCode != 0) {
 		delete Q;
 		return (BAD);
 	}
-	while (!Q->callbackResponses->bLoggedIn)
+
+	/*	================================ Init Account ===============================	*/
+
+	while (!Q->system->acc->accBalance == 0) 
 		Sleep(1000);
 
-
-	/*	============================ Get List of Accounts ===========================	*/
-
-	
-	while (!Q->callbackResponses->bRcvdAccountsList) 
-		Sleep(1000);
-
-	for (int i = 0; i < Q->callbackResponses->pAccounts->iArrayLen; i++)
-		Q->accounts.push_back(*(new Account(Q->pEngine, Q->callbackResponses, &Q->callbackResponses->pAccounts->asAccountInfoArray[i])));
-
-	Q->callbackResponses->iSelectedAccount = 0;
-	Q->accounts.at(0).subscribe();
-	Q->accounts.at(0).initAcc();
+	Q->system->acc->initAcc();
+	Q->system->acc->subscribe();
 
 	/*	============================ Init List of Contracts ==========================	*/
 
-	//Contract* ES = new Contract(Q->pEngine, Q->callbackResponses, (char*)"CME", (char*)"ESH1");
-    Q->watchList.push_back(*(new Contract(Q->pEngine, Q->callbackResponses, (char*)"CME", (char*)"ESH1")));
-
-	for (int i = 0; i < (int)Q->watchList.size(); i++)
-		Q->watchList.at(0).subscribe();
-	
+    Q->system->acc->addWatchlist((char*)"CME", (char*)"ESH1");
+	Q->system->acc->subWatchlist();
 
 	/*	============================= Begin Main Loop ===========================	*/
 
-	//thread bot(Analysis, Q);
+	//thread analyManager(Q->analysisManager, system);
+	//thread orderManager(Q->orderManager, system);
+	//thread stateManager(Q->stateManager, system);
 
 	fgetc(stdin);
 	
 
 	/*	============================= Exit Main Loop ============================	*/
 
-	Q->runtime = false;
-	//bot.join();
+	Q->system->userManagement = false;
+	//analyManager.join();
+	//orderManager.join();
+	//stateManager.join();
 	
 	cout << "Successfully made it through the program test!" << endl;
 	Sleep(3000);

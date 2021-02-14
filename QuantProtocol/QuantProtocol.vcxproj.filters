@@ -28,6 +28,9 @@
     <Filter Include="Strategies\Confirmation">
       <UniqueIdentifier>{22c3eb40-8f0e-4cc4-917c-3d02b9d6404f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Objects">
+      <UniqueIdentifier>{a2288e85-0da9-4421-8b1c-82073734c639}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -36,19 +39,7 @@
     <ClCompile Include="ImplRApi.cpp">
       <Filter>R API+</Filter>
     </ClCompile>
-    <ClCompile Include="Order.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Quant.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Globals.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Contract.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Account.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Analysis.cpp">
@@ -69,31 +60,43 @@
     <ClCompile Include="Absorbtion.cpp">
       <Filter>Strategies\Confirmation</Filter>
     </ClCompile>
+    <ClCompile Include="Account.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Contract.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="OrderManager.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Main.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ImplRApi.h">
       <Filter>R API+</Filter>
     </ClInclude>
-    <ClInclude Include="Order.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Quant.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Globals.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Contract.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Account.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Quant.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Analysis.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Main.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OrderManager.h">
+      <Filter>Source Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems.h">
+      <Filter>Source Files\Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

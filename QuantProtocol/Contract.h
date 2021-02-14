@@ -1,11 +1,14 @@
 #pragma once
+
 #include "RApiPlus.h"
-#include "Globals.h"
 #include <iostream>
-#include <stdio.h>
 #include <stdlib.h>
-#include <mutex>
+#include <stdio.h>
 #include <string.h>
+#include <thread>
+#include <chrono>
+#include <vector>
+#include <mutex>
 
 #include "Windows.h"
 
@@ -16,7 +19,7 @@ struct Trade {
 	double price = 0;
 	double size = 0;
 	int time = 0;
-	tsNCharcb aggrSide;
+	char aggrSide = 'A';
 };
 
 class OrderBook {
@@ -49,6 +52,7 @@ class OrderFlow {
 public:
 	/*	======================== Declare Member Variables ========================	*/
 	double* priceArray;
+	int* recTime;
 	int priceArrayLength;
 
 	int* recAskVolArray;
@@ -56,8 +60,6 @@ public:
 
 	int* recBidVolArray;
 	int* bidVolumeArray;
-
-	int* recTime;
 
 	vector<Trade> tradeFilter;
 
@@ -79,13 +81,14 @@ public:
 */
 
 class Contract {
+private:
+	REngine* pEngine;
+
 public:
 	/*	======================== Declare Member Variables ========================	*/
-    REngine* pEngine;
-    globals* callbackResponses;
 
-    mutex Dom;
-    mutex Tape;
+    mutex domLock;
+    mutex tapeLock;
 
 	OrderBook* book;
 	OrderFlow* flow;
@@ -93,10 +96,10 @@ public:
 	tsNCharcb exchange;
 	tsNCharcb ticker;
 
-	int position;
+	int positionSize;
 	
 	/*	======================== Declare Member Functions ========================	*/
-	Contract(REngine* toEngine, globals* responses, char* toExchange, char* toTicker);
+	Contract(REngine* toEngine, char* toExchange, char* toTicker);
 	Contract(const Contract &orig);
 	~Contract();
 

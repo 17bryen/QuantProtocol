@@ -1,9 +1,6 @@
 #pragma once
 
-#include "Globals.h"
-#include "Contract.h"
-#include "ImplRApi.h"
-#include "Quant.h"
+#include "Systems.h"
 
 struct zone {
 	double price;
@@ -20,5 +17,14 @@ struct zone {
 	~zone() {}
 };
 
+class AnalysisManager {
+private:
+	REngine* pEngine;
+	Systems* system;
 
-int Analysis(Quant* Q);
+public:
+	AnalysisManager(REngine* toEngine, Systems* toSys);
+	~AnalysisManager();
+
+	int Analysis();
+};
