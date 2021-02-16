@@ -12,7 +12,7 @@ private:
 	ImplCallbacks* pCallbacks;
 
 public:
-	Systems* system;
+	Systems* pSystem;
 	AnalysisManager* analysisManager;
 	OrderManager* orderManager;
 

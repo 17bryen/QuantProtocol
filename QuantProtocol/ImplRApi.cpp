@@ -9,11 +9,6 @@ using namespace RApi;
 
 static bool dumpsEnabled = true;
 
-const int LoginStatus_NotLoggedIn = 0;
-const int LoginStatus_AwaitingResults = 1;
-const int LoginStatus_Failed = 2;
-const int LoginStatus_Complete = 3;
-
 /*   =====================================================================   */
 /*                           custom functions                                */
 /*   =====================================================================   */
@@ -25,14 +20,10 @@ bool cpytsNCharcb(tsNCharcb &dest, tsNCharcb &src) {
         return true;
 }
 
-ImplAdmCallbacks::ImplAdmCallbacks(globals* callbacks) {
-    callbackResponses = callbacks;
+ImplAdmCallbacks::ImplAdmCallbacks() {
 };
 
-ImplCallbacks::ImplCallbacks(globals* callbacks, vector<Account>* toAccount, vector<Contract>* toWatch) {
-    callbackResponses = callbacks;
-    accounts = toAccount;
-    watchList = toWatch;
+ImplCallbacks::ImplCallbacks() {
 };
 
 
@@ -63,6 +54,7 @@ int ImplAdmCallbacks::Alert(AlertInfo* pInfo, void* pContext, int* aiCode)
 
 int ImplCallbacks::AccountList(AccountListInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
     int iIgnored;
 
     if (dumpsEnabled) {
@@ -72,43 +64,20 @@ int ImplCallbacks::AccountList(AccountListInfo* pInfo, void* pContext, int* aiCo
         }
     }
 
-
-
     if (pInfo->iArrayLen <= 0){
         cout << "No accounts associated with this login or failed to retrieve accounts..." << endl;
         return (NOT_OK);
     } 
 
+    AccountInfo* tempOld = pInfo->asAccountInfoArray;
+    AccountInfo* tempNew = context->acc->account;
 
-    callbackResponses->pAccounts = new AccountListInfo();
-    {
-        callbackResponses->pAccounts->iArrayLen = pInfo->iArrayLen;
-        callbackResponses->pAccounts->asAccountInfoArray = new AccountInfo[callbackResponses->pAccounts->iArrayLen];
-        callbackResponses->pAccounts->iRpCode = pInfo->iRpCode;
-        callbackResponses->pAccounts->sRpCode.pData = pInfo->sRpCode.pData;
-        callbackResponses->pAccounts->sRpCode.iDataLen = pInfo->sRpCode.iDataLen;
+    cpytsNCharcb(tempNew->sAccountId, tempOld[0].sAccountId);
+    cpytsNCharcb(tempNew->sAccountName, tempOld[0].sAccountName);
+    cpytsNCharcb(tempNew->sFcmId, tempOld[0].sFcmId);
+    cpytsNCharcb(tempNew->sIbId, tempOld[0].sIbId);
 
-        //You would loop through the array to copy account data here
-        {
-            AccountInfo* tempOld = pInfo->asAccountInfoArray;
-            AccountInfo* tempNew = callbackResponses->pAccounts->asAccountInfoArray;
-
-            for (int i = 0; i < pInfo->iArrayLen; i++) {
-                cpytsNCharcb(tempNew[i].sAccountId, tempOld[i].sAccountId);
-                cpytsNCharcb(tempNew[i].sAccountName, tempOld[i].sAccountName);
-                cpytsNCharcb(tempNew[i].sFcmId, tempOld[i].sFcmId);
-                cpytsNCharcb(tempNew[i].sIbId, tempOld[i].sIbId);
-            }
-
-            //pRmsInfo copy here
-            {
-
-            }
-        }
-    }
-
-    //for(int i = 0; i < pInfo->iArrayLen; i++)
-    callbackResponses->bRcvdAccountsList = true;
+    context->rcvdAccountList = true;
 
     *aiCode = API_OK;
     return (OK);
@@ -128,6 +97,7 @@ int ImplCallbacks::PasswordChange(PasswordChangeInfo* pInfo,
 
 int ImplCallbacks::Alert(AlertInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
     int iIgnored;
 
     /*   ----------------------------------------------------------------   */
@@ -147,14 +117,14 @@ int ImplCallbacks::Alert(AlertInfo* pInfo, void* pContext, int* aiCode)
     {
         if (pInfo->iAlertType == ALERT_LOGIN_COMPLETE)
         {
-            callbackResponses->iRepLoginStatus = LoginStatus_Complete;
+            context->iRepLoginStatus = LoginStatus_Complete;
         }
         else if (pInfo->iAlertType == ALERT_LOGIN_FAILED)
         {
-            callbackResponses->iRepLoginStatus = LoginStatus_Failed;
+            context->iRepLoginStatus = LoginStatus_Failed;
         }
         else if (pInfo->iAlertType == ALERT_CONNECTION_BROKEN) {
-            callbackResponses->iRepLoginStatus = LoginStatus_Failed;
+            context->iRepLoginStatus = LoginStatus_Failed;
         }
     }
 
@@ -166,14 +136,14 @@ int ImplCallbacks::Alert(AlertInfo* pInfo, void* pContext, int* aiCode)
     {
         if (pInfo->iAlertType == ALERT_LOGIN_COMPLETE)
         {
-            callbackResponses->iMdLoginStatus = LoginStatus_Complete;
+            context->iMdLoginStatus = LoginStatus_Complete;
         }
         else if (pInfo->iAlertType == ALERT_LOGIN_FAILED)
         {
-            callbackResponses->iMdLoginStatus = LoginStatus_Failed;
+            context->iMdLoginStatus = LoginStatus_Failed;
         }
         else if (pInfo->iAlertType == ALERT_CONNECTION_BROKEN) {
-            callbackResponses->iMdLoginStatus = LoginStatus_Failed;
+            context->iMdLoginStatus = LoginStatus_Failed;
         }
     }
 
@@ -185,14 +155,14 @@ int ImplCallbacks::Alert(AlertInfo* pInfo, void* pContext, int* aiCode)
     {
         if (pInfo->iAlertType == ALERT_LOGIN_COMPLETE)
         {
-            callbackResponses->iTsLoginStatus = LoginStatus_Complete;
+            context->iTsLoginStatus = LoginStatus_Complete;
         }
         else if (pInfo->iAlertType == ALERT_LOGIN_FAILED)
         {
-            callbackResponses->iTsLoginStatus = LoginStatus_Failed;
+            context->iTsLoginStatus = LoginStatus_Failed;
         }
         else if (pInfo->iAlertType == ALERT_CONNECTION_BROKEN) {
-            callbackResponses->iTsLoginStatus = LoginStatus_Failed;
+            context->iTsLoginStatus = LoginStatus_Failed;
         }
     }
 
@@ -204,14 +174,14 @@ int ImplCallbacks::Alert(AlertInfo* pInfo, void* pContext, int* aiCode)
     {
         if (pInfo->iAlertType == ALERT_LOGIN_COMPLETE)
         {
-            callbackResponses->iPnlLoginStatus = LoginStatus_Complete;
+            context->iPnlLoginStatus = LoginStatus_Complete;
         }
         else if (pInfo->iAlertType == ALERT_LOGIN_FAILED)
         {
-            callbackResponses->iPnlLoginStatus = LoginStatus_Failed;
+            context->iPnlLoginStatus = LoginStatus_Failed;
         }
         else if (pInfo->iAlertType == ALERT_CONNECTION_BROKEN) {
-            callbackResponses->iPnlLoginStatus = LoginStatus_Failed;
+            context->iPnlLoginStatus = LoginStatus_Failed;
         }
     }
 
@@ -223,14 +193,14 @@ int ImplCallbacks::Alert(AlertInfo* pInfo, void* pContext, int* aiCode)
     {
         if (pInfo->iAlertType == ALERT_LOGIN_COMPLETE)
         {
-            callbackResponses->iIhLoginStatus = LoginStatus_Complete;
+            context->iIhLoginStatus = LoginStatus_Complete;
         }
         else if (pInfo->iAlertType == ALERT_LOGIN_FAILED)
         {
-            callbackResponses->iIhLoginStatus = LoginStatus_Failed;
+            context->iIhLoginStatus = LoginStatus_Failed;
         }
         else if (pInfo->iAlertType == ALERT_CONNECTION_BROKEN) {
-            callbackResponses->iIhLoginStatus = LoginStatus_Failed;
+            context->iIhLoginStatus = LoginStatus_Failed;
         }
     }
     /*   ----------------------------------------------------------------   */
@@ -241,10 +211,9 @@ int ImplCallbacks::Alert(AlertInfo* pInfo, void* pContext, int* aiCode)
 
 /*   =====================================================================   */
 
-int ImplCallbacks::AgreementList(AgreementListInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::AgreementList(AgreementListInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
     int iIgnored;
 
     /*   ----------------------------------------------------------------   */
@@ -268,11 +237,11 @@ int ImplCallbacks::AgreementList(AgreementListInfo* pInfo,
 
             if (oAg.bMandatory)
             {
-                callbackResponses->iUnacceptedMandatoryAgreements++;
+                context->iUnacceptedMandatoryAgreements++;
             }
         }
 
-        callbackResponses->bRcvdUnacceptedAgreements = true;
+        context->bRcvdUnacceptedAgreements = true;
     }
 
     /*   ----------------------------------------------------------------   */
@@ -285,6 +254,7 @@ int ImplCallbacks::AgreementList(AgreementListInfo* pInfo,
 
 int ImplCallbacks::ExchangeList(ExchangeListInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
     int iIgnored;
     if (dumpsEnabled) {
         cout << endl << endl;
@@ -313,31 +283,24 @@ int ImplCallbacks::ExecutionReplay(ExecutionReplayInfo* pInfo,
 
 /*   =====================================================================   */
 
-int ImplCallbacks::LineUpdate(LineInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::LineUpdate(LineInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
+
+    /*COMPLETE THIS FUNCTION*/
+
     *aiCode = API_OK;
     return(OK);
 }
 
 /*   =====================================================================   */
 
-int ImplCallbacks::OpenOrderReplay(OrderReplayInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::OpenOrderReplay(OrderReplayInfo* pInfo, void* pContext, int* aiCode)
 {
-    *aiCode = API_OK;
-    return(OK);
-}
+    Systems* context = (Systems*)pContext;
 
+    /*COMPLETE THIS FUNCTION*/
 
-/*   =====================================================================   */
-
-int ImplCallbacks::OrderReplay(OrderReplayInfo* pInfo,
-    void* pContext,
-    int* aiCode)
-{
     *aiCode = API_OK;
     return(OK);
 }
@@ -345,10 +308,26 @@ int ImplCallbacks::OrderReplay(OrderReplayInfo* pInfo,
 
 /*   =====================================================================   */
 
-int ImplCallbacks::PnlReplay(PnlReplayInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::OrderReplay(OrderReplayInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
+
+    /*COMPLETE THIS FUNCTION*/
+
+    *aiCode = API_OK;
+    return(OK);
+}
+
+
+/*   =====================================================================   */
+
+int ImplCallbacks::PnlReplay(PnlReplayInfo* pInfo, void* pContext, int* aiCode)
+{
+    Systems* context = (Systems*)pContext;
+
+    /*CALL THIS TO GET INITIAL ACC BALANCE*/
+    context->acc->accBalance = pInfo->asPnlInfoArray[pInfo->iArrayLen - 1].dAccountBalance;
+
     *aiCode = API_OK;
     return(OK);
 }
@@ -357,7 +336,9 @@ int ImplCallbacks::PnlReplay(PnlReplayInfo* pInfo,
 
 int ImplCallbacks::PnlUpdate(PnlInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
     int iIgnored;
+
     if (dumpsEnabled) {
         cout << endl << endl;
         if (!pInfo->dump(&iIgnored))
@@ -368,11 +349,10 @@ int ImplCallbacks::PnlUpdate(PnlInfo* pInfo, void* pContext, int* aiCode)
     /*   ----------------------------------------------------------------   */
 
     if (pInfo->eAccountBalance == VALUE_STATE_USE)
-        for (int i = 0; i < accounts->size(); i++)
-            if (accounts->at(i).accId.pData == pInfo->oAccount.sAccountId.pData)
-                accounts->at(i).accBalance = pInfo->dAccountBalance;
+        context->acc->accBalance = pInfo->dAccountBalance;
 
     /*   ----------------------------------------------------------------   */
+
     //ADD CODE TO ACCURATELY TRACK CURRENT POSITIONS
 
     /*   ----------------------------------------------------------------   */
@@ -383,10 +363,9 @@ int ImplCallbacks::PnlUpdate(PnlInfo* pInfo, void* pContext, int* aiCode)
 
 /*   =====================================================================   */
 
-int ImplCallbacks::PriceIncrUpdate(PriceIncrInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::PriceIncrUpdate(PriceIncrInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
     int iIgnored;
 
     /*   ----------------------------------------------------------------   */
@@ -396,6 +375,8 @@ int ImplCallbacks::PriceIncrUpdate(PriceIncrInfo* pInfo,
     {
         cout << "error in pInfo -> dump : " << iIgnored << endl;
     }
+
+    //IS THIS IMPORTANT?
 
     /*   ----------------------------------------------------------------   */
 
@@ -415,20 +396,24 @@ int ImplCallbacks::ProductRmsList(ProductRmsListInfo* pInfo,
 
 /*   =====================================================================   */
 
-int ImplCallbacks::SingleOrderReplay(SingleOrderReplayInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::SingleOrderReplay(SingleOrderReplayInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
+
+    /*WRITE THIS FUNCTION*/
+
     *aiCode = API_OK;
     return(OK);
 }
 
 /*   =====================================================================   */
 
-int ImplCallbacks::BustReport(OrderBustReport* pReport,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::BustReport(OrderBustReport* pReport, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
+
+    /*WRITE THIS FUNCTION*/
+
     *aiCode = API_OK;
     return(OK);
 }
@@ -437,6 +422,9 @@ int ImplCallbacks::BustReport(OrderBustReport* pReport,
 
 int ImplCallbacks::CancelReport(OrderCancelReport* pReport, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
+
+    /*WRITE THIS FUNCTION*/
 
     *aiCode = API_OK;
     return(OK);
@@ -444,110 +432,132 @@ int ImplCallbacks::CancelReport(OrderCancelReport* pReport, void* pContext, int*
 
 /*   =====================================================================   */
 
-int ImplCallbacks::FailureReport(OrderFailureReport* pReport,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::FailureReport(OrderFailureReport* pReport, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
+
+    /*WRITE THIS FUNCTION*/
+
     *aiCode = API_OK;
     return(OK);
 }
 
 /*   =====================================================================   */
 
-int ImplCallbacks::FillReport(OrderFillReport* pReport,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::FillReport(OrderFillReport* pReport, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
+
+    /*WRITE THIS FUNCTION*/
+
     *aiCode = API_OK;
     return(OK);
 }
 
 /*   =====================================================================   */
 
-int ImplCallbacks::ModifyReport(OrderModifyReport* pReport,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::ModifyReport(OrderModifyReport* pReport, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
+
+    /*WRITE THIS FUNCTION*/
+
     *aiCode = API_OK;
     return(OK);
 }
 
 /*   =====================================================================   */
 
-int ImplCallbacks::NotCancelledReport(OrderNotCancelledReport* pReport,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::NotCancelledReport(OrderNotCancelledReport* pReport, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
+
+    /*WRITE THIS FUNCTION*/
+
     *aiCode = API_OK;
     return(OK);
 }
 
 /*   =====================================================================   */
 
-int ImplCallbacks::NotModifiedReport(OrderNotModifiedReport* pReport,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::NotModifiedReport(OrderNotModifiedReport* pReport, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
+
+    /*WRITE THIS FUNCTION*/
+
     *aiCode = API_OK;
     return(OK);
 }
 
 /*   =====================================================================   */
 
-int ImplCallbacks::RejectReport(OrderRejectReport* pReport,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::RejectReport(OrderRejectReport* pReport, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
+
+    /*WRITE THIS FUNCTION*/
+
     *aiCode = API_OK;
     return(OK);
 }
 
 /*   =====================================================================   */
 
-int ImplCallbacks::StatusReport(OrderStatusReport* pReport,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::StatusReport(OrderStatusReport* pReport, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
+
+    /*WRITE THIS FUNCTION*/
+
     *aiCode = API_OK;
     return(OK);
 }
 
 /*   =====================================================================   */
 
-int ImplCallbacks::TradeCorrectReport(OrderTradeCorrectReport* pReport,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::TradeCorrectReport(OrderTradeCorrectReport* pReport, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
+
+    /*WRITE THIS FUNCTION*/
+
     *aiCode = API_OK;
     return(OK);
 }
 
 /*   =====================================================================   */
 
-int ImplCallbacks::TriggerPulledReport(OrderTriggerPulledReport* pReport,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::TriggerPulledReport(OrderTriggerPulledReport* pReport, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
+
+    /*WRITE THIS FUNCTION > ONLY IF YOU IMPLEMENT IF TOUCHED ORDERS*/
+
     *aiCode = API_OK;
     return(OK);
 }
 
 /*   =====================================================================   */
 
-int ImplCallbacks::TriggerReport(OrderTriggerReport* pReport,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::TriggerReport(OrderTriggerReport* pReport, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
+
+    /*SEE ABOVE*/
+
     *aiCode = API_OK;
     return(OK);
 }
 
 /*   =====================================================================   */
 
-int ImplCallbacks::OtherReport(OrderReport* pReport,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::OtherReport(OrderReport* pReport, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
+
+    /*COMPLETE THIS FUNCTION*/
+
     *aiCode = API_OK;
     return(OK);
 }
@@ -576,6 +586,7 @@ int ImplCallbacks::Quote(QuoteReport* pReport,
 
 int ImplCallbacks::AskQuote(AskInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
     int iIgnored;
     //Too fast to dump reasonably
     /*   ----------------------------------------------------------------   
@@ -586,13 +597,21 @@ int ImplCallbacks::AskQuote(AskInfo* pInfo, void* pContext, int* aiCode)
         cout << "error in pInfo -> dump : " << iIgnored << endl;
     }
     */
-    if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_BEGIN)
-        watchList->at(0).Dom.lock();
-
-    watchList->at(0).book->updateAsk(pInfo);
     
-    if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_END)
-        watchList->at(0).Dom.unlock();
+    for (int i = 0; i < context->acc->watchlist->size(); i++)
+        if (((string)context->acc->watchlist->at(i)->ticker.pData).substr(0, context->acc->watchlist->at(i)->ticker.iDataLen - 1)
+            == ((string)pInfo->sTicker.pData).substr(0, pInfo->sTicker.iDataLen - 1)) {
+
+            if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_BEGIN)
+                context->acc->watchlist->at(i)->domLock.lock();
+
+            context->acc->watchlist->at(i)->book->updateAsk(pInfo);
+
+            if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_END)
+                context->acc->watchlist->at(i)->domLock.unlock();
+        }
+    
+    
     /*   ----------------------------------------------------------------   */
 
     *aiCode = API_OK;
@@ -621,11 +640,9 @@ int ImplCallbacks::BestAskQuote(AskInfo* pInfo, void* pContext, int* aiCode)
 
 /*   =====================================================================   */
 
-int ImplCallbacks::BestBidAskQuote(BidInfo* pBid,
-    AskInfo* pAsk,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::BestBidAskQuote(BidInfo* pBid, AskInfo* pAsk, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
     int iIgnored;
 
     /*   ----------------------------------------------------------------   */
@@ -649,10 +666,9 @@ int ImplCallbacks::BestBidAskQuote(BidInfo* pBid,
 
 /*   =====================================================================   */
 
-int ImplCallbacks::BestBidQuote(BidInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::BestBidQuote(BidInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
     int iIgnored;
 
     /*   ----------------------------------------------------------------   */
@@ -671,10 +687,9 @@ int ImplCallbacks::BestBidQuote(BidInfo* pInfo,
 
 /*   =====================================================================   */
 
-int ImplCallbacks::BidQuote(BidInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::BidQuote(BidInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
     int iIgnored;
 
     //FAST
@@ -686,15 +701,19 @@ int ImplCallbacks::BidQuote(BidInfo* pInfo,
         cout << "error in pInfo -> dump : " << iIgnored << endl;
     }
     */
+    for (int i = 0; i < context->acc->watchlist->size(); i++)
+        if (((string)context->acc->watchlist->at(i)->ticker.pData).substr(0, context->acc->watchlist->at(i)->ticker.iDataLen - 1)
+            == ((string)pInfo->sTicker.pData).substr(0, pInfo->sTicker.iDataLen - 1)) {
 
-    if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_BEGIN)
-        watchList->at(0).Dom.lock();
+            if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_BEGIN)
+                context->acc->watchlist->at(i)->domLock.lock();
 
-    watchList->at(0).book->updateBid(pInfo);
-    
-    if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_END)
-        watchList->at(0).Dom.unlock();
+            context->acc->watchlist->at(i)->book->updateBid(pInfo);
 
+            if (pInfo->iUpdateType == UPDATE_TYPE_SOLO || pInfo->iUpdateType == UPDATE_TYPE_END)
+                context->acc->watchlist->at(i)->domLock.unlock();
+
+        }
     /*   ----------------------------------------------------------------   */
 
     *aiCode = API_OK;
@@ -703,20 +722,19 @@ int ImplCallbacks::BidQuote(BidInfo* pInfo,
 
 /*   =====================================================================   */
 
-int ImplCallbacks::BinaryContractList(BinaryContractListInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::BinaryContractList(BinaryContractListInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
+
     *aiCode = API_OK;
     return (OK);
 }
 
 /*   =====================================================================   */
 
-int ImplCallbacks::ClosePrice(ClosePriceInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::ClosePrice(ClosePriceInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
     int iIgnored;
 
     /*   ----------------------------------------------------------------   */
@@ -735,10 +753,9 @@ int ImplCallbacks::ClosePrice(ClosePriceInfo* pInfo,
 
 /*   =====================================================================   */
 
-int ImplCallbacks::ClosingIndicator(ClosingIndicatorInfo* pInfo,
-    void* pContext,
-    int* aiCode)
+int ImplCallbacks::ClosingIndicator(ClosingIndicatorInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
     int iIgnored;
 
     /*   ----------------------------------------------------------------   */
@@ -759,6 +776,7 @@ int ImplCallbacks::ClosingIndicator(ClosingIndicatorInfo* pInfo,
 
 int ImplCallbacks::EndQuote(EndQuoteInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
     int iIgnored;
 
     /*   ----------------------------------------------------------------   
@@ -769,8 +787,13 @@ int ImplCallbacks::EndQuote(EndQuoteInfo* pInfo, void* pContext, int* aiCode)
         cout << "error in pInfo -> dump : " << iIgnored << endl;
     }
     */
+    for (int i = 0; i < context->acc->watchlist->size(); i++)
+        if (((string)context->acc->watchlist->at(i)->ticker.pData).substr(0, context->acc->watchlist->at(i)->ticker.iDataLen - 1)
+            == ((string)pInfo->sTicker.pData).substr(0, pInfo->sTicker.iDataLen - 1)) {
 
-    watchList->at(0).Dom.unlock();
+            context->acc->watchlist->at(i)->domLock.unlock();
+
+        }
 
     /*   ----------------------------------------------------------------   */
 
@@ -834,6 +857,7 @@ int ImplCallbacks::InstrumentSearch(InstrumentSearchInfo* pInfo,
 
 int ImplCallbacks::LimitOrderBook(LimitOrderBookInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
     int iIgnored;
     //Set rcvd to true first (Actually doesn't matter because thread will be held in this function) 
     //Dumping this takes too long
@@ -846,31 +870,26 @@ int ImplCallbacks::LimitOrderBook(LimitOrderBookInfo* pInfo, void* pContext, int
     }
     */
 
-    OrderBook* temp = watchList->at(0).book;
+    for (int i = 0; i < context->acc->watchlist->size(); i++)
+        if (((string)context->acc->watchlist->at(i)->ticker.pData).substr(0, context->acc->watchlist->at(i)->ticker.iDataLen - 1)
+            == ((string)pInfo->sTicker.pData).substr(0, pInfo->sTicker.iDataLen - 1)) {
 
-    if (pInfo->iType == UPDATE_TYPE_SOLO || pInfo->iType == UPDATE_TYPE_BEGIN)
-        watchList->at(0).Dom.lock();
+            OrderBook* temp = context->acc->watchlist->at(i)->book;
 
-    /*   ----------------------------------------------------------------   */
+            if (pInfo->iType == UPDATE_TYPE_SOLO || pInfo->iType == UPDATE_TYPE_BEGIN)
+                context->acc->watchlist->at(i)->domLock.lock();
 
-    if (!callbackResponses->bRcvdLimitOrderBook) {
+            /*   ----------------------------------------------------------------   */
 
-        watchList->at(0).book->updateBook(pInfo);
-        callbackResponses->bRcvdLimitOrderBook = true;
+            context->acc->watchlist->at(0)->book->updateBook(pInfo);
 
-    }
-    else {
-        watchList->at(0).book->updateBook(pInfo);
+            /*   ----------------------------------------------------------------   */
 
-        cout << endl << endl << "SUBSEQUENT ORDER BOOK RECEIVED:" << endl;
-    }
+            if (pInfo->iType == UPDATE_TYPE_SOLO || pInfo->iType == UPDATE_TYPE_END)
+                context->acc->watchlist->at(0)->domLock.unlock();
 
-    /*   ----------------------------------------------------------------   */
-
-    if (pInfo->iType == UPDATE_TYPE_SOLO || pInfo->iType == UPDATE_TYPE_END)
-        watchList->at(0).Dom.unlock();
-
-    /*   ----------------------------------------------------------------   */
+            /*   ----------------------------------------------------------------   */
+        }
 
     *aiCode = API_OK;
     return (OK);
@@ -1074,6 +1093,7 @@ int ImplCallbacks::TradeCondition(TradeInfo* pInfo,
 
 int ImplCallbacks::TradePrint(TradeInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
     int iIgnored = 0;
 
     /*   ----------------------------------------------------------------   */
@@ -1087,16 +1107,22 @@ int ImplCallbacks::TradePrint(TradeInfo* pInfo, void* pContext, int* aiCode)
         }
     }
     */
-    if (pInfo->iSourceSsboe % 60 == 0)
-        cout << pInfo->iSourceSsboe << endl;
-    cout << "replay trade received" << endl;
 
-    watchList->at(0).Tape.lock();
+    for (int i = 0; i < context->acc->watchlist->size(); i++)
+        if (((string)context->acc->watchlist->at(i)->ticker.pData).substr(0, context->acc->watchlist->at(i)->ticker.iDataLen - 1)
+            == ((string)pInfo->sTicker.pData).substr(0, pInfo->sTicker.iDataLen - 1)) {
 
-    watchList->at(0).flow->updateTrades(pInfo);
+            if (pInfo->iSourceSsboe % 60 == 0) 
+                cout << pInfo->iSourceSsboe
+                << " : Replay Trade Received" << endl;
 
-    watchList->at(0).Tape.unlock();
+            context->acc->watchlist->at(i)->tapeLock.lock();
 
+            context->acc->watchlist->at(i)->flow->updateTrades(pInfo);
+
+            context->acc->watchlist->at(i)->tapeLock.unlock();
+
+        }
     /*   ----------------------------------------------------------------   */
 
     *aiCode = API_OK;
@@ -1107,10 +1133,11 @@ int ImplCallbacks::TradePrint(TradeInfo* pInfo, void* pContext, int* aiCode)
 
 int ImplCallbacks::TradeReplay(TradeReplayInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
     int iIgnored;
 
     /*   ----------------------------------------------------------------   */
-    cout << "Trade info received..." << endl;
+    /*
     if (dumpsEnabled) {
         cout << endl << endl;
         if (!pInfo->dump(&iIgnored))
@@ -1118,8 +1145,13 @@ int ImplCallbacks::TradeReplay(TradeReplayInfo* pInfo, void* pContext, int* aiCo
             cout << "error in pInfo -> dump : " << iIgnored << endl;
         }
     }
+    */
+    
+    for (int i = 0; i < context->acc->watchlist->size(); i++)
+        if (((string)context->acc->watchlist->at(i)->ticker.pData).substr(0, context->acc->watchlist->at(i)->ticker.iDataLen - 1)
+            == ((string)pInfo->sTicker.pData).substr(0, pInfo->sTicker.iDataLen - 1))
 
-    callbackResponses->bRcvdReplayTrades = true;
+            context->acc->watchlist->at(i)->rcvdReplayTrades = true;
 
     *aiCode = API_OK;
     return (OK);
@@ -1129,8 +1161,11 @@ int ImplCallbacks::TradeReplay(TradeReplayInfo* pInfo, void* pContext, int* aiCo
 
 int ImplCallbacks::TradeRoute(TradeRouteInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
     int iIgnored;
-    pInfo->dump(&iIgnored);
+
+    //pInfo->dump(&iIgnored);
+    /*FINISH THIS FOR ORDER*/
     
     *aiCode = API_OK;
     return(OK);
@@ -1140,9 +1175,11 @@ int ImplCallbacks::TradeRoute(TradeRouteInfo* pInfo, void* pContext, int* aiCode
 
 int ImplCallbacks::TradeRouteList(TradeRouteListInfo* pInfo, void* pContext, int* aiCode)
 {
+    Systems* context = (Systems*)pContext;
     int iIgnored;
-    pInfo->dump(&iIgnored);
+    //pInfo->dump(&iIgnored);
 
+    /* MOVE TO ORDER MANAGER 
     accounts->at(0).tradeRoutes->iArrayLen = pInfo->iArrayLen;
     accounts->at(0).tradeRoutes->asTradeRouteInfoArray = new TradeRouteInfo[pInfo->iArrayLen];
     TradeRouteInfo* temp = accounts->at(0).tradeRoutes->asTradeRouteInfoArray;
@@ -1158,6 +1195,7 @@ int ImplCallbacks::TradeRouteList(TradeRouteListInfo* pInfo, void* pContext, int
     }
 
     callbackResponses->bRcvdTradeRoutes = true;
+    */
 
     *aiCode = API_OK;
     return(OK);

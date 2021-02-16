@@ -27,10 +27,10 @@ public :
 
 class ImplCallbacks : public RCallbacks {
 public :
-    ImplCallbacks(Systems* toSystem);
+    ImplCallbacks();
 	~ImplCallbacks() {};
 
-    Systems* system;
+    Systems* pSystem;
 
 	/*	------------------------------------------------------	*/
 

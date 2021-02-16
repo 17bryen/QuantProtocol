@@ -27,7 +27,6 @@ public:
 	~Systems();
 
 	bool getSysState();
-	int getCurrentTime();
 
 	int init();
 	int login();
@@ -47,6 +46,7 @@ public:
 
 	/*	--------------------------------------------------------------------------	*/
 
+	bool rcvdAccountList = false;
 	bool bRcvdUnacceptedAgreements = false;
 	int iUnacceptedMandatoryAgreements = 0;
 

@@ -15,6 +15,8 @@
 using namespace std;
 using namespace RApi;
 
+int getCurrentTime();
+
 struct Trade {
 	double price = 0;
 	double size = 0;
@@ -61,7 +63,7 @@ public:
 	int* recBidVolArray;
 	int* bidVolumeArray;
 
-	vector<Trade> tradeFilter;
+	vector<Trade*>* tradeFilter;
 
 	/*	======================== Declare Member Functions ========================	*/
 	OrderFlow();
@@ -97,6 +99,8 @@ public:
 	tsNCharcb ticker;
 
 	int positionSize;
+	bool rcvdReplayTrades;
+	bool rcvdLimitOrderBook;
 	
 	/*	======================== Declare Member Functions ========================	*/
 	Contract(REngine* toEngine, char* toExchange, char* toTicker);

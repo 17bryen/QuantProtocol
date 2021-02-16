@@ -98,5 +98,8 @@
     <ClInclude Include="Systems.h">
       <Filter>Source Files\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Strategy.h">
+      <Filter>Strategies</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

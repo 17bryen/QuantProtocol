@@ -3,10 +3,10 @@
 Account::Account() {
 	pEngine = nullptr;
 
-	accBalance = 2300;
+	accBalance = 0;
 
 	account = new AccountInfo();
-	watchlist = new vector<Contract>;
+	watchlist = new vector<Contract*>;
 	watchlist->reserve(3);
 }
 Account::Account(REngine* engine) {
@@ -15,17 +15,27 @@ Account::Account(REngine* engine) {
 	accBalance = 2300;
 
 	account = new AccountInfo();
-	watchlist = new vector<Contract>;
+	watchlist = new vector<Contract*>;
 	watchlist->reserve(3);
 }
 Account::~Account() {
 	
 }
 
-/*	=========================================================================	*/
+/*	==========================================================================	*/
 
 int Account::initAcc() {
+	int iCode;
+
 	//CALL REPLAY PNL HERE
+	if (!pEngine->replayPnl(account, &iCode)) {
+		cout << endl << "REngine::replayPnl() error : " << iCode << endl;
+		return 1;
+	}
+
+	while (accBalance == 0)
+		Sleep(1000);
+
 	return 0;
 }
 int Account::subscribe() {
@@ -46,7 +56,7 @@ int Account::unsubscribe() {
 	return 1;
 }
 
-/*	=========================================================================	*/
+/*	==========================================================================	*/
 
 int Account::addWatchlist(char* toExchange, char* toTicker) {
 	watchlist->push_back(new Contract(pEngine, toExchange, toTicker));
@@ -54,7 +64,21 @@ int Account::addWatchlist(char* toExchange, char* toTicker) {
 }
 int Account::subWatchlist() {
 	for (int i = 0; i < watchlist->size(); i++)
-		watchlist->at(0)->subscribe();
+		watchlist->at(i)->subscribe();
+
+	return 0;
+}
+int Account::unsubWatchlist() {
+	for (int i = 0; i < watchlist->size(); i++)
+		watchlist->at(i)->unsubscribe();
+
+	return 0;
+}
+int Account::deleteWatchlist() {
+	for (int i = 0; i < watchlist->size(); i++)
+		delete watchlist->at(i);
+
+	return 0;
 }
 
 bool Account::setEngine(REngine* toEngine) {

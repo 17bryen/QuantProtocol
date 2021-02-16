@@ -19,13 +19,13 @@ Systems::Systems(REngine* toEngine, void* toCallbacks) {
 
 	/*	--------------- Provide Deault Values to Connect Points --------------	*/
 
-	mdCnnctPoint.pData = (char*)"login_agent_tp_r01c"; //Use login_agent_tp_agg_r01c for aggregated data
+	mdCnnctPoint.pData = (char*)"login_agent_tpc"; //Use login_agent_tp_agg_r01c for aggregated data
 	mdCnnctPoint.iDataLen = (int)strlen(mdCnnctPoint.pData);
 
-	tsCnnctPoint.pData = (char*)"login_agent_prodc";
+	tsCnnctPoint.pData = (char*)"login_agent_opc";
 	tsCnnctPoint.iDataLen = (int)strlen(tsCnnctPoint.pData);
 
-	pnlCnnctPoint.pData = (char*)"login_agent_pnl_sslc";
+	pnlCnnctPoint.pData = (char*)"login_agent_pnlc";
 	pnlCnnctPoint.iDataLen = (int)strlen(pnlCnnctPoint.pData);
 
 	ihCnnctPoint.pData = (char*)"login_agent_historyc";
@@ -73,14 +73,14 @@ Systems::~Systems() {
 /*	==========================================================================	*/
 
 bool Systems::getSysState() {
+	if (iMdLoginStatus != LoginStatus_Complete ||
+		iTsLoginStatus != LoginStatus_Complete ||
+		iPnlLoginStatus != LoginStatus_Complete ||
+		iIhLoginStatus != LoginStatus_Complete ||
+		!userManagement)
+		return false;
 
-}
-int Systems::getCurrentTime() {
-	int toReturn = (chrono::duration_cast<chrono::seconds>(chrono::system_clock::now().time_since_epoch())).count();
-	//DONT? ACCOUNT FOR TIME DIFFERENCE (times in GMT; KW 3 hours ahead GMT; KW 9 ahead CST) (Already returns UTC which = GMT)
-	//toReturn -= (60 * 60 * 9);
-
-	return toReturn;
+	return true;
 }
 
 /*	==========================================================================	*/
@@ -221,49 +221,59 @@ bool Systems::setMdConnect(char* point) {
 	if (point != NULL) {
 		mdCnnctPoint.pData = (char*)point;
 		mdCnnctPoint.iDataLen = (int)strlen(mdCnnctPoint.pData);
+		return true;
 	}
 	else {
 		mdCnnctPoint.pData = (char*)"login_agent_tp_r01c"; //Use login_agent_tp_agg_r01c for aggregated data
 		mdCnnctPoint.iDataLen = (int)strlen(mdCnnctPoint.pData);
+		return false;
 	}
 }
 bool Systems::setTsConnect(char* point) {
 	if (point != NULL) {
 		tsCnnctPoint.pData = (char*)point;
 		tsCnnctPoint.iDataLen = (int)strlen(tsCnnctPoint.pData);
+		return true;
 	}
 	else {
 		tsCnnctPoint.pData = (char*)"login_agent_prodc";
 		tsCnnctPoint.iDataLen = (int)strlen(tsCnnctPoint.pData);
+		return false;
 	}
 }
 bool Systems::setPnlConnect(char* point) {
 	if (point != NULL) {
 		pnlCnnctPoint.pData = (char*)point;
 		pnlCnnctPoint.iDataLen = (int)strlen(pnlCnnctPoint.pData);
+		return true;
 	}
 	else {
 		pnlCnnctPoint.pData = (char*)"login_agent_pnl_sslc";
 		pnlCnnctPoint.iDataLen = (int)strlen(pnlCnnctPoint.pData);
+		return false;
 	}
 }
 bool Systems::setIhConnect(char* point) {
 	if (point != NULL) {
 		ihCnnctPoint.pData = (char*)point;
 		ihCnnctPoint.iDataLen = (int)strlen(ihCnnctPoint.pData);
+		return true;
 	}
 	else {
 		ihCnnctPoint.pData = (char*)"login_agent_historyc";
 		ihCnnctPoint.iDataLen = (int)strlen(ihCnnctPoint.pData);
+		return false;
 	}
 }
 bool Systems::setRpConnect(char* point) {
 	if (point != NULL) {
 		rpCnnctPoint.pData = (char*)point;
 		rpCnnctPoint.iDataLen = (int)strlen(rpCnnctPoint.pData);
+		return true;
 	}
 	else {
 		rpCnnctPoint.pData = (char*)"login_agent_repositoryc";
 		rpCnnctPoint.iDataLen = (int)strlen(rpCnnctPoint.pData);
+		return false;
 	}
 }

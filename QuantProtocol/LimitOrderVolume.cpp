@@ -1,4 +1,4 @@
-#include "Analysis.h"
+#include "Strategy.h"
 
 using namespace std;
 using namespace RApi;
@@ -7,11 +7,11 @@ class LimitOrderVolume {
 private:
 	int averageVolume;
 
-	vector<zone>* toSupp;
-	vector<zone>* toResist;
+	vector<zone*>* toSupp;
+	vector<zone*>* toResist;
 	OrderBook* book;
 public:
-	LimitOrderVolume(OrderBook* toBook, vector<zone>* support, vector<zone>* resists) {
+	LimitOrderVolume(OrderBook* toBook, vector<zone*>* support, vector<zone*>* resists) {
 		book = toBook;
 		toSupp = support;
 		toResist = resists;
@@ -21,7 +21,7 @@ public:
 	~LimitOrderVolume() {
 
 	}
-	int analysis(double bid, double ask) {
+	int analysis(double* bidAsk) {
 		averageVolume = 0;
 
 		for (int i = (book->bestBidIndex - 200); i < (book->bestAskIndex + 200); i++) {
@@ -40,9 +40,9 @@ public:
 
 					/*	------------------------- Delete Redundancies ----------------------------	*/
 
-					toSupp->push_back(zone(book->priceArray[i], getCurrentTime()));
+					toSupp->push_back(new zone(book->priceArray[i], getCurrentTime()));
 					for (int j = 0; j < toSupp->size() - 1; j++) {
-						if (toSupp->at(j).price == toSupp->at(toSupp->size() - 1).price) {
+						if (toSupp->at(j)->price == toSupp->at(toSupp->size() - 1)->price) {
 							toSupp->pop_back();
 							break;
 						}
@@ -53,9 +53,9 @@ public:
 
 					/*	------------------------- Delete Redundancies ----------------------------	*/
 
-					toResist->push_back(zone(book->priceArray[i], getCurrentTime()));
+					toResist->push_back(new zone(book->priceArray[i], getCurrentTime()));
 					for (int j = 0; j < toResist->size() - 1; j++) {
-						if (toResist->at(j).price == toResist->at(toResist->size() - 1).price) {
+						if (toResist->at(j)->price == toResist->at(toResist->size() - 1)->price) {
 							toResist->pop_back();
 							break;
 						}

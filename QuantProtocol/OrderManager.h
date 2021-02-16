@@ -7,6 +7,9 @@ private:
 	REngine* pEngine;
 	Systems* pSystem;
 
+	AccountInfo* account;
+	vector<Contract*>* watchlist;
+
 	TradeRouteListInfo* defaultRoutes;
 
 public:
@@ -14,9 +17,9 @@ public:
 	~OrderManager();
 
 	int init();
+	int order();
 
-	int buyMarket(Contract* toBuy);
-	int sellMarket(Contract* toSell);
-	int shortMarket(Contract* toSell);
-	int liquidate(Contract* toClose);
+	int buyMarket(int toBuyIndex);
+	int sellMarket(int toSellIndex);
+	int liquidate(int toCloseIndex);
 };

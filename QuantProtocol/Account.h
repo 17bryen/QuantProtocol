@@ -24,6 +24,7 @@ public:
 	int addWatchlist(char* toTicker, char* toExchange);
 	int subWatchlist();
 	int unsubWatchlist();
+	int deleteWatchlist();
 
 	bool setEngine(REngine* toEngine);
 };

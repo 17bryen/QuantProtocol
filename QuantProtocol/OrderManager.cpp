@@ -1,22 +1,27 @@
-#include "Order.h"
+#include "OrderManager.h"
 
-Order::Order(REngine* toEngine, globals* responses, AccountInfo* account, tsNCharcb& fcm, tsNCharcb& ib, double& balance) {
+/*	==========================================================================	*/
+/*								Define Constructors								*/
+/*	==========================================================================	*/
+
+OrderManager::OrderManager(REngine* toEngine, Systems* toSystem) {
 	pEngine = toEngine;
-	responseCallbacks = responses;
+	pSystem = toSystem;
 
-	acc = account;
-	fcmId = fcm;
-	ibId = ib;
+	account = pSystem->acc->account;
+	watchlist = pSystem->acc->watchlist;
 
-	defaultRoute = nullptr;
-	accBalance = balance;
+	defaultRoutes = new TradeRouteListInfo();
 }
-Order::~Order() {
-	if (defaultRoute != nullptr)
-		delete defaultRoute;
+OrderManager::~OrderManager() {
+
 }
 
-int Order::init() {
+/*	==========================================================================	*/
+/*								Define Member Functions							*/
+/*	==========================================================================	*/
+
+int OrderManager::init() {
 	int iCode;
 
 	/*
@@ -45,7 +50,7 @@ int Order::init() {
 	*/
 
 	try {
-		pEngine->subscribeTradeRoute(&fcmId, &ibId, NULL, &iCode);
+		pEngine->subscribeTradeRoute(&account->sFcmId, &account->sIbId, (void*)pSystem, &iCode);
 	}
 	catch (OmneException oEx) {
 		cout << endl << "REngine::subscribeTradeRoutes() error : " << iCode << endl;
@@ -57,17 +62,17 @@ int Order::init() {
 
 }
 
-int Order::buyMarket(Contract* toBuy) {
+int OrderManager::buyMarket(int toBuyIndex) {
 	int iCode;
 	MarketOrderParams toSubmit = MarketOrderParams();
 
 	toSubmit.iQty = 0; //Create logic to calculate size based on risk and capital
 
-	toSubmit.pAccount = acc;
-	toSubmit.sExchange = toBuy->exchange;
-	toSubmit.sTicker = toBuy->ticker;
+	toSubmit.pAccount = account;
+	toSubmit.sExchange = watchlist->at(toBuyIndex)->exchange;
+	toSubmit.sTicker = watchlist->at(toBuyIndex)->ticker;
 
-	toSubmit.pContext = NULL;
+	toSubmit.pContext = watchlist->at(toBuyIndex);
 	//toSubmit.sRoutingInstructions = //?;
 	toSubmit.sBuySellType = sBUY_SELL_TYPE_BUY;
 	toSubmit.sDuration = sORDER_DURATION_DAY;
@@ -85,17 +90,17 @@ int Order::buyMarket(Contract* toBuy) {
 
 	return 0;
 }
-int Order::sellMarket(Contract* toSell) {
+int OrderManager::sellMarket(int toSellIndex) {
 	int iCode;
 	MarketOrderParams toSubmit = MarketOrderParams();
 
 	toSubmit.iQty = 0; //Create logic to calculate size based on risk and capital
 
-	toSubmit.pAccount = acc;
-	toSubmit.sExchange = toSell->exchange;
-	toSubmit.sTicker = toSell->ticker;
+	toSubmit.pAccount = account;
+	toSubmit.sExchange = watchlist->at(toSellIndex)->exchange;
+	toSubmit.sTicker = watchlist->at(toSellIndex)->ticker;
 
-	toSubmit.pContext = NULL;
+	toSubmit.pContext = watchlist->at(toSellIndex);
 	//toSubmit.sRoutingInstructions = //?;
 	toSubmit.sBuySellType = sBUY_SELL_TYPE_SELL;
 	toSubmit.sDuration = sORDER_DURATION_DAY;
@@ -113,39 +118,11 @@ int Order::sellMarket(Contract* toSell) {
 
 	return 0;
 }
-int Order::shortMarket(Contract* toSell) {
+int OrderManager::liquidate(int toCloseIndex) {
 	int iCode;
 	MarketOrderParams toSubmit = MarketOrderParams();
 
-	toSubmit.iQty = 0; //Create logic to calculate size based on risk and capital
-
-	toSubmit.pAccount = acc;
-	toSubmit.sExchange = toSell->exchange;
-	toSubmit.sTicker = toSell->ticker;
-
-	toSubmit.pContext = NULL;
-	//toSubmit.sRoutingInstructions = //?;
-	toSubmit.sBuySellType = sBUY_SELL_TYPE_SELL_SHORT;
-	toSubmit.sDuration = sORDER_DURATION_DAY;
-	toSubmit.sEntryType = sORDER_ENTRY_TYPE_AUTO;
-
-	/*
-	try {
-		pEngine->sendOrder(&toSubmit, &iCode);
-	}
-	catch (OmneException oEx) {
-		cout << endl << "REnging::sendOrder( MarketOrderParams ) error : " << iCode << endl;
-		return 1;
-	}
-	*/
-
-	return 0;
-}
-int Order::liquidate(Contract* toClose) {
-	int iCode;
-	MarketOrderParams toSubmit = MarketOrderParams();
-
-	toSubmit.iQty = toClose->position;
+	toSubmit.iQty = watchlist->at(toCloseIndex)->positionSize;
 	if (toSubmit.iQty > 0)
 		toSubmit.sBuySellType = sBUY_SELL_TYPE_SELL;
 	else if (toSubmit.iQty < 0)
@@ -155,11 +132,11 @@ int Order::liquidate(Contract* toClose) {
 		return 1;
 	}
 
-	toSubmit.pAccount = acc;
-	toSubmit.sExchange = toClose->exchange;
-	toSubmit.sTicker = toClose->ticker;
+	toSubmit.pAccount = account;
+	toSubmit.sExchange = watchlist->at(toCloseIndex)->exchange;
+	toSubmit.sTicker = watchlist->at(toCloseIndex)->ticker;
 
-	toSubmit.pContext = NULL;
+	toSubmit.pContext = watchlist->at(toCloseIndex);
 	//toSubmit.sRoutingInstructions = //?;
 	toSubmit.sDuration = sORDER_DURATION_DAY;
 	toSubmit.sEntryType = sORDER_ENTRY_TYPE_AUTO;
@@ -177,3 +154,10 @@ int Order::liquidate(Contract* toClose) {
 	return 0;
 }
 
+/*	==========================================================================	*/
+/*								Main Order Loop									*/
+/*	==========================================================================	*/
+
+int OrderManager::order() {
+
+}

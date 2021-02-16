@@ -1,99 +1,150 @@
 #include "Analysis.h"
 
-/**/
-#include "HeavyVolume.cpp"
-#include "TradeFilter.cpp"
-/**/
-#include "LimitOrderVolume.cpp"
-#include "Delta.cpp"
-
 using namespace RApi;
 using namespace std;
 
-int Analysis(Quant* Q) {
-	cout << "Begining analysis with account " << Q->accounts.at(0).accName.pData << " with balance $" << Q->accounts.at(0).accBalance << endl;
 
-	vector<zone>* suppLevels = new vector<zone>;
-	vector<zone>* resistLevels = new vector<zone>;
-	double* currBidAsk = new double[2];
+/*	======================================================================================	*/
+/*										Define Structures									*/	
+/*	======================================================================================	*/
 
-	HeavyVolume* heavyVol = new HeavyVolume(Q->watchList.at(0).flow, suppLevels, resistLevels);
-	LimitOrderVolume* limitVol = new LimitOrderVolume(Q->watchList.at(0).book, suppLevels, resistLevels);
-	TradeFilter* tradeFilt = new TradeFilter(Q->watchList.at(0).flow, suppLevels, resistLevels);
-	Delta* delta = new Delta(Q->watchList.at(0).book, suppLevels, resistLevels);
+AnalysisManager::AnalysisManager(REngine* toEngine, Systems* toSys) {
+	pEngine = toEngine;
+	pSystem = toSys;
+	watchlist = pSystem->acc->watchlist;
 
-	while (Q->runtime) {
+	for (int i = 0; i < watchlist->size(); i++)
+		watchlistAnalysis->push_back(new analysis(toSys->acc->watchlist->at(i)->book, toSys->acc->watchlist->at(i)->flow));
+}
+AnalysisManager::~AnalysisManager() {
+	for (int w = 0; w < watchlist->size(); w++) {
+		for (int i = 0; i < watchlistAnalysis->at(w)->suppLevels->size(); i++)
+			delete watchlistAnalysis->at(w)->suppLevels->at(i);
+		for (int i = 0; i < watchlistAnalysis->at(w)->resistLevels->size(); i++)
+			delete watchlistAnalysis->at(w)->resistLevels->at(i);
 
-		/*	------------------------- Order Book Analysis ----------------------------	*/
-		Q->watchList.at(0).Dom.lock();
-		currBidAsk[0] = Q->watchList.at(0).book->priceArray[Q->watchList.at(0).book->bestBidIndex];
-		currBidAsk[1] = Q->watchList.at(0).book->priceArray[Q->watchList.at(0).book->bestAskIndex];
+		delete watchlistAnalysis->at(w)->currBidAsk;
+	}
+}
 
-		//Analysis
-		limitVol->analysis(currBidAsk[0], currBidAsk[1]);
-		
-		//Confirmations
-		delta->confirmation(currBidAsk[0], currBidAsk[1]);
+/*	======================================================================================	*/
 
-		Q->watchList.at(0).Dom.unlock();
+analysis::analysis(OrderBook* toBook, OrderFlow* toFlow) {
+	suppLevels = new vector<zone*>;
+	suppLevels->reserve(3);
+	resistLevels = new vector<zone*>;
+	resistLevels->reserve(3);
 
-		/*	------------------------- Order Flow Analysis ----------------------------	*/
-		Q->watchList.at(0).Tape.lock();
-		//Analysis
-		heavyVol->analysis(currBidAsk[0], currBidAsk[1]);
-		tradeFilt->analysis(currBidAsk[0], currBidAsk[1]);
+	currBidAsk = new double[2];
+	book = toBook;
+	flow = toFlow;
+	toEnter = true;
 
-		//Confirmations
-		
-		Q->watchList.at(0).Tape.unlock();		
+	heavyVol = new HeavyVolume(flow, suppLevels, resistLevels);
+	tradeFilt = new TradeFilter(flow, suppLevels, resistLevels);
 
-		/*	------------------------ Confirmation Analysis ---------------------------	*/
+	limitVol = new LimitOrderVolume(book, suppLevels, resistLevels);
+	delta = new Delta(book, suppLevels, resistLevels);
+}
+analysis::~analysis() {
+	delete heavyVol;
+	delete tradeFilt;
 
-		for (int i = 0; i < suppLevels->size(); i++) {		//Delete support levels the price has broken through
-			if ((suppLevels->at(i).price - currBidAsk[0]) >= 1.25)
-				suppLevels->erase(suppLevels->begin() + i);
+	delete limitVol;
+	delete delta;
 
-			else if ((currBidAsk[0] - suppLevels->at(i).price) >= 1.5)
-				suppLevels->at(i).pulledAway = true;
+	delete suppLevels;
+	delete resistLevels;
+	delete currBidAsk;
+}
 
-			else if (suppLevels->at(i).confirmed) {
-				Q->accounts.at(0).order->shortMarket(&Q->watchList.at(0));
-				suppLevels->erase(suppLevels->begin() + i);
-				i--;
+/*	======================================================================================	*/
+/*									Main Analysis Function									*/
+/*	======================================================================================	*/
+
+int AnalysisManager::Analysis() {
+	cout << "Beginning analysis with account " << pSystem->acc->account->sAccountName.pData << " with balance $" << pSystem->acc->accBalance << endl;
+
+	while (pSystem->userManagement) {
+		for (int w = 0; w < watchlist->size(); w++) {
+
+			/*	------------------------- Order Book Analysis ----------------------------	*/
+			watchlist->at(w)->domLock.lock();
+
+			//Update current bid/ask
+			watchlistAnalysis->at(w)->currBidAsk[0] = watchlist->at(w)->book->priceArray[watchlist->at(w)->book->bestBidIndex];
+			watchlistAnalysis->at(w)->currBidAsk[1] = watchlist->at(w)->book->priceArray[watchlist->at(w)->book->bestAskIndex];
+
+			//Analysis
+			watchlistAnalysis->at(w)->limitVol->analysis(watchlistAnalysis->at(w)->currBidAsk);
+
+			//Confirmations
+			watchlistAnalysis->at(w)->delta->confirmation(watchlistAnalysis->at(w)->currBidAsk);
+
+			watchlist->at(w)->domLock.unlock();
+
+			/*	------------------------- Order Flow Analysis ----------------------------	*/
+			watchlist->at(w)->tapeLock.lock();
+
+			//Analysis
+			watchlistAnalysis->at(w)->heavyVol->analysis(watchlistAnalysis->at(w)->currBidAsk);
+			watchlistAnalysis->at(w)->tradeFilt->analysis(watchlistAnalysis->at(w)->currBidAsk);
+
+			//Confirmations
+
+
+			watchlist->at(w)->tapeLock.unlock();
+
+			/*	------------------------ Confirmation Analysis ---------------------------	*/
+
+			for (int i = 0; i < watchlistAnalysis->at(w)->suppLevels->size(); i++) {		//Delete support levels the price has broken through
+				if ((watchlistAnalysis->at(w)->suppLevels->at(i)->price - watchlistAnalysis->at(w)->currBidAsk[0]) >= 1.25)
+					watchlistAnalysis->at(w)->suppLevels->erase(watchlistAnalysis->at(w)->suppLevels->begin() + i);
+
+				else if ((watchlistAnalysis->at(w)->currBidAsk[0] - watchlistAnalysis->at(w)->suppLevels->at(i)->price) >= 1.5)
+					watchlistAnalysis->at(w)->suppLevels->at(i)->pulledAway = true;
+
+				/*	Don't manually enter trade here, just let order manager read the confirmation signal (how to decide to remove from list?)
+				else if (watchlistAnalysis->at(w)->suppLevels->at(i)->confirmed) {
+					Q->accounts.at(0).order->shortMarket(&Q->watchList.at(0));
+					suppLevels->erase(suppLevels->begin() + i);
+					i--;
+				}
+			*/
 			}
-		}
 
-		for (int i = 0; i < resistLevels->size(); i++) {	//Delete resistance levels the price has broken through
-			if ((currBidAsk[1] - resistLevels->at(i).price) >= 1.25)
-				resistLevels->erase(resistLevels->begin() + i);
+			for (int i = 0; i < watchlistAnalysis->at(w)->resistLevels->size(); i++) {	//Delete resistance levels the price has broken through
+				if ((watchlistAnalysis->at(w)->currBidAsk[1] - watchlistAnalysis->at(w)->resistLevels->at(i)->price) >= 1.25)
+					watchlistAnalysis->at(w)->resistLevels->erase(watchlistAnalysis->at(w)->resistLevels->begin() + i);
 
-			else if ((resistLevels->at(i).price - currBidAsk[1]) >= 1.5)
-				suppLevels->at(i).pulledAway = true;
+				else if ((watchlistAnalysis->at(w)->resistLevels->at(i)->price - watchlistAnalysis->at(w)->currBidAsk[1]) >= 1.5)
+					watchlistAnalysis->at(w)->suppLevels->at(i)->pulledAway = true;
 
-			else if (resistLevels->at(i).confirmed) {
-				Q->accounts.at(0).order->shortMarket(&Q->watchList.at(0));
-				resistLevels->erase(resistLevels->begin() + i);
-				i--;
+				/* Same reasoning as above ^^^
+				else if (resistLevels->at(i).confirmed) {
+					Q->accounts.at(0).order->shortMarket(&Q->watchList.at(0));
+					resistLevels->erase(resistLevels->begin() + i);
+					i--;
+				}
+				*/
 			}
+
+			/*	------------------------ Final Analysis Output ---------------------------	*/
+
+			cout << endl << "The current bid/ask spread is " << watchlistAnalysis->at(w)->currBidAsk[0] << " / " << watchlistAnalysis->at(w)->currBidAsk[1];
+			cout << endl << "The following prices have been identified as possible supports: " << endl;
+			for (int i = 0; i < watchlistAnalysis->at(w)->suppLevels->size(); i++)
+				cout << watchlistAnalysis->at(w)->suppLevels->at(i)->price << endl;
+			cout << endl << "The following prices have been identified as possible resistances: " << endl;
+			for (int i = 0; i < watchlistAnalysis->at(w)->resistLevels->size(); i++)
+				cout << watchlistAnalysis->at(w)->resistLevels->at(i)->price << endl;
+
+			Sleep(500);
 		}
-
-		/*	------------------------ Final Analysis Output ---------------------------	*/
-
-		cout << endl << "The current bid/ask spread is " << currBidAsk[0] << " / " << currBidAsk[1];
-		cout << endl << "The following prices have been identified as possible supports: " << endl;
-		for (int i = 0; i < suppLevels->size(); i++)
-			cout << suppLevels->at(i).price << endl;
-		cout << endl << "The following prices have been identified as possible resistances: " << endl;
-		for (int i = 0; i < resistLevels->size(); i++)
-			cout << resistLevels->at(i).price << endl;
-		Sleep(500);
-
 	}
 
 	cout << endl << "Ending trade analysis..." << endl;
-
-	delete heavyVol;
-	delete limitVol;
+	
 	return 0;
 };
 

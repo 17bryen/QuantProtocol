@@ -160,6 +160,7 @@
   <ItemGroup>
     <ClInclude Include="Account.h" />
     <ClInclude Include="Analysis.h" />
+    <ClInclude Include="Strategy.h" />
     <ClInclude Include="Systems.h" />
     <ClInclude Include="ImplRApi.h" />
     <ClInclude Include="Main.h" />

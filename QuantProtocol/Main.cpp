@@ -48,9 +48,8 @@ int main(int argc, char * *argv, char * *envp) {
 
 	/*	========================= Pass Rithmic Login to Quant =======================	*/
 
-	Q->system->setUser((char*)"17bryen@amp.com");
-	Q->system->setPass((char*)"&h$QlbrU2ha");
 
+	
 
 	/*	========================== Check Unsigned Agreements ========================	
 
@@ -63,8 +62,8 @@ int main(int argc, char * *argv, char * *envp) {
 
 	/*	======================== Login to Quant Connect Points ======================	*/
 
-	Q->system->init();
-	iCode = Q->system->login();
+	Q->pSystem->init();
+	iCode = Q->pSystem->login();
 	if (iCode != 0) {
 		delete Q;
 		return (BAD);
@@ -72,16 +71,13 @@ int main(int argc, char * *argv, char * *envp) {
 
 	/*	================================ Init Account ===============================	*/
 
-	while (!Q->system->acc->accBalance == 0) 
-		Sleep(1000);
-
-	Q->system->acc->initAcc();
-	Q->system->acc->subscribe();
+	Q->pSystem->acc->initAcc();
+	Q->pSystem->acc->subscribe();
 
 	/*	============================ Init List of Contracts ==========================	*/
 
-    Q->system->acc->addWatchlist((char*)"CME", (char*)"ESH1");
-	Q->system->acc->subWatchlist();
+    Q->pSystem->acc->addWatchlist((char*)"CME", (char*)"ESH1");
+	Q->pSystem->acc->subWatchlist();
 
 	/*	============================= Begin Main Loop ===========================	*/
 
@@ -89,12 +85,13 @@ int main(int argc, char * *argv, char * *envp) {
 	//thread orderManager(Q->orderManager, system);
 	//thread stateManager(Q->stateManager, system);
 
+	cout << "Successfully made it through the program test!" << endl;
 	fgetc(stdin);
 	
 
 	/*	============================= Exit Main Loop ============================	*/
 
-	Q->system->userManagement = false;
+	Q->pSystem->userManagement = false;
 	//analyManager.join();
 	//orderManager.join();
 	//stateManager.join();
@@ -104,17 +101,16 @@ int main(int argc, char * *argv, char * *envp) {
 
 	/*	========================== DeInit List of Contracts =========================	*/
 
-	for (int i = 0; i < (int)Q->watchList.size(); i++)
-		Q->watchList.at(i).unsubscribe();
+	Q->pSystem->acc->unsubWatchlist();
+	Q->pSystem->acc->deleteWatchlist();
 
 	/*	=========================== DeInit List of Accounts =========================	*/
 
-	for (int i = 0; i < (int)Q->watchList.size(); i++)
-		Q->accounts.at(0).unsubscribe();
+	Q->pSystem->acc->unsubscribe();
 
 	/*	========================= Logout Quant Connect Points =======================	*/
 
-	iCode = Q->logout(false);
+	iCode = Q->pSystem->logout(false);
 	if (iCode != 0) {
 		delete Q;
 		return (BAD);
