@@ -19,13 +19,13 @@ Systems::Systems(REngine* toEngine, void* toCallbacks) {
 
 	/*	--------------- Provide Deault Values to Connect Points --------------	*/
 
-	mdCnnctPoint.pData = (char*)"login_agent_tpc"; //Use login_agent_tp_agg_r01c for aggregated data
+	mdCnnctPoint.pData = (char*)"login_agent_tp_r01c"; //Use login_agent_tp_agg_r01c for aggregated data
 	mdCnnctPoint.iDataLen = (int)strlen(mdCnnctPoint.pData);
 
-	tsCnnctPoint.pData = (char*)"login_agent_opc";
+	tsCnnctPoint.pData = (char*)"login_agent_prodc";
 	tsCnnctPoint.iDataLen = (int)strlen(tsCnnctPoint.pData);
 
-	pnlCnnctPoint.pData = (char*)"login_agent_pnlc";
+	pnlCnnctPoint.pData = (char*)"login_agent_pnl_sslc";
 	pnlCnnctPoint.iDataLen = (int)strlen(pnlCnnctPoint.pData);
 
 	ihCnnctPoint.pData = (char*)"login_agent_historyc";

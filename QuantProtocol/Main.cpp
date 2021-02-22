@@ -48,8 +48,8 @@ int main(int argc, char * *argv, char * *envp) {
 
 	/*	========================= Pass Rithmic Login to Quant =======================	*/
 
-
-	
+	Q->pSystem->setUser((char*)"17bryen@amp.com");
+	Q->pSystem->setPass((char*)"&h$QlbrU2ha");
 
 	/*	========================== Check Unsigned Agreements ========================	
 
@@ -81,9 +81,13 @@ int main(int argc, char * *argv, char * *envp) {
 
 	/*	============================= Begin Main Loop ===========================	*/
 
-	//thread analyManager(Q->analysisManager, system);
-	//thread orderManager(Q->orderManager, system);
+	Q->initThreads();
+
+	//thread analyManager(&AnalysisManager::Analysis, Q->analysisManager);
+	thread orderManager(&OrderManager::Order, Q->orderManager);
 	//thread stateManager(Q->stateManager, system);
+
+	//Q->orderManager->buyMarket(0);
 
 	cout << "Successfully made it through the program test!" << endl;
 	fgetc(stdin);
@@ -93,7 +97,7 @@ int main(int argc, char * *argv, char * *envp) {
 
 	Q->pSystem->userManagement = false;
 	//analyManager.join();
-	//orderManager.join();
+	orderManager.join();
 	//stateManager.join();
 	
 	cout << "Successfully made it through the program test!" << endl;

@@ -17,7 +17,8 @@ public:
 	~OrderManager();
 
 	int init();
-	int order();
+	int deinit();
+	int Order();
 
 	int buyMarket(int toBuyIndex);
 	int sellMarket(int toSellIndex);

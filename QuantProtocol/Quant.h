@@ -23,6 +23,7 @@ public:
 	~Quant();
 
 	int init(REngineParams &oParams);
+	int initThreads();
 
 	bool setAnalyManager(AnalysisManager* toAnaly);
 	bool setOrdManager(OrderManager* toOrder);

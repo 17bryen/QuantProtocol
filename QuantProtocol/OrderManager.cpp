@@ -59,7 +59,22 @@ int OrderManager::init() {
 
 	//DETERMINE HOW TO SELECT CME ROUTE HERE
 
+	return 0;
+}
+int OrderManager::deinit() {
+	int iCode;
 
+	try {
+		pEngine->unsubscribeTradeRoute(&account->sFcmId, &account->sIbId, &iCode);
+	}
+	catch (OmneException oEx) {
+		cout << endl << "REngine::subscribeTradeRoutes() error : " << iCode << endl;
+		return 1;
+	}
+
+	//DETERMINE HOW TO SELECT CME ROUTE HERE
+
+	return 0;
 }
 
 int OrderManager::buyMarket(int toBuyIndex) {
@@ -158,6 +173,19 @@ int OrderManager::liquidate(int toCloseIndex) {
 /*								Main Order Loop									*/
 /*	==========================================================================	*/
 
-int OrderManager::order() {
+int OrderManager::Order() {
+	int iCode;
+	cout << endl << "Beginning Order Management with account " << ((string)pSystem->acc->account->sAccountName.pData).substr(0, pSystem->acc->account->sAccountName.iDataLen) << " with balance $" << pSystem->acc->accBalance << endl;
+	
+	if (!pEngine->listOrderHistoryDates((void*)pSystem, &iCode))
+		cout << endl << "REngine::listOrderHistoryDates() error : " << iCode << endl;
+	
+	if (!pEngine->replayAllOrders(account, 1612224000, 1612310400, &iCode))
+		cout << endl << "REngine::replayAllOrders() error : " << iCode << endl;
 
+	while (pSystem->userManagement) {
+		Sleep(1000);
+	}
+
+	return 0;
 }

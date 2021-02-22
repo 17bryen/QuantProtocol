@@ -18,8 +18,8 @@ Quant::Quant() {
 	pCallbacks = nullptr;
 
 	pSystem = new Systems();
-	analysisManager = new AnalysisManager(pEngine, pSystem);
-	orderManager = new OrderManager(pEngine, pSystem);
+	analysisManager = nullptr;
+	orderManager = nullptr;
 }
 
 /* Deconstructor to properly allocate memory back from complex objects. */
@@ -50,11 +50,11 @@ int Quant::init(REngineParams &oParams) {
 	if (oParams.envp == NULL) {
 		char* fake_envp[9];
 
-		fake_envp[0] = (char*)"MML_DMN_SRVR_ADDR=rituz00100.00.rithmic.com:65000~rituz00100.00.rithmic.net:65000~rituz00100.00.theomne.net:65000~rituz00100.00.theomne.com:65000";
-		fake_envp[1] = (char*)"MML_DOMAIN_NAME=rithmic_uat_dmz_domain";
-		fake_envp[2] = (char*)"MML_LIC_SRVR_ADDR=rituz00100.00.rithmic.com:56000~rituz00100.00.rithmic.net:56000~rituz00100.00.theomne.net:56000~rituz00100.00.theomne.com:56000";
-		fake_envp[3] = (char*)"MML_LOC_BROK_ADDR=rituz00100.00.rithmic.com:64100";
-		fake_envp[4] = (char*)"MML_LOGGER_ADDR=rituz00100.00.rithmic.com:45454~rituz00100.00.rithmic.net:45454~rituz00100.00.theomne.net:45454~rituz00100.00.theomne.com:45454";
+		fake_envp[0] = (char*)"MML_DMN_SRVR_ADDR=ritpz01001.01.rithmic.com:65000~ritpz01000.01.rithmic.com:65000~ritpz01001.01.rithmic.net:65000~ritpz01000.01.rithmic.net:65000~ritpz01001.01.theomne.net:65000~ritpz01000.01.theomne.net:65000~ritpz01001.01.theomne.com:65000~ritpz01000.01.theomne.com:65000";
+		fake_envp[1] = (char*)"MML_DOMAIN_NAME=rithmic_prod_01_dmz_domain";
+		fake_envp[2] = (char*)"MML_LIC_SRVR_ADDR=ritpz01000.01.rithmic.com:56000~ritpz01001.01.rithmic.com:56000~ritpz01000.01.rithmic.net:56000~ritpz01001.01.rithmic.net:56000~ritpz01000.01.theomne.net:56000~ritpz01001.01.theomne.net:56000~ritpz01000.01.theomne.com:56000~ritpz01001.01.theomne.com:56000";
+		fake_envp[3] = (char*)"MML_LOC_BROK_ADDR=ritpz01000.01.rithmic.com:64100";
+		fake_envp[4] = (char*)"MML_LOGGER_ADDR=ritpz01000.01.rithmic.com:45454~ritpz01000.01.rithmic.net:45454~ritpz01000.01.theomne.net:45454~ritpz01000.01.theomne.com:45454";
 		fake_envp[5] = (char*)"MML_LOG_TYPE=log_net";
 		// Specify the file path to the SSL file here
 		fake_envp[6] = (char*)"MML_SSL_CLNT_AUTH_FILE=../QuantProtocol/Rithmic/ssl/rithmic_ssl_cert_auth_params";
@@ -112,6 +112,22 @@ int Quant::init(REngineParams &oParams) {
 
 	return 0;
 }
+int Quant::initThreads() {
+	int iCode;
+
+	analysisManager = new AnalysisManager(pEngine, pSystem);
+	orderManager = new OrderManager(pEngine, pSystem);
+
+	iCode = orderManager->init();
+	if (iCode != 0) {
+		cout << endl << "Error initializing orderManager." << endl;
+		return 1;
+	}
+
+	return 0;
+}
+
+/*	==========================================================================	*/
 
 bool Quant::setAnalyManager(AnalysisManager* toAnaly) {
 	analysisManager = toAnaly;

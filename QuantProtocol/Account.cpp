@@ -66,6 +66,10 @@ int Account::subWatchlist() {
 	for (int i = 0; i < watchlist->size(); i++)
 		watchlist->at(i)->subscribe();
 
+	for (int i = 0; i < watchlist->size(); i++)
+		if (!watchlist->at(i)->rcvdReplayTrades || !watchlist->at(i)->rcvdLimitOrderBook)
+			Sleep(1000);
+
 	return 0;
 }
 int Account::unsubWatchlist() {

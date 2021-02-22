@@ -12,6 +12,8 @@ AnalysisManager::AnalysisManager(REngine* toEngine, Systems* toSys) {
 	pEngine = toEngine;
 	pSystem = toSys;
 	watchlist = pSystem->acc->watchlist;
+	watchlistAnalysis = new vector<analysis*>;
+	watchlistAnalysis->reserve(3);
 
 	for (int i = 0; i < watchlist->size(); i++)
 		watchlistAnalysis->push_back(new analysis(toSys->acc->watchlist->at(i)->book, toSys->acc->watchlist->at(i)->flow));
@@ -63,7 +65,7 @@ analysis::~analysis() {
 /*	======================================================================================	*/
 
 int AnalysisManager::Analysis() {
-	cout << "Beginning analysis with account " << pSystem->acc->account->sAccountName.pData << " with balance $" << pSystem->acc->accBalance << endl;
+	cout << endl << "Beginning analysis with account " << pSystem->acc->account->sAccountName.pData << " with balance $" << pSystem->acc->accBalance << endl;
 
 	while (pSystem->userManagement) {
 		for (int w = 0; w < watchlist->size(); w++) {
@@ -118,7 +120,7 @@ int AnalysisManager::Analysis() {
 					watchlistAnalysis->at(w)->resistLevels->erase(watchlistAnalysis->at(w)->resistLevels->begin() + i);
 
 				else if ((watchlistAnalysis->at(w)->resistLevels->at(i)->price - watchlistAnalysis->at(w)->currBidAsk[1]) >= 1.5)
-					watchlistAnalysis->at(w)->suppLevels->at(i)->pulledAway = true;
+					watchlistAnalysis->at(w)->resistLevels->at(i)->pulledAway = true;
 
 				/* Same reasoning as above ^^^
 				else if (resistLevels->at(i).confirmed) {

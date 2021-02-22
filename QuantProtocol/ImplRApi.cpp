@@ -276,6 +276,8 @@ int ImplCallbacks::ExecutionReplay(ExecutionReplayInfo* pInfo,
     void* pContext,
     int* aiCode)
 {
+    int iIgnored;
+    pInfo->dump(&iIgnored);
     *aiCode = API_OK;
     return(OK);
 }
@@ -286,8 +288,10 @@ int ImplCallbacks::ExecutionReplay(ExecutionReplayInfo* pInfo,
 int ImplCallbacks::LineUpdate(LineInfo* pInfo, void* pContext, int* aiCode)
 {
     Systems* context = (Systems*)pContext;
-
+    int iIgnored;
+    pInfo->dump(&iIgnored);
     /*COMPLETE THIS FUNCTION*/
+    
 
     *aiCode = API_OK;
     return(OK);
@@ -298,7 +302,8 @@ int ImplCallbacks::LineUpdate(LineInfo* pInfo, void* pContext, int* aiCode)
 int ImplCallbacks::OpenOrderReplay(OrderReplayInfo* pInfo, void* pContext, int* aiCode)
 {
     Systems* context = (Systems*)pContext;
-
+    int iIgnored;
+    pInfo->dump(&iIgnored);
     /*COMPLETE THIS FUNCTION*/
 
     *aiCode = API_OK;
@@ -311,7 +316,8 @@ int ImplCallbacks::OpenOrderReplay(OrderReplayInfo* pInfo, void* pContext, int* 
 int ImplCallbacks::OrderReplay(OrderReplayInfo* pInfo, void* pContext, int* aiCode)
 {
     Systems* context = (Systems*)pContext;
-
+    int iIgnored;
+    pInfo->dump(&iIgnored);
     /*COMPLETE THIS FUNCTION*/
 
     *aiCode = API_OK;
@@ -390,6 +396,8 @@ int ImplCallbacks::ProductRmsList(ProductRmsListInfo* pInfo,
     void* pContext,
     int* aiCode)
 {
+    int iIgnored;
+    pInfo->dump(&iIgnored);
     *aiCode = API_OK;
     return(OK);
 }
@@ -399,7 +407,8 @@ int ImplCallbacks::ProductRmsList(ProductRmsListInfo* pInfo,
 int ImplCallbacks::SingleOrderReplay(SingleOrderReplayInfo* pInfo, void* pContext, int* aiCode)
 {
     Systems* context = (Systems*)pContext;
-
+    int iIgnored;
+    pInfo->dump(&iIgnored);
     /*WRITE THIS FUNCTION*/
 
     *aiCode = API_OK;
@@ -411,7 +420,8 @@ int ImplCallbacks::SingleOrderReplay(SingleOrderReplayInfo* pInfo, void* pContex
 int ImplCallbacks::BustReport(OrderBustReport* pReport, void* pContext, int* aiCode)
 {
     Systems* context = (Systems*)pContext;
-
+    int iIgnored;
+    pReport->dump(&iIgnored);
     /*WRITE THIS FUNCTION*/
 
     *aiCode = API_OK;
@@ -423,7 +433,8 @@ int ImplCallbacks::BustReport(OrderBustReport* pReport, void* pContext, int* aiC
 int ImplCallbacks::CancelReport(OrderCancelReport* pReport, void* pContext, int* aiCode)
 {
     Systems* context = (Systems*)pContext;
-
+    int iIgnored;
+    pReport->dump(&iIgnored);
     /*WRITE THIS FUNCTION*/
 
     *aiCode = API_OK;
@@ -435,7 +446,8 @@ int ImplCallbacks::CancelReport(OrderCancelReport* pReport, void* pContext, int*
 int ImplCallbacks::FailureReport(OrderFailureReport* pReport, void* pContext, int* aiCode)
 {
     Systems* context = (Systems*)pContext;
-
+    int iIgnored;
+    pReport->dump(&iIgnored);
     /*WRITE THIS FUNCTION*/
 
     *aiCode = API_OK;
@@ -447,7 +459,8 @@ int ImplCallbacks::FailureReport(OrderFailureReport* pReport, void* pContext, in
 int ImplCallbacks::FillReport(OrderFillReport* pReport, void* pContext, int* aiCode)
 {
     Systems* context = (Systems*)pContext;
-
+    int iIgnored;
+    pReport->dump(&iIgnored);
     /*WRITE THIS FUNCTION*/
 
     *aiCode = API_OK;
@@ -459,7 +472,8 @@ int ImplCallbacks::FillReport(OrderFillReport* pReport, void* pContext, int* aiC
 int ImplCallbacks::ModifyReport(OrderModifyReport* pReport, void* pContext, int* aiCode)
 {
     Systems* context = (Systems*)pContext;
-
+    int iIgnored;
+    pReport->dump(&iIgnored);
     /*WRITE THIS FUNCTION*/
 
     *aiCode = API_OK;
@@ -471,7 +485,8 @@ int ImplCallbacks::ModifyReport(OrderModifyReport* pReport, void* pContext, int*
 int ImplCallbacks::NotCancelledReport(OrderNotCancelledReport* pReport, void* pContext, int* aiCode)
 {
     Systems* context = (Systems*)pContext;
-
+    int iIgnored;
+    pReport->dump(&iIgnored);
     /*WRITE THIS FUNCTION*/
 
     *aiCode = API_OK;
@@ -483,7 +498,8 @@ int ImplCallbacks::NotCancelledReport(OrderNotCancelledReport* pReport, void* pC
 int ImplCallbacks::NotModifiedReport(OrderNotModifiedReport* pReport, void* pContext, int* aiCode)
 {
     Systems* context = (Systems*)pContext;
-
+    int iIgnored;
+    pReport->dump(&iIgnored);
     /*WRITE THIS FUNCTION*/
 
     *aiCode = API_OK;
@@ -495,7 +511,8 @@ int ImplCallbacks::NotModifiedReport(OrderNotModifiedReport* pReport, void* pCon
 int ImplCallbacks::RejectReport(OrderRejectReport* pReport, void* pContext, int* aiCode)
 {
     Systems* context = (Systems*)pContext;
-
+    int iIgnored;
+    pReport->dump(&iIgnored);
     /*WRITE THIS FUNCTION*/
 
     *aiCode = API_OK;
@@ -507,7 +524,8 @@ int ImplCallbacks::RejectReport(OrderRejectReport* pReport, void* pContext, int*
 int ImplCallbacks::StatusReport(OrderStatusReport* pReport, void* pContext, int* aiCode)
 {
     Systems* context = (Systems*)pContext;
-
+    int iIgnored;
+    pReport->dump(&iIgnored);
     /*WRITE THIS FUNCTION*/
 
     *aiCode = API_OK;
@@ -519,7 +537,8 @@ int ImplCallbacks::StatusReport(OrderStatusReport* pReport, void* pContext, int*
 int ImplCallbacks::TradeCorrectReport(OrderTradeCorrectReport* pReport, void* pContext, int* aiCode)
 {
     Systems* context = (Systems*)pContext;
-
+    int iIgnored;
+    pReport->dump(&iIgnored);
     /*WRITE THIS FUNCTION*/
 
     *aiCode = API_OK;
@@ -531,6 +550,8 @@ int ImplCallbacks::TradeCorrectReport(OrderTradeCorrectReport* pReport, void* pC
 int ImplCallbacks::TriggerPulledReport(OrderTriggerPulledReport* pReport, void* pContext, int* aiCode)
 {
     Systems* context = (Systems*)pContext;
+    int iIgnored;
+    pReport->dump(&iIgnored);
 
     /*WRITE THIS FUNCTION > ONLY IF YOU IMPLEMENT IF TOUCHED ORDERS*/
 
@@ -543,6 +564,8 @@ int ImplCallbacks::TriggerPulledReport(OrderTriggerPulledReport* pReport, void* 
 int ImplCallbacks::TriggerReport(OrderTriggerReport* pReport, void* pContext, int* aiCode)
 {
     Systems* context = (Systems*)pContext;
+    int iIgnored;
+    pReport->dump(&iIgnored);
 
     /*SEE ABOVE*/
 
@@ -555,7 +578,8 @@ int ImplCallbacks::TriggerReport(OrderTriggerReport* pReport, void* pContext, in
 int ImplCallbacks::OtherReport(OrderReport* pReport, void* pContext, int* aiCode)
 {
     Systems* context = (Systems*)pContext;
-
+    int iIgnored;
+    pReport->dump(&iIgnored);
     /*COMPLETE THIS FUNCTION*/
 
     *aiCode = API_OK;
@@ -568,6 +592,8 @@ int ImplCallbacks::SodUpdate(SodReport* pReport,
     void* pContext,
     int* aiCode)
 {
+    int iIgnored;
+    pReport->dump(&iIgnored);
     *aiCode = API_OK;
     return(OK);
 }
@@ -881,14 +907,19 @@ int ImplCallbacks::LimitOrderBook(LimitOrderBookInfo* pInfo, void* pContext, int
 
             /*   ----------------------------------------------------------------   */
 
-            context->acc->watchlist->at(0)->book->updateBook(pInfo);
+            context->acc->watchlist->at(i)->book->updateBook(pInfo);
 
             /*   ----------------------------------------------------------------   */
 
-            if (pInfo->iType == UPDATE_TYPE_SOLO || pInfo->iType == UPDATE_TYPE_END)
-                context->acc->watchlist->at(0)->domLock.unlock();
+            if (pInfo->iType == UPDATE_TYPE_SOLO || pInfo->iType == UPDATE_TYPE_END) {
+                context->acc->watchlist->at(i)->domLock.unlock();
+                context->acc->watchlist->at(i)->rcvdLimitOrderBook = true;
+            }
+                
 
             /*   ----------------------------------------------------------------   */
+
+            
         }
 
     *aiCode = API_OK;
@@ -1111,11 +1142,11 @@ int ImplCallbacks::TradePrint(TradeInfo* pInfo, void* pContext, int* aiCode)
     for (int i = 0; i < context->acc->watchlist->size(); i++)
         if (((string)context->acc->watchlist->at(i)->ticker.pData).substr(0, context->acc->watchlist->at(i)->ticker.iDataLen - 1)
             == ((string)pInfo->sTicker.pData).substr(0, pInfo->sTicker.iDataLen - 1)) {
-
+            /*
             if (pInfo->iSourceSsboe % 60 == 0) 
                 cout << pInfo->iSourceSsboe
                 << " : Replay Trade Received" << endl;
-
+            */
             context->acc->watchlist->at(i)->tapeLock.lock();
 
             context->acc->watchlist->at(i)->flow->updateTrades(pInfo);
