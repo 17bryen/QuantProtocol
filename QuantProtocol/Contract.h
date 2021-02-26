@@ -99,6 +99,8 @@ public:
 	tsNCharcb ticker;
 
 	int positionSize;
+	bool placeBuyOrder;
+	bool placeSellOrder;
 	bool rcvdReplayTrades;
 	bool rcvdLimitOrderBook;
 	

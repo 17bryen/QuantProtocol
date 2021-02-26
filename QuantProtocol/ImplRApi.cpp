@@ -285,13 +285,17 @@ int ImplCallbacks::ExecutionReplay(ExecutionReplayInfo* pInfo,
 
 /*   =====================================================================   */
 
-int ImplCallbacks::LineUpdate(LineInfo* pInfo, void* pContext, int* aiCode)
-{
-    Systems* context = (Systems*)pContext;
+int ImplCallbacks::LineUpdate(LineInfo* pInfo, void* pContext, int* aiCode) {
+
+    Contract* context = (Contract*)pInfo->pContext;
     int iIgnored;
     pInfo->dump(&iIgnored);
+    /*  ------------------------------------------------------------------   */
     /*COMPLETE THIS FUNCTION*/
     
+
+
+    /*  ------------------------------------------------------------------   */
 
     *aiCode = API_OK;
     return(OK);

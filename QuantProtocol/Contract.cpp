@@ -30,6 +30,8 @@ Contract::Contract(REngine* toEngine, char* toExchange, char* toTicker) {
 
 	positionSize = 0;
 
+	placeBuyOrder = false;
+	placeSellOrder = false;
 	rcvdLimitOrderBook = false;
 	rcvdReplayTrades = false;
 }
@@ -51,6 +53,8 @@ Contract::Contract(const Contract &orig) {
 
 	positionSize = 0;
 
+	placeBuyOrder = false;
+	placeSellOrder = false;
 	rcvdLimitOrderBook = orig.rcvdLimitOrderBook;
 	rcvdReplayTrades = orig.rcvdReplayTrades;
 

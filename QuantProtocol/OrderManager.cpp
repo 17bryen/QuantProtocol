@@ -177,13 +177,18 @@ int OrderManager::Order() {
 	int iCode;
 	cout << endl << "Beginning Order Management with account " << ((string)pSystem->acc->account->sAccountName.pData).substr(0, pSystem->acc->account->sAccountName.iDataLen) << " with balance $" << pSystem->acc->accBalance << endl;
 	
-	if (!pEngine->listOrderHistoryDates((void*)pSystem, &iCode))
-		cout << endl << "REngine::listOrderHistoryDates() error : " << iCode << endl;
+	if (!pEngine->replayOpenOrders(account, &iCode))
+		cout << endl << "REngine::replayOpenOrders() error : " << iCode << endl;
 	
-	if (!pEngine->replayAllOrders(account, 1612224000, 1612310400, &iCode))
-		cout << endl << "REngine::replayAllOrders() error : " << iCode << endl;
 
 	while (pSystem->userManagement) {
+		for (int i = 0; i < watchlist->size(); i++) {
+			if (watchlist->at(i)->placeBuyOrder)
+				buyMarket(i);
+			else if (watchlist->at(i)->placeSellOrder)
+				sellMarket(i);
+		}
+
 		Sleep(1000);
 	}
 
