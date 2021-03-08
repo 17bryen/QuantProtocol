@@ -102,6 +102,7 @@ int OrderManager::buyMarket(int toBuyIndex) {
 		return 1;
 	}
 	*/
+	watchlist->at(toBuyIndex)->placeBuyOrder = false;
 
 	return 0;
 }
@@ -130,6 +131,7 @@ int OrderManager::sellMarket(int toSellIndex) {
 		return 1;
 	}
 	*/
+	watchlist->at(toSellIndex)->placeSellOrder = false;
 
 	return 0;
 }
@@ -165,6 +167,7 @@ int OrderManager::liquidate(int toCloseIndex) {
 		return 1;
 	}
 	*/
+
 
 	return 0;
 }

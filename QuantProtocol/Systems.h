@@ -46,6 +46,8 @@ public:
 
 	/*	--------------------------------------------------------------------------	*/
 
+	int iReports = 0;
+
 	bool rcvdAccountList = false;
 	bool bRcvdUnacceptedAgreements = false;
 	int iUnacceptedMandatoryAgreements = 0;
