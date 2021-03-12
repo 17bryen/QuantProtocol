@@ -24,6 +24,17 @@ struct Trade {
 	char aggrSide = 'A';
 };
 
+struct pendingOrder {
+	char side;
+	char purpose;
+	bool submitted = false;
+
+	pendingOrder(char toSide, char toPurpose) {
+		side = toSide;
+		purpose = toPurpose;
+	}
+};
+
 class OrderBook {
 public:
 	/*	======================== Declare Member Variables ========================	*/
@@ -94,13 +105,12 @@ public:
 
 	OrderBook* book;
 	OrderFlow* flow;
+	pendingOrder* pending;
 
 	tsNCharcb exchange;
 	tsNCharcb ticker;
 
 	int positionSize;
-	bool placeBuyOrder;
-	bool placeSellOrder;
 	bool rcvdReplayTrades;
 	bool rcvdLimitOrderBook;
 	

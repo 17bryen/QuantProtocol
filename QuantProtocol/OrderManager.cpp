@@ -102,7 +102,7 @@ int OrderManager::buyMarket(int toBuyIndex) {
 		return 1;
 	}
 	*/
-	watchlist->at(toBuyIndex)->placeBuyOrder = false;
+	watchlist->at(toBuyIndex)->pending->submitted = true;
 
 	return 0;
 }
@@ -131,7 +131,7 @@ int OrderManager::sellMarket(int toSellIndex) {
 		return 1;
 	}
 	*/
-	watchlist->at(toSellIndex)->placeSellOrder = false;
+	watchlist->at(toSellIndex)->pending->submitted = true;
 
 	return 0;
 }
@@ -186,10 +186,12 @@ int OrderManager::Order() {
 
 	while (pSystem->userManagement) {
 		for (int i = 0; i < watchlist->size(); i++) {
-			if (watchlist->at(i)->placeBuyOrder)
-				buyMarket(i);
-			else if (watchlist->at(i)->placeSellOrder)
-				sellMarket(i);
+			if (watchlist->at(i)->pending == nullptr && !watchlist->at(i)->pending->submitted) {
+				if (!watchlist->at(i)->pending->side == 'B')
+					buyMarket(i);
+				else if (!watchlist->at(i)->pending->side == 'S')
+					sellMarket(i);
+			}
 		}
 
 		Sleep(1000);

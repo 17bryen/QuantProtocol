@@ -1,6 +1,5 @@
 #include "Contract.h"
 
-
 using namespace std;
 using namespace RApi;
 
@@ -27,6 +26,7 @@ Contract::Contract(REngine* toEngine, char* toExchange, char* toTicker) {
 
 	book = new OrderBook();
 	flow = new OrderFlow();
+	pending = nullptr;
 
 	positionSize = 0;
 
@@ -44,6 +44,7 @@ Contract::Contract(const Contract &orig) {
 
 	book = orig.book;
 	flow = orig.flow;
+	pending = orig.pending;
 
 	exchange.pData = orig.exchange.pData;
 	exchange.iDataLen = orig.exchange.iDataLen;
@@ -65,6 +66,8 @@ Contract::Contract(const Contract &orig) {
 Contract::~Contract() {
 	delete book;
 	delete flow;
+	if (pending != nullptr)
+		delete pending;
 }
 
 /*   =====================================================================   */
