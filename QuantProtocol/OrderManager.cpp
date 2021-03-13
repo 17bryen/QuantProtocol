@@ -118,7 +118,10 @@ int OrderManager::sellMarket(int toSellIndex) {
 
 	toSubmit.pContext = watchlist->at(toSellIndex);
 	//toSubmit.sRoutingInstructions = //?;
-	toSubmit.sBuySellType = sBUY_SELL_TYPE_SELL;
+	if (watchlist->at(toSellIndex)->pending->purpose == 'N')
+		toSubmit.sBuySellType = sBUY_SELL_TYPE_SELL_SHORT;
+	else
+		toSubmit.sBuySellType = sBUY_SELL_TYPE_SELL;
 	toSubmit.sDuration = sORDER_DURATION_DAY;
 	toSubmit.sEntryType = sORDER_ENTRY_TYPE_AUTO;
 

@@ -445,7 +445,25 @@ int ImplCallbacks::CancelReport(OrderCancelReport* pReport, void* pContext, int*
 	Systems* context = (Systems*)pContext;
 	int iIgnored;
 	pReport->dump(&iIgnored);
-	/*WRITE THIS FUNCTION ???*/
+
+	/*  -----------------------------------------------------------------	*/
+
+	cout << "Order placed on ticker " << ((string)pReport->sTicker.pData).substr(0, pReport->sTicker.iDataLen - 1) << " cancelled." << endl << endl;
+
+	//Delete pending order from watchlist contract
+	for (int i = 0; i < context->acc->watchlist->size(); i ++)
+		if (((string)context->acc->watchlist->at(i)->ticker.pData).substr(0, context->acc->watchlist->at(i)->ticker.iDataLen - 1) == 
+			((string)pReport->sTicker.pData).substr(0, pReport->sTicker.iDataLen - 1))
+			if (context->acc->watchlist->at(i)->pending != nullptr) {
+				context->acc->watchlist->at(i)->pending->size -= pReport->iCancelledSize;
+				
+				if (context->acc->watchlist->at(i)->pending->size <= 0) {
+					delete context->acc->watchlist->at(i)->pending;
+					context->acc->watchlist->at(i)->pending = nullptr;
+				}
+			}
+
+	/*  -----------------------------------------------------------------	*/
 
 	*aiCode = API_OK;
 	return(OK);
@@ -458,7 +476,29 @@ int ImplCallbacks::FailureReport(OrderFailureReport* pReport, void* pContext, in
 	Systems* context = (Systems*)pContext;
 	int iIgnored;
 	pReport->dump(&iIgnored);
-	/*WRITE THIS FUNCTION ???*/
+
+	/*  -----------------------------------------------------------------	*/
+
+	cout << "Order placed on ticker " << ((string)pReport->sTicker.pData).substr(0, pReport->sTicker.iDataLen - 1) 
+		<< " failed to submit. Incrementing error counter." << endl << endl;
+
+	//Increment error tracker
+	context->iReports++;
+
+	//Delete pending order from watchlist contract
+	for (int i = 0; i < context->acc->watchlist->size(); i++)
+		if (((string)context->acc->watchlist->at(i)->ticker.pData).substr(0, context->acc->watchlist->at(i)->ticker.iDataLen - 1) ==
+			((string)pReport->sTicker.pData).substr(0, pReport->sTicker.iDataLen - 1))
+			if (context->acc->watchlist->at(i)->pending != nullptr) {
+				context->acc->watchlist->at(i)->pending->size -= pReport->iCancelledSize;
+
+				if (context->acc->watchlist->at(i)->pending->size <= 0) {
+					delete context->acc->watchlist->at(i)->pending;
+					context->acc->watchlist->at(i)->pending = nullptr;
+				}
+			}
+
+	/*  -----------------------------------------------------------------	*/
 
 	context->iReports++;
 
@@ -473,7 +513,26 @@ int ImplCallbacks::FillReport(OrderFillReport* pReport, void* pContext, int* aiC
 	Systems* context = (Systems*)pContext;
 	int iIgnored;
 	//pReport->dump(&iIgnored);
-	/*WRITE THIS FUNCTION ???*/
+
+	/*  -----------------------------------------------------------------	*/
+
+	cout << "Order placed on ticker " << ((string)pReport->sTicker.pData).substr(0, pReport->sTicker.iDataLen - 1)
+		<< " for " << pReport->iFillSize << " contracts filled successfully." << endl << endl;
+
+	//Modify or delete pending order from watchlist contract
+	for (int i = 0; i < context->acc->watchlist->size(); i++)
+		if (((string)context->acc->watchlist->at(i)->ticker.pData).substr(0, context->acc->watchlist->at(i)->ticker.iDataLen - 1) ==
+			((string)pReport->sTicker.pData).substr(0, pReport->sTicker.iDataLen - 1))
+			if (context->acc->watchlist->at(i)->pending != nullptr) {
+				context->acc->watchlist->at(i)->pending->size -= pReport->iFillSize;
+
+				if (context->acc->watchlist->at(i)->pending->size <= 0) {
+					delete context->acc->watchlist->at(i)->pending;
+					context->acc->watchlist->at(i)->pending = nullptr;
+				}
+			}
+
+	/*  -----------------------------------------------------------------	*/
 
 	*aiCode = API_OK;
 	return(OK);
@@ -486,7 +545,26 @@ int ImplCallbacks::ModifyReport(OrderModifyReport* pReport, void* pContext, int*
 	Systems* context = (Systems*)pContext;
 	int iIgnored;
 	//pReport->dump(&iIgnored);
-	/*WRITE THIS FUNCTION ???*/
+
+	/*  -----------------------------------------------------------------	*/
+
+	cout << "Order placed on ticker " << ((string)pReport->sTicker.pData).substr(0, pReport->sTicker.iDataLen - 1)
+		<< " successfully modified to size " << pReport->iNewSize << "." << endl << endl;
+
+	//Modify or delete pending order from watchlist contract
+	for (int i = 0; i < context->acc->watchlist->size(); i++)
+		if (((string)context->acc->watchlist->at(i)->ticker.pData).substr(0, context->acc->watchlist->at(i)->ticker.iDataLen - 1) ==
+			((string)pReport->sTicker.pData).substr(0, pReport->sTicker.iDataLen - 1))
+			if (context->acc->watchlist->at(i)->pending != nullptr) {
+				context->acc->watchlist->at(i)->pending->size = pReport->iNewSize;
+
+				if (context->acc->watchlist->at(i)->pending->size <= 0) {
+					delete context->acc->watchlist->at(i)->pending;
+					context->acc->watchlist->at(i)->pending = nullptr;
+				}
+			}
+
+	/*  -----------------------------------------------------------------	*/
 
 	*aiCode = API_OK;
 	return(OK);
@@ -498,8 +576,28 @@ int ImplCallbacks::NotCancelledReport(OrderNotCancelledReport* pReport, void* pC
 {
 	Systems* context = (Systems*)pContext;
 	int iIgnored;
-	pReport->dump(&iIgnored);
-	/*WRITE THIS FUNCTION ???*/
+	//pReport->dump(&iIgnored);
+
+	/*  -----------------------------------------------------------------	*/
+
+	cout << "Failed to cancel order placed on ticker " << ((string)pReport->sTicker.pData).substr(0, pReport->sTicker.iDataLen - 1)
+		<< " for size " << pReport->iNotCancelledSize << "." << endl << endl;
+
+	//Modify or delete pending order from watchlist contract
+	/*
+	for (int i = 0; i < context->acc->watchlist->size(); i++)
+		if (((string)context->acc->watchlist->at(i)->ticker.pData).substr(0, context->acc->watchlist->at(i)->ticker.iDataLen - 1) ==
+			((string)pReport->sTicker.pData).substr(0, pReport->sTicker.iDataLen - 1))
+			if (context->acc->watchlist->at(i)->pending != nullptr) {
+				context->acc->watchlist->at(i)->pending->size = pReport->iNewSize;
+
+				if (context->acc->watchlist->at(i)->pending->size <= 0) {
+					delete context->acc->watchlist->at(i)->pending;
+					context->acc->watchlist->at(i)->pending = nullptr;
+				}
+			}
+	*/
+	/*  -----------------------------------------------------------------	*/
 
 	context->iReports++;
 
@@ -513,8 +611,29 @@ int ImplCallbacks::NotModifiedReport(OrderNotModifiedReport* pReport, void* pCon
 {
 	Systems* context = (Systems*)pContext;
 	int iIgnored;
-	pReport->dump(&iIgnored);
-	/*WRITE THIS FUNCTION ???*/
+	//pReport->dump(&iIgnored);
+
+	/*  -----------------------------------------------------------------	*/
+
+	cout << "Failed to modify order placed on ticker " << ((string)pReport->sTicker.pData).substr(0, pReport->sTicker.iDataLen - 1)
+		<< " for size " << pReport->iNotModifiedSize << "." << endl << endl;
+
+	//Modify or delete pending order from watchlist contract
+	/*
+	for (int i = 0; i < context->acc->watchlist->size(); i++)
+		if (((string)context->acc->watchlist->at(i)->ticker.pData).substr(0, context->acc->watchlist->at(i)->ticker.iDataLen - 1) ==
+			((string)pReport->sTicker.pData).substr(0, pReport->sTicker.iDataLen - 1))
+			if (context->acc->watchlist->at(i)->pending != nullptr) {
+				context->acc->watchlist->at(i)->pending->size = pReport->iNewSize;
+
+				if (context->acc->watchlist->at(i)->pending->size <= 0) {
+					delete context->acc->watchlist->at(i)->pending;
+					context->acc->watchlist->at(i)->pending = nullptr;
+				}
+			}
+	*/
+
+	/*  -----------------------------------------------------------------	*/
 
 	context->iReports++;
 
@@ -528,8 +647,30 @@ int ImplCallbacks::RejectReport(OrderRejectReport* pReport, void* pContext, int*
 {
 	Systems* context = (Systems*)pContext;
 	int iIgnored;
-	pReport->dump(&iIgnored);
-	/*WRITE THIS FUNCTION*/
+	//pReport->dump(&iIgnored);
+
+	/*  -----------------------------------------------------------------	*/
+
+	cout << "Order placed on ticker " << ((string)pReport->sTicker.pData).substr(0, pReport->sTicker.iDataLen - 1)
+		<< " for size " << pReport->iRejectedSize << " was rejected." << endl << endl;
+
+	//Modify or delete pending order from watchlist contract IF order not replaced
+	
+	if (!pReport->bReplacementOrderToFollow)
+	for (int i = 0; i < context->acc->watchlist->size(); i++)
+		if (((string)context->acc->watchlist->at(i)->ticker.pData).substr(0, context->acc->watchlist->at(i)->ticker.iDataLen - 1) ==
+			((string)pReport->sTicker.pData).substr(0, pReport->sTicker.iDataLen - 1))
+			if (context->acc->watchlist->at(i)->pending != nullptr) {
+				context->acc->watchlist->at(i)->pending->size -= pReport->iRejectedSize;
+
+				if (context->acc->watchlist->at(i)->pending->size <= 0) {
+					delete context->acc->watchlist->at(i)->pending;
+					context->acc->watchlist->at(i)->pending = nullptr;
+				}
+			}
+	
+
+	/*  -----------------------------------------------------------------	*/
 
 	context->iReports++;
 
@@ -543,8 +684,14 @@ int ImplCallbacks::StatusReport(OrderStatusReport* pReport, void* pContext, int*
 {
 	Systems* context = (Systems*)pContext;
 	int iIgnored;
-	pReport->dump(&iIgnored);
-	/*WRITE THIS FUNCTION*/
+	//pReport->dump(&iIgnored);
+
+	/*  -----------------------------------------------------------------	*/
+
+	cout << "Order successfully placed on ticker " << ((string)pReport->sTicker.pData).substr(0, pReport->sTicker.iDataLen - 1)
+		<< " for size " << pReport->iConfirmedSize << "." << endl << endl;
+
+	/*  -----------------------------------------------------------------	*/
 
 	*aiCode = API_OK;
 	return(OK);
@@ -557,7 +704,14 @@ int ImplCallbacks::TradeCorrectReport(OrderTradeCorrectReport* pReport, void* pC
 	Systems* context = (Systems*)pContext;
 	int iIgnored;
 	pReport->dump(&iIgnored);
+
 	/*WRITE THIS FUNCTION*/
+	/*  -----------------------------------------------------------------	*/
+
+	cout << "Trade correction reported and ignored." << endl << endl;
+
+	/*  -----------------------------------------------------------------	*/
+
 
 	*aiCode = API_OK;
 	return(OK);
@@ -598,7 +752,13 @@ int ImplCallbacks::OtherReport(OrderReport* pReport, void* pContext, int* aiCode
 	Systems* context = (Systems*)pContext;
 	int iIgnored;
 	pReport->dump(&iIgnored);
+
 	/*COMPLETE THIS FUNCTION*/
+	/*  -----------------------------------------------------------------	*/
+
+	cout << "Other report called; Create sorting mechanism." << endl << endl;
+
+	/*  -----------------------------------------------------------------	*/
 
 	*aiCode = API_OK;
 	return(OK);

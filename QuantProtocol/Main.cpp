@@ -84,7 +84,7 @@ int main(int argc, char * *argv, char * *envp) {
 	Q->initThreads();
 
 	//thread analyManager(&AnalysisManager::Analysis, Q->analysisManager);
-	thread orderManager(&OrderManager::Order, Q->orderManager);
+	//thread orderManager(&OrderManager::Order, Q->orderManager);
 	//thread stateManager(Q->stateManager, system);
 
 	//Q->orderManager->buyMarket(0);
@@ -97,7 +97,7 @@ int main(int argc, char * *argv, char * *envp) {
 
 	Q->pSystem->userManagement = false;
 	//analyManager.join();
-	orderManager.join();
+	//orderManager.join();
 	//stateManager.join();
 	
 	cout << "Successfully made it through the program test!" << endl;

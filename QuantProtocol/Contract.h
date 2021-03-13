@@ -28,10 +28,12 @@ struct pendingOrder {
 	char side;
 	char purpose;
 	bool submitted = false;
+	int size = 0;
 
-	pendingOrder(char toSide, char toPurpose) {
+	pendingOrder(char toSide, char toPurpose, int toSize) {
 		side = toSide;
 		purpose = toPurpose;
+		size = toSize;
 	}
 };
 
