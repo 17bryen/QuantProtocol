@@ -48,8 +48,7 @@ int main(int argc, char * *argv, char * *envp) {
 
 	/*	========================= Pass Rithmic Login to Quant =======================	*/
 
-	Q->pSystem->setUser((char*)"17bryen@amp.com");
-	Q->pSystem->setPass((char*)"&h$QlbrU2ha");
+	LOGIN_HERE
 
 	/*	========================== Check Unsigned Agreements ========================	
 
